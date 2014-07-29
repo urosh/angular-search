@@ -8,22 +8,34 @@
  * Controller of the starcSearchApp
  */
 angular.module('starcSearchApp')
-  .controller('AppCtrl', function ($scope) {
-    this.optionSelected = function(){
-    	this.tools.push(this.option);
-    };
-    this.dir = 'my-first-tool';
-    this.showText = true;
-    this.items = [
-    	{id: 1, name: 'foo', template:'views/tool1.html'},
-    	{id: 2, name: 'bar', template:'views/tool2.html'},
-    	{id: 3, name: 'blah', template:'views/tool3.html'},
-        {id: 3, name: 'ajme', template:'views/tool3.html'}
-    ];
+  .controller('AppCtrl', function ($scope, $http, Tools) {
+    this.model = {};
+
+    this.model.selectedTools = [];
+    this.model.tools = [];
+    
+
+    var promise = Tools.getTools();
+    var that = this;
+    
+
+    promise.then(function(res){
+        that.model.tools = res.data;
+    });
+
+    this.toolSelected = function(e){
+       
+        Tools.addObjectFromCollection(this.model.tools, this.model.selectedTools, 'name', e);
+    }
+
+    this.removeItem = function(e){
+        Tools.removeObjectFromCollection(this.model.selectedTools, 'name', e);
+    }
+    
+    
+    
 
     
-    this.tools = [];
 
-    this.option = "";
-
+    
   });

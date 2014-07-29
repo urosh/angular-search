@@ -12,6 +12,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dropdown.css">
     <!-- endbuild -->
   </head>
   <body ng-app="starcSearchApp">
@@ -21,15 +22,23 @@
 
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="AppCtrl as ctrl">
-     
-      <div my-select></div>
-      <div ng-controller="myCtrl as ctrl2">
-        <div>Something</div>
-        <div my-second-directive></div>
-
+      <div class="menu-container">
+        <div my-dropdown  tools="ctrl.model.tools" ng-class="(active) ? 'active mydropdown' : 'mydropdown'" select="ctrl.toolSelected(e)"></div>
+        <div class="dropdown-items-container">
+          
+          <div selected-items tools="ctrl.model.selectedTools" remove="ctrl.removeItem(e)"></div> 
+        </div>
       </div>
-      
+      <div class="tools-container">
+        
+      </div>
     </div>
+      
+      
+
+ 
+      
+ 
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -65,9 +74,12 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/factories/services.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/directives/my-select.js"></script>
         <script src="scripts/directives/tools.js"></script>
+        <script src="scripts/directives/dropdown.js"></script>
+        <script src="scripts/directives/selected-items.js"></script>
         <script src="scripts/mymodule/controller.js"></script>
         <script src="scripts/mymodule/directive.js"></script>
         
