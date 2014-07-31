@@ -26,7 +26,14 @@ angular.module('my-services')
             }
         }
     }; 
-
+    this.addItemToArray = function(myarray, item) {
+        var itemIndex = myarray.indexOf(item);
+        if(itemIndex === -1 ){
+            myarray.push(item)
+        }else{
+            myarray.splice(itemIndex, 1);
+        }
+    }
     this.removeObjectFromCollection = function(target, property, value){
         // function gets source array, target array, property name, and value
         var removeIndex = -1;
@@ -36,8 +43,21 @@ angular.module('my-services')
             }
         }
         target.splice(removeIndex, 1);
-    };   
+    };
+
+     
 
 		
 
-	});
+});
+
+angular.module('my-services')
+    .service('serverServices', function($http){
+        this.initializeSearch = function(){
+            return $http.get('http://public.cyi.ac.cy/starcRepo/map/init');
+        };
+
+        this.runSearch = function(data){
+            return $http.get('http://public.cyi.ac.cy/starcRepo/map/search', {params: data});
+        }  
+    })

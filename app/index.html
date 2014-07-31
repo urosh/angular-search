@@ -13,7 +13,14 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dropdown.css">
+    <link rel="stylesheet" href="styles/search.css">
+
+
     <!-- endbuild -->
+
+    
+
+
   </head>
   <body ng-app="starcSearchApp">
     <!--[if lt IE 7]>
@@ -30,6 +37,11 @@
         </div>
       </div>
       <div class="tools-container">
+        <div class="search-container">
+          <div my-search collections="ctrl.model.collections" query="ctrl.model.query" typein="ctrl.typeSelected(e, i)" collectionin="ctrl.collectionSelected(e, i)" search="ctrl.search()" types="ctrl.model.types"></div>
+
+          <div class="search-results"><p>Search Results</p></div>
+        </div>
         
       </div>
     </div>
@@ -59,24 +71,26 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/json3/lib/json3.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/factories/services.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/directives/my-select.js"></script>
+        <script src="scripts/directives/my-search.js"></script>
         <script src="scripts/directives/tools.js"></script>
         <script src="scripts/directives/dropdown.js"></script>
         <script src="scripts/directives/selected-items.js"></script>

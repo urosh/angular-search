@@ -1,0 +1,159 @@
+input[type="search"] {
+	width: 300px;
+	height: 30px;
+	border: solid 1px #2d3956;
+	font-size: 14px;
+}
+
+.search-container{
+	width: 580px;
+	min-height: 400px;
+	overflow: auto;
+	padding: 0px;
+	overflow-y: hidden;
+	color: #2d3956;
+
+
+}
+.searchButton{
+ display: inline-block;
+  width: 80px;
+  height: 30px;
+  background-color: #66718b;
+  margin: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 0px;
+  font-size: 16px;
+  line-height: 30px;
+  
+   
+}
+.searchButton:hover{
+  background-color: #2d3956;
+  
+}
+
+
+
+.advanced-search-link{
+	display: block;
+	margin: 3px 0;
+	padding: 0;
+	position: relative;
+  z-index: 1;
+}
+.advanced-search-link a{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	color: #2d3956;
+	font-weight: bold;
+	
+}
+
+.advanced-search-link a:after{
+	content: "\00BB";
+	font-size: 16px;
+	display: inline-block;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  position: absolute;
+  left: 110px;
+}
+
+.advanced-search-link a.down:after{
+-webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  position: absolute;
+  top: 0px;
+  left: 106px;
+
+
+}
+
+
+
+
+
+
+
+.advanced-search-container ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.advanced-search-container ul li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+}
+
+.advanced-search-container section{
+	float: left;
+	width: 250px;
+	overflow: auto;
+	
+}
+.advanced-search-container h4{
+	margin: 2px 0;
+	font-size: 14px;
+}
+
+
+.searchButton.browse{
+	font-size: 10px;
+	height: 20px;
+	line-height: 20px;
+	width: 60px;
+	margin-top: 20px;
+}
+
+.search-results{
+	width: 430px;
+	display: block;
+	height: 300px;
+	border: solid 1px green;
+}
+
+.advanced-search-container{
+	padding: 0;
+	height: 340px;
+	overflow: auto;
+	border: solid 1px yellow;
+	overflow-y:	hidden;
+	
+}
+.advanced-search-container {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+  opacity:1;
+  height: 330px;
+}
+
+.advanced-search-container.ng-hide {
+  opacity:0;
+  height: 0;
+}
+
+.advanced-search-container.ng-hide-add, .advanced-search-container.ng-hide-remove {
+  /* this needs to be here to make it visible during the animation
+     since the .ng-hide class is already on the element rendering
+     it as hidden. */
+  display:block!important;
+
+}
+
+
+
+
+
