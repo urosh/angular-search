@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dropdown.css">
     <link rel="stylesheet" href="styles/search.css">
-
+    
 
     <!-- endbuild -->
 
@@ -40,7 +40,20 @@
         <div class="search-container">
           <div my-search collections="ctrl.model.collections" query="ctrl.model.query" typein="ctrl.typeSelected(e, i)" collectionin="ctrl.collectionSelected(e, i)" search="ctrl.search()" types="ctrl.model.types"></div>
 
-          <div class="search-results"><p>Search Results</p></div>
+          <div class="search-results">
+            <div deckgrid class="deckgrid" source="ctrl.model.searchResults" cardTemplate="views/templates/deckgrid-card.html"></div>
+          </div>
+        </div>
+        <div class="tools-right-container">
+          <div class="angular-google-map-container">
+            <google-map  center="ctrl.map.center" zoom="ctrl.map.zoom">
+            <markers>
+              <marker coords='{latitude: 45, longitude: -73}'></marker>
+            </markers> 
+          </google-map>
+
+          </div>
+
         </div>
         
       </div>
@@ -70,10 +83,11 @@
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <!-- endbuild -->
-
+        <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXuSxAlefxRVSKVAaRX27QmBfrHNkhUug&sensor=true&region=CY">
+    </script>
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
-
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/json3/lib/json3.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -82,6 +96,9 @@
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
+        <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+        <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

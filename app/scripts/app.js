@@ -17,6 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'myModule',
-    'my-services'
+    'my-services',
+    'akoenig.deckgrid',
+    'google-maps'
   ]);
   

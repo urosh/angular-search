@@ -17,10 +17,20 @@ angular.module('starcSearchApp')
     this.model.types = [];
     this.model.selectedCollections = [];
     this.model.selectedTypes = [];
+    this.model.searchResults = [];
 
     this.typeSelected = function(e){
         Tools.addItemToArray(this.model.selectedTypes, e);
-    }
+    };
+    
+    this.map = {
+        center: {
+            latitude: 45,
+            longitude: -73
+        },
+        zoom: 8
+    };
+
 
     this.collectionSelected = function(e, i){
         Tools.addItemToArray(this.model.selectedCollections, e);
@@ -54,8 +64,8 @@ angular.module('starcSearchApp')
         console.log(queryData);
         var results = serverServices.runSearch(queryData);
         results.then(function(res){
-            console.log('we have results');
             console.log(res.data);
+            that.model.searchResults = res.data;
         })
     };
 

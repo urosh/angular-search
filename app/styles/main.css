@@ -67,7 +67,24 @@ body {
  
 }
 
+.tools-right-container{
+  float: right;
+  width: 505px;
+  overflow: auto;
+  overflow-y: hidden;
+  border: solid 1px yellow;
+ 
+  
+}
 
+.tools-container{
+  
+  width: 1020px;
+  overflow: auto;
+  padding: 0;
+  
+
+}
 
 
 
