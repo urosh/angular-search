@@ -19,6 +19,8 @@ angular
     'myModule',
     'my-services',
     'akoenig.deckgrid',
-    'google-maps'
+    'google-maps',
+    'my-controlls',
+    'common-services'
   ]);
   

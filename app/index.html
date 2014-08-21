@@ -30,13 +30,14 @@
 
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="AppCtrl as ctrl">
-      <div class="menu-container">
-        <div my-dropdown  tools="ctrl.model.tools" ng-class="(active) ? 'active mydropdown' : 'mydropdown'" select="ctrl.toolSelected(e)"></div>
+      
+      <div class="menu-container" ng-controller="ControllsController as controllsCtrl" >
+        <div my-dropdown  tools="controllsCtrl.tools" ng-class="(active) ? 'active mydropdown' : 'mydropdown'" select="controllsCtrl.toolSelected(e)"></div>
         <div class="dropdown-items-container">
-          
-          <div selected-items tools="ctrl.model.selectedTools" remove="ctrl.removeItem(e)"></div> 
+          <div selected-items tools="controllsCtrl.selectedTools" remove="controllsCtrl.removeItem(e)"></div> 
         </div>
       </div>
+      
       <div class="tools-container">
         <div class="search-container">
           <div my-search collections="ctrl.model.collections" query="ctrl.model.query" typein="ctrl.typeSelected(e, i)" collectionin="ctrl.collectionSelected(e, i)" search="ctrl.search()" types="ctrl.model.types"></div>
@@ -109,16 +110,26 @@
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        
         <script src="scripts/app.js"></script>
+        
         <script src="scripts/factories/services.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/directives/my-select.js"></script>
         <script src="scripts/directives/my-search.js"></script>
-        <script src="scripts/directives/tools.js"></script>
-        <script src="scripts/directives/dropdown.js"></script>
-        <script src="scripts/directives/selected-items.js"></script>
         <script src="scripts/mymodule/controller.js"></script>
         <script src="scripts/mymodule/directive.js"></script>
+        
+        <!-- 
+        Common services
+         -->
+        <script src="scripts/common/services.js"></script>
+ 
+        <!-- Dashboard controlls, adding and removing widgets from workspace -->
+        <script src="scripts/controlls/services.js"></script>
+        <script src="scripts/controlls/directive.js"></script>
+        <script src="scripts/controlls/controlls.js"></script>
+        
         
 
         <!-- endbuild -->
