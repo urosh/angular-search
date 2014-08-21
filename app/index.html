@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dropdown.css">
     <link rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="styles/map.css">
     
 
     <!-- endbuild -->
@@ -41,16 +42,21 @@
           <div my-search collections="ctrl.model.collections" query="ctrl.model.query" typein="ctrl.typeSelected(e, i)" collectionin="ctrl.collectionSelected(e, i)" search="ctrl.search()" types="ctrl.model.types"></div>
 
           <div class="search-results">
-            <div deckgrid class="deckgrid" source="ctrl.model.searchResults" cardTemplate="views/templates/deckgrid-card.html"></div>
+            <div deckgrid class="deckgrid" source="ctrl.model.displayItems" cardTemplate="views/templates/deckgrid-card.html"></div>
           </div>
         </div>
         <div class="tools-right-container">
+          
           <div class="angular-google-map-container">
-            <google-map  center="ctrl.map.center" zoom="ctrl.map.zoom">
-            <markers>
-              <marker coords='{latitude: 45, longitude: -73}'></marker>
-            </markers> 
-          </google-map>
+            <google-map draggable="true"  center="ctrl.map.center" zoom="ctrl.map.zoom">
+              <markers models="ctrl.model.markers" coords="'self'" icon="'icon'" click="'onClicked'" >
+                <!-- <span ng-repeat="mar in ctrl.model.markers">
+                  <marker idKey="1" coords='{latitude: 44, longitude: -73}'></marker>
+                  <marker idKey="2" coords='{latitude: 45, longitude: -73}'></marker>
+                  <marker idKey='mar.id' coords='mar.cord' ></marker>
+                </span> -->
+              </markers> 
+            </google-map>
 
           </div>
 

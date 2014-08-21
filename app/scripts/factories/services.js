@@ -59,5 +59,5 @@ angular.module('my-services')
 
         this.runSearch = function(data){
             return $http.get('http://public.cyi.ac.cy/starcRepo/map/search', {params: data});
-        }  
+        };  
     })
