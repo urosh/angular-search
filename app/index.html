@@ -49,13 +49,9 @@
         <div class="tools-right-container">
           
           <div class="angular-google-map-container">
-            <google-map draggable="true"  center="ctrl.map.center" zoom="ctrl.map.zoom">
+            <google-map draggable="true"  center="ctrl.model.map.center" zoom="ctrl.model.map.zoom">
               <markers models="ctrl.model.markers" coords="'self'" icon="'icon'" click="'onClicked'" >
-                <!-- <span ng-repeat="mar in ctrl.model.markers">
-                  <marker idKey="1" coords='{latitude: 44, longitude: -73}'></marker>
-                  <marker idKey="2" coords='{latitude: 45, longitude: -73}'></marker>
-                  <marker idKey='mar.id' coords='mar.cord' ></marker>
-                </span> -->
+               
               </markers> 
             </google-map>
 
@@ -124,7 +120,8 @@
         Common services
          -->
         <script src="scripts/common/services.js"></script>
- 
+        <script src="scripts/common/dataModel.js"></script>
+        
         <!-- Dashboard controlls, adding and removing widgets from workspace -->
         <script src="scripts/controlls/services.js"></script>
         <script src="scripts/controlls/directive.js"></script>

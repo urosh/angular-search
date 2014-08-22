@@ -7,8 +7,8 @@ angular.module('my-controlls', []);
 
 
 angular.module('my-controlls')
-	.controller('ControllsController', function(ControllsService, CommonServices){
-		this.selectedTools = [];
+	.controller('ControllsController', function(ControllsService, CommonServices, DataModel){
+		this.selectedTools = DataModel.selectedTools;
 		this.tools = [];
 
 		var promise = ControllsService.getTools();
@@ -20,11 +20,13 @@ angular.module('my-controlls')
     });
 
 		this.toolSelected = function(e){
-			CommonServices.addObjectFromCollection(this.tools, this.selectedTools, 'name', e);
+			DataModel.selectTool(this.tools, e);
+			
     };
 
     this.removeItem = function(e){
-      CommonServices.removeObjectFromCollection(this.selectedTools, 'name', e);
+    	DataModel.removeTool(e);
+      //CommonServices.removeObjectFromCollection(DataModel.model.selectedTools, 'name', e);
     };
 
 
