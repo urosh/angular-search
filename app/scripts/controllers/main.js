@@ -26,38 +26,10 @@ angular.module('starcSearchApp')
 
     ];
 
-    this.model.displayItems = [];
-    this.model = DataModel.model;
+   
     
-    this.typeSelected = function(e){
-      Tools.addItemToArray(this.model.selectedTypes, e);
-    };
-    
-    
-
-
-    // this.collectionSelected = function(e, i){
-    //   Tools.addItemToArray(this.model.selectedCollections, e);
-    // };
-
-    // var promise = Tools.getTools();
-    // var that = this;
-    
-
-    // promise.then(function(res){
-    //   that.model.tools = res.data;
-    // });
-
-    // this.toolSelected = function(e){
-       
-    //   Tools.addObjectFromCollection(this.model.tools, this.model.selectedTools, 'name', e);
-    // };
-
-
-    // this.removeItem = function(e){
-    //   Tools.removeObjectFromCollection(this.model.selectedTools, 'name', e);
-    // };
-
+   
+   
     // this.search = function(){
     //   // first populate data
     //   var queryData = {
@@ -132,12 +104,7 @@ angular.module('starcSearchApp')
     // };
 
 
-    // var collections = serverServices.initializeSearch();
-    // collections.then(function(res){
-    //   that.model.collections = res.data.collections;
-    //   that.model.types = res.data.types;
-      
-    // });
+    
 
     
 

@@ -1,6 +1,6 @@
 'use strict';
 
-function ControllsService($http){
+function ControllsServiceFunction($http){
 	this.getTools = function(){
 		return $http.get('data/tools.json');
 	};

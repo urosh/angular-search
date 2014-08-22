@@ -39,11 +39,12 @@
       </div>
       
       <div class="tools-container">
-        <div class="search-container">
-          <div my-search collections="ctrl.model.collections" query="ctrl.model.query" typein="ctrl.typeSelected(e, i)" collectionin="ctrl.collectionSelected(e, i)" search="ctrl.search()" types="ctrl.model.types"></div>
+        <div class="search-container" ng-controller="searchController as searchCtrl">
+          <div my-search collections="searchCtrl.collections" query="searchCtrl.query" typein="searchCtrl.typeSelected(e, i)" collectionin="searchCtrl.collectionSelected(e, i)" search="searchCtrl.search()" types="searchCtrl.types"></div>
 
           <div class="search-results">
-            <div deckgrid class="deckgrid" source="ctrl.model.displayItems" cardTemplate="views/templates/deckgrid-card.html"></div>
+            <div preloader ng-show="searchCtrl.preloaderActive" class="search-preloader"></div>
+            <div deckgrid class="deckgrid" source="searchCtrl.displayItems" cardTemplate="views/templates/deckgrid-card.html"></div>
           </div>
         </div>
         <div class="tools-right-container">
@@ -111,8 +112,7 @@
         
         <script src="scripts/factories/services.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/directives/my-select.js"></script>
-        <script src="scripts/directives/my-search.js"></script>
+        
         <script src="scripts/mymodule/controller.js"></script>
         <script src="scripts/mymodule/directive.js"></script>
         
@@ -121,11 +121,19 @@
          -->
         <script src="scripts/common/services.js"></script>
         <script src="scripts/common/dataModel.js"></script>
+        <script src="scripts/common/directives.js"></script>
         
         <!-- Dashboard controlls, adding and removing widgets from workspace -->
         <script src="scripts/controlls/services.js"></script>
+        <script src="scripts/controlls/controller.js"></script>
         <script src="scripts/controlls/directive.js"></script>
         <script src="scripts/controlls/controlls.js"></script>
+        
+         <!-- Search tool -->
+        <script src="scripts/search/services.js"></script>
+        <script src="scripts/search/controller.js"></script>
+        <script src="scripts/search/directives.js"></script>
+        <script src="scripts/search/search.js"></script>
         
         
 

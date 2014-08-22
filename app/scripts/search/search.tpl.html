@@ -1,0 +1,29 @@
+<input type="search" ng-model="query">
+<a href="#" ng-click="search()"  class="searchButton">SEARCH</a>
+<span class="advanced-search-link">
+	<a href="#" ng-click="ctrl.model.advanced=!ctrl.model.advanced">Advanced Search</a>
+</span>
+<div ng-init="{ctrl.model.init : true}" ng-show="ctrl.model.advanced"   ng-class="{'advanced-search-container': !ctrl.model.init}">
+<!-- <div ng-show="ctrl.model.advanced" class="advanced-search-container ng-hide"> -->
+	<div>
+		<section class="collections">
+      <h4>Choose collection</h4>
+      <ul>
+        
+        <li ng-repeat="coll in collections"><label  class='checkbox'><input ng-model="col" ng-change="collectionSelected({e: coll, i: col})" type="checkbox" class="typeClass" value="{{coll}}"/>{{coll}}</label></li>
+        
+      </ul>
+
+    </section>
+
+    <section class="types">
+      <h4>Choose object type</h4>
+        <ul>
+           <li ng-repeat="type in types"><label class='checkbox'><input ng-model="tp" ng-change="typeSelected({e: type.type, i: tp})" type="checkbox" class="typeClass" value="{{type.type}}"/>{{type.title}}</label></li>
+         
+        </ul>
+        <a href="#" class="searchButton browse">BROWSE</a>
+    </section>
+
+	</div>
+</div>
