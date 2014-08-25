@@ -1,6 +1,6 @@
 'use strict';
 
-var searchModule = angular.module('mySearchModule', []);
+var searchModule = angular.module('mySearchModule', ['akoenig.deckgrid']);
 
 
 searchModule.controller('searchController', SearchController);

@@ -16,12 +16,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'myModule',
     'my-services',
-    'akoenig.deckgrid',
-    'google-maps',
+    
     'common-services',
     'my-controlls',
-    'mySearchModule'
+    'mySearchModule',
+    'mapModule'
   ]);
   

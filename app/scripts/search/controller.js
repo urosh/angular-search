@@ -1,7 +1,7 @@
 'use strict';
 
 
-function SearchController(searchService, CommonServices, DataModel){
+function SearchController(searchService, CommonServices, DataModel, $filter, $scope){
 	
 	this.collections = [];
 	this.types = [];
@@ -11,6 +11,7 @@ function SearchController(searchService, CommonServices, DataModel){
 
 	this.displayItems = [];
 	this.searchResuls = [];
+	this.resultMarkers = [];
 
 	this.query = '';
 
@@ -49,17 +50,18 @@ function SearchController(searchService, CommonServices, DataModel){
   	DataModel.setQueryData(queryData);
 
   	var results = searchService.runSearch(queryData);
-
   	results.then(function(res){
   		that.preloaderActive = false;
-  		that.searchResults = res.data;
-    	that.displayItems = res.data;
-    	DataModel.setResults(that.searchResults);
-    	DataModel.setDisplayItems(that.displayItems);
-  	})
+  		
+  		that.displayItems = DataModel.displayItems;
+  		that.searchResults = DataModel.searchResults;
+  	});
 
-  }
+  };
 
+  $scope.$on('update:display:list', function(){
+  	that.displayItems = DataModel.displayItems;
+  })
 
 
 

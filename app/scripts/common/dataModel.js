@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('common-services')
-	.service('DataModel', function(CommonServices){
+	.service('DataModel', function(CommonServices, $filter, $rootScope){
 		
 
 		this.selectedTools = [];
@@ -10,7 +10,7 @@ angular.module('common-services')
 		this.displayItems = [];
 		this.resultMarkers = [];
 
-
+		var that = this;
 		// Tools selection. Adding and removing tools to the workspace
 		this.selectTool = function(tools, e){
 			CommonServices.addObjectFromCollection(tools, this.selectedTools, 'name', e);
@@ -30,11 +30,17 @@ angular.module('common-services')
 
 		this.setResults = function(res){
 			this.searchResults = res;
-			this.setMarkers(res);
+			//this.displayItems = res;
+			this.setMarkers(this.searchResults);
+			$rootScope.$broadcast('data:ready');
+			//that.displayItems = [that.displayItems[0], that.displayItems[1]];
+			
 		};
 
 		this.setDisplayItems = function(disp){
-			this.displayItems = disp;
+			this.displayItems  = disp;
+			$rootScope.$broadcast('update:display:list');
+			
 		}
 
 		// Map 
@@ -51,8 +57,8 @@ angular.module('common-services')
             that.resultMarkers.push(
               {
                 id: key, 
-                latitude: res.data[key].lat, 
-                longitude: res.data[key].lng,
+                latitude: res[key].lat, 
+                longitude: res[key].lng,
                 clicked: false,
                 
               }
@@ -61,26 +67,43 @@ angular.module('common-services')
           
         }
       }
+
+     //   _.each(that.resultMarkers, function(marker){
+     //     marker.onClicked = function(){
+     //     	that.displayItems = [that.displayItems[0], that.displayItems[1]];
+         	
+     //    	console.log('marker clicked');
+     //      if(marker.clicked){
+     //        marker.icon=null;
+     //        //that.displayItems = that.searchResults;
+             
+     //        marker.clicked = false;
+     //      }else{
+     //        _.each(that.resultMarkers, function(thatMarker){
+     //          if( thatMarker!=marker && thatMarker.icon ){
+     //            thatMarker.icon = null;
+     //          }
+     //        })
+     //        marker.icon = 'images/green.png';
+     //        that.displayItems = $filter('filter')(that.searchResults, function(item){
+              
+     //          if(item.lat == marker.latitude && item.lng == marker.longitude){
+                
+     //            return true;
+     //          }else{
+     //            false;
+     //          }
+     //        });
+     //        marker.clicked = true;
+     //        //that.setDisplayItems(that.displayItems);
+
+     //      }
+          
+          
+     //    }
+    	// });
 		};
 
-
-
-
-
-
-
-
-		this.map = {
-      center: {
-          latitude: 45,
-          longitude: -73
-      },
-      zoom: 8
-    };
-
-
-
-		//this.model.selectedTools = selectedTools;
 
 
 	})

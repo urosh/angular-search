@@ -49,9 +49,9 @@
         </div>
         <div class="tools-right-container">
           
-          <div class="angular-google-map-container">
-            <google-map draggable="true"  center="ctrl.model.map.center" zoom="ctrl.model.map.zoom">
-              <markers models="ctrl.model.markers" coords="'self'" icon="'icon'" click="'onClicked'" >
+          <div class="angular-google-map-container" ng-controller="mapController as mapCtrl">
+            <google-map draggable="true"  center="mapCtrl.map.center" zoom="mapCtrl.map.zoom">
+              <markers models="mapCtrl.markers" coords="'self'" icon="'icon'" click="'onClicked'" >
                
               </markers> 
             </google-map>
@@ -113,9 +113,7 @@
         <script src="scripts/factories/services.js"></script>
         <script src="scripts/controllers/main.js"></script>
         
-        <script src="scripts/mymodule/controller.js"></script>
-        <script src="scripts/mymodule/directive.js"></script>
-        
+
         <!-- 
         Common services
          -->
@@ -129,11 +127,16 @@
         <script src="scripts/controlls/directive.js"></script>
         <script src="scripts/controlls/controlls.js"></script>
         
-         <!-- Search tool -->
+        <!-- Search tool -->
         <script src="scripts/search/services.js"></script>
         <script src="scripts/search/controller.js"></script>
         <script src="scripts/search/directives.js"></script>
         <script src="scripts/search/search.js"></script>
+        
+        <!-- Map tool -->
+        <script src="scripts/map/services.js"></script>
+        <script src="scripts/map/controller.js"></script>
+        <script src="scripts/map/map.js"></script>
         
         
 
