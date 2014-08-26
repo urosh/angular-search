@@ -1,67 +1,78 @@
-function MapController(DataModel, $scope, $filter) {
+'use strict';
+
+var MapController = function(DataModel, $scope, $filter) {
+	this.DataModel = DataModel;
+	this.$scope = $scope;
+	this.$filter = $filter;
+
 	this.map = {
-      center: {
-          latitude: 35.1,
-          longitude: 33.3
-      },
-      zoom: 8
+    center: {
+        latitude: 35.1,
+        longitude: 33.3
+    },
+    zoom: 8
   };
   
-  this.markers = DataModel.resultMarkers;
-  	
-  var that = this;
-  // Map 
-	this.setMarkers = function(res){
-    
-    
+  //this.markers = this.DataModel.resultMarkers;
+  var _this = this;
+  $scope.$on('searchResultsSet', function(){
+  	_this.setMarkers(_this);	
+  });
+  $scope.$on('displayItemsSet', function(){
+  	_this.showMarkers(_this);
+  });
 
-  };
 
+};
 
-  $scope.$on('data:ready', function(){
+MapController.prototype.setMarkers = function(_this){
+	var _this = this;
+	var res = _this.DataModel.searchResults;
+	_this.markers = _this.DataModel.resultMarkers;
 
-		var res = DataModel.searchResults;
-		that.markers = DataModel.resultMarkers;
-
-  	for(var key in res){
-      if(res[key].lat && res[key].lng && res[key].lat!='0'){
-        var add = true;
-        for(var i in that.markers){
-          if( that.markers[i]['latitude'] === res[key].lat && that.markers[i]['longitude'] === res[key].lng ) {
-            add = false;
-          }
+	for(var key in res){
+    if(res[key].lat && res[key].lng && res[key].lat!='0'){
+      var add = true;
+      for(var i in _this.markers){
+        if( _this.markers[i]['latitude'] === res[key].lat && _this.markers[i]['longitude'] === res[key].lng ) {
+          add = false;
         }
-        if(add){
-          that.markers.push(
-            {
-              id: key, 
-              latitude: res[key].lat, 
-              longitude: res[key].lng,
-              clicked: false,
-              
-            }
-          );  
-        }
-        
       }
-    };
+      if(add){
+        _this.markers.push(
+          {
+            id: key, 
+            latitude: res[key].lat, 
+            longitude: res[key].lng,
+            clicked: false,
+            
+          }
+        );  
+      }
+      
+    }
+  };
+};
 
 
-		_.each(DataModel.resultMarkers, function(marker){
+
+MapController.prototype.showMarkers = function(_this){
+	
+	_.each(_this.DataModel.resultMarkers, function(marker){
 		  marker.onClicked = function(){
 		  	if(marker.clicked){
 		    	marker.icon=null;
-		      DataModel.setDisplayItems( DataModel.searchResults );
+		      _this.DataModel.setDisplayItems( _this.DataModel.searchResults );
 		    	   
 		      marker.clicked = false;
 		    }else{
-		      _.each(DataModel.resultMarkers, function(thatMarker){
+		      _.each(_this.DataModel.resultMarkers, function(thatMarker){
 		        if( thatMarker!=marker && thatMarker.icon ){
 		          thatMarker.icon = null;
 		        }
 		      })
 		      marker.icon = 'images/green.png';
-		      DataModel.setDisplayItems($filter('filter')(DataModel.searchResults, function(item){
+		      _this.DataModel.setDisplayItems(_this.$filter('filter')(_this.DataModel.searchResults, function(item){
 		        
 		        if(item.lat == marker.latitude && item.lng == marker.longitude){
 		          return true;
@@ -74,16 +85,7 @@ function MapController(DataModel, $scope, $filter) {
 		    }
 			}
 		});
-	});
+};
 
 
-			
-	//********
-	
-
-
-
-
-
-
-}
+MapController.$inject = ['DataModel', '$scope', '$filter'];

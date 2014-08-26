@@ -24,42 +24,23 @@ var SearchController = function(searchService, CommonServices, DataModel, $filte
 	// Initialize search data. Retrieve available collections and object types from the server
 	this.initializeSearchData();
 	
-	
-
-
-	
-
-	
-
-
-  // Run search 
-  var that = this;
-  
-
+	var _this = this;
   $scope.$on('displayItemsSet', function(){
-  	that.displayItems = DataModel.displayItems;
+  	_this.updateDisplay(_this);
   });
 
-  
-  $scope.$watch('displayItems', function(){
-  	console.log('display items changed');
-  })
-  
-  // this.queryChange = function(query){
-  	
-  // };
+  this.queryChange = function(query){
+  	_this.filterContent(query, _this);
+  };
+
+};
 
 
-
-
-}
-
-SearchController.prototype.queryChange = function(query){
-	var _this = this;
-	if(query == ''){
-  		_this.displayItems = _this.DataModel.getSearchResults();
+SearchController.prototype.filterContent = function(query, _this){
+	if(query.input == ''){
+  		_this.displayItems = _this.DataModel.getResults();
   }else{
-  		_this.displayItems = _this.$filter('filter')(_this.displayItems, _this.query);	
+  		_this.displayItems = _this.$filter('filter')(_this.displayItems, query.input);	
   }
   	
 };
@@ -85,7 +66,7 @@ SearchController.prototype.collectionSelected = function(e){
 SearchController.prototype.search = function(){
 	
 	var _this = this;
-
+	console.log(this);
 	_this.displayItems = [];
   		
 	_this.preloaderActive = true;
@@ -102,6 +83,10 @@ SearchController.prototype.search = function(){
 		_this.preloaderActive = false;
 	});
 
+};
+
+SearchController.prototype.updateDisplay = function(_this){
+	_this.displayItems = _this.DataModel.displayItems;
 }
 
 
