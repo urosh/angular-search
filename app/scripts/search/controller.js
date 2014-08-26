@@ -66,7 +66,6 @@ SearchController.prototype.collectionSelected = function(e){
 SearchController.prototype.search = function(){
 	
 	var _this = this;
-	console.log(this);
 	_this.displayItems = [];
   		
 	_this.preloaderActive = true;

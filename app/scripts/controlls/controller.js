@@ -1,23 +1,37 @@
-function ControllerFunction(ControllsService, CommonServices, DataModel){
+var ControllerFunction = function(ControllsService,  DataModel){
 		this.selectedTools = DataModel.selectedTools;
+    this.DataModel = DataModel;
+    this.ControllsService = ControllsService;
+
 		this.tools = [];
-    var promise = ControllsService.getTools();
-  	var that = this;
+    var promise = this.ControllsService.getTools();
+  	var _this = this;
     
 
     promise.then(function(res){
-      that.tools = res.data;
+      _this.tools = res.data;
     });
 
 		this.toolSelected = function(e){
-			DataModel.selectTool(this.tools, e);
-			
+			_this.toolSelectedHandler(e, _this);
+
+      
     };
 
     this.removeItem = function(e){
-    	DataModel.removeTool(e);
+    	
+      _this.removeToolHandler(e, _this);
       //CommonServices.removeObjectFromCollection(DataModel.model.selectedTools, 'name', e);
     };
 
 
-	}
+}
+ControllerFunction.prototype.toolSelectedHandler = function(e, _this){
+  _this.DataModel.selectTool(_this.tools, e);
+      
+};
+ControllerFunction.prototype.removeToolHandler = function(e, _this){
+  _this.DataModel.removeTool(e);
+};
+
+ControllerFunction.$inject = ['ControllsService',  'DataModel']
