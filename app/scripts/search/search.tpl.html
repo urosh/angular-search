@@ -1,9 +1,9 @@
-<input type="search" ng-model="query">
+<input type="search" ng-model="query" ng-change="change({e: query})" >
 <a href="#" ng-click="search()"  class="searchButton">SEARCH</a>
 <span class="advanced-search-link">
-	<a href="#" ng-click="ctrl.model.advanced=!ctrl.model.advanced">Advanced Search</a>
+	<a href="#" ng-click="searchCtrl.advanced=!searchCtrl.advanced">Advanced Search</a>
 </span>
-<div ng-init="{ctrl.model.init : true}" ng-show="ctrl.model.advanced"   ng-class="{'advanced-search-container': !ctrl.model.init}">
+<div ng-init="{searchCtrl.init : true}" ng-show="searchCtrl.advanced"   ng-class="{'advanced-search-container': !searchCtrl.init}">
 <!-- <div ng-show="ctrl.model.advanced" class="advanced-search-container ng-hide"> -->
 	<div>
 		<section class="collections">

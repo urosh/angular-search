@@ -13,12 +13,15 @@ function SearchController(searchService, CommonServices, DataModel, $filter, $sc
 	this.searchResuls = [];
 	this.resultMarkers = [];
 
-	this.query = '';
+	$scope.query = '';
 
 	this.preloaderActive = false;
 
 
 	var that = this;
+
+	
+
 
 	// Initialize search data. Retrieve available collections and object types from the server
 	var searchInit = searchService.initializeSearch();
@@ -30,6 +33,7 @@ function SearchController(searchService, CommonServices, DataModel, $filter, $sc
   // Set selected types
   this.typeSelected = function(e){
     CommonServices.addItemToArray(this.selectedTypes, e);
+    
   };
   
   // Set selected collections
@@ -63,7 +67,15 @@ function SearchController(searchService, CommonServices, DataModel, $filter, $sc
   	that.displayItems = DataModel.displayItems;
   })
 
-
+  
+  this.queryChange = function(query){
+  	if(query == ''){
+  		this.displayItems = DataModel.searchResults;
+  	}else{
+  		this.displayItems = $filter('filter')(this.displayItems, this.query);	
+  	}
+  	
+  };
 
 
 

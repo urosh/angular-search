@@ -10,9 +10,43 @@ function MapController(DataModel, $scope, $filter) {
   this.markers = DataModel.resultMarkers;
   	
   var that = this;
-  
+  // Map 
+	this.setMarkers = function(res){
+    
+    
+
+  };
+
+
   $scope.$on('data:ready', function(){
-			
+
+		var res = DataModel.searchResults;
+		that.markers = DataModel.resultMarkers;
+
+  	for(var key in res){
+      if(res[key].lat && res[key].lng && res[key].lat!='0'){
+        var add = true;
+        for(var i in that.markers){
+          if( that.markers[i]['latitude'] === res[key].lat && that.markers[i]['longitude'] === res[key].lng ) {
+            add = false;
+          }
+        }
+        if(add){
+          that.markers.push(
+            {
+              id: key, 
+              latitude: res[key].lat, 
+              longitude: res[key].lng,
+              clicked: false,
+              
+            }
+          );  
+        }
+        
+      }
+    };
+
+
 		_.each(DataModel.resultMarkers, function(marker){
 		  marker.onClicked = function(){
 		  	if(marker.clicked){
@@ -21,7 +55,7 @@ function MapController(DataModel, $scope, $filter) {
 		    	   
 		      marker.clicked = false;
 		    }else{
-		      _.each(that.resultMarkers, function(thatMarker){
+		      _.each(DataModel.resultMarkers, function(thatMarker){
 		        if( thatMarker!=marker && thatMarker.icon ){
 		          thatMarker.icon = null;
 		        }
@@ -30,7 +64,6 @@ function MapController(DataModel, $scope, $filter) {
 		      DataModel.setDisplayItems($filter('filter')(DataModel.searchResults, function(item){
 		        
 		        if(item.lat == marker.latitude && item.lng == marker.longitude){
-		          
 		          return true;
 		        }else{
 		          false;
@@ -39,9 +72,7 @@ function MapController(DataModel, $scope, $filter) {
 					marker.clicked = true;
 		    
 		    }
-		    
-		    
-		  }
+			}
 		});
 	});
 

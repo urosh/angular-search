@@ -40,10 +40,11 @@
       
       <div class="tools-container">
         <div class="search-container" ng-controller="searchController as searchCtrl">
-          <div my-search collections="searchCtrl.collections" query="searchCtrl.query" typein="searchCtrl.typeSelected(e, i)" collectionin="searchCtrl.collectionSelected(e, i)" search="searchCtrl.search()" types="searchCtrl.types"></div>
+          <div my-search collections="searchCtrl.collections" change="searchCtrl.queryChange(e)" query="searchCtrl.query" typein="searchCtrl.typeSelected(e, i)"  collectionin="searchCtrl.collectionSelected(e, i)" search="searchCtrl.search()" types="searchCtrl.types"></div>
 
           <div class="search-results">
             <div preloader ng-show="searchCtrl.preloaderActive" class="search-preloader"></div>
+
             <div deckgrid class="deckgrid" source="searchCtrl.displayItems" cardTemplate="views/templates/deckgrid-card.html"></div>
           </div>
         </div>
