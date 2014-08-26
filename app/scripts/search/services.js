@@ -7,7 +7,7 @@ function SearchService($http, DataModel){
   };
 
   this.runSearch = function(data){
-    return $http.get('http://public.cyi.ac.cy/starcRepo/map/search', {params: data}).then(function(res){
+    return $http.get('http://public.cyi.ac.cy/starcRepo/map/search', {params: DataModel.queryData}).then(function(res){
     	DataModel.setResults(res.data);
     	DataModel.setDisplayItems(res.data);
     });

@@ -9,6 +9,9 @@ angular.module('common-services')
 		this.searchResults = [];
 		this.displayItems = [];
 		this.resultMarkers = [];
+    this.name = '';
+    
+
 
 		var that = this;
 		// Tools selection. Adding and removing tools to the workspace
@@ -30,20 +33,27 @@ angular.module('common-services')
 
 		this.setResults = function(res){
 			this.searchResults = res;
-			//this.displayItems = res;
-      //this.setMarkers(this.searchResults);
-      this.resultMarkers = [];
-      $rootScope.$broadcast('data:ready');
+			this.resultMarkers = [];
+      $rootScope.$broadcast('searchResultsSet');
       
 			//that.displayItems = [that.displayItems[0], that.displayItems[1]];
 			
 		};
 
+    this.getResults = function(){
+      return this.searchResults;
+    };
+
 		this.setDisplayItems = function(disp){
 			this.displayItems  = disp;
-      $rootScope.$broadcast('update:display:list');
-			
-		}
+      $rootScope.$broadcast('displayItemsSet');
+      this.name = this.displayItems[0].label;
+    	
+		};
+
+    this.getDisplayItems = function(){
+      return this.displayItems;
+    }
 
 
 
