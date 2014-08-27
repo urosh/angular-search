@@ -4,7 +4,8 @@ var MapController = function(DataModel, $scope, $filter) {
 	this.DataModel = DataModel;
 	this.$scope = $scope;
 	this.$filter = $filter;
-
+	this.markers = [];
+	
 	this.map = {
     center: {
         latitude: 35.1,
@@ -26,9 +27,9 @@ var MapController = function(DataModel, $scope, $filter) {
 };
 
 MapController.prototype.setMarkers = function(_this){
-	var _this = this;
-	var res = _this.DataModel.searchResults;
-	_this.markers = _this.DataModel.resultMarkers;
+	var res = _this.DataModel.getResults();
+	
+	_this.markers = [];
 
 	for(var key in res){
     if(res[key].lat && res[key].lng && res[key].lat!='0'){
@@ -58,7 +59,7 @@ MapController.prototype.setMarkers = function(_this){
 
 MapController.prototype.showMarkers = function(_this){
 	
-	_.each(_this.DataModel.resultMarkers, function(marker){
+	_.each(_this.markers, function(marker){
 		  marker.onClicked = function(){
 		  	if(marker.clicked){
 		    	marker.icon=null;
@@ -66,7 +67,7 @@ MapController.prototype.showMarkers = function(_this){
 		    	   
 		      marker.clicked = false;
 		    }else{
-		      _.each(_this.DataModel.resultMarkers, function(thatMarker){
+		      _.each(_this.markers, function(thatMarker){
 		        if( thatMarker!=marker && thatMarker.icon ){
 		          thatMarker.icon = null;
 		        }
