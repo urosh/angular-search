@@ -1,0 +1,19 @@
+<div class="pagination-container">
+	<div ng-show="perShow" class="items-per-page">
+		<span>Items per page</span>
+		<ul>
+			<li ng-repeat="num in perPageNumbers" ng-class="{open: itemsPerPage == num}"><a href="#" ng-click="perPage(num)" class="items-per-page-link">{{num}}</a></li>
+			
+		</ul>
+	</div>
+	<div ng-show="pagShow" class="pagination">
+		<ul>
+			<li class="active"><a ng-show="firstShow" ng-click="firstPage()" href="#">First</a></li>
+			<li ><a href="#" ng-show="prevShow" ng-click="prevPage()">Prev</a></li>
+			<li ng-repeat="num in paginationNumbers"  ><a href="#" ng-class="{active:  num == currentPage}" ng-click="itemPage(num)">{{num}}</a></li>
+			<li ><a href="#" ng-show="nextShow" ng-click="nextPage()">Next</a></li>
+			<li ><a href="#" ng-show="lastShow" ng-click="lastPage()">Last</a></li>
+			
+		</ul>
+	</div>
+</div>

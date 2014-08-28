@@ -6,7 +6,7 @@ input[type="search"] {
 }
 
 .search-container{
-	width: 490px;
+	width: 480px;
 	min-height: 400px;
 	overflow: auto;
 	padding: 0px;
@@ -139,9 +139,9 @@ input[type="search"] {
 
 .search-results{
 	width: 480px;
-	height: 300px;
-	
-	margin-top: 5px;
+	min-height: 300px;
+	overflow: auto;
+	margin-top: 8px;
 	position: relative;
 }
 

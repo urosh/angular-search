@@ -17,6 +17,8 @@ var SearchController = function(searchService, CommonServices, DataModel, $filte
 	this.selectedCollections = [];
 
 	this.displayItems = [];
+	this.shownItems = [];
+
 	
 	
 	this.preloaderActive = false;
@@ -29,6 +31,10 @@ var SearchController = function(searchService, CommonServices, DataModel, $filte
   	_this.updateDisplay(_this);
   });
 
+  $scope.$on('shownItemsSet', function(){
+  	_this.updateShown(_this);	
+  });
+
   this.queryChange = function(query){
   	_this.filterContent(query, _this);
   };
@@ -39,6 +45,7 @@ var SearchController = function(searchService, CommonServices, DataModel, $filte
 SearchController.prototype.filterContent = function(query, _this){
 	if(query.input == ''){
   		_this.displayItems = _this.DataModel.getResults();
+  		
   }else{
   		_this.displayItems = _this.$filter('filter')(_this.displayItems, query.input);	
   }
@@ -85,8 +92,10 @@ SearchController.prototype.search = function(){
 };
 
 SearchController.prototype.updateDisplay = function(_this){
-	_this.displayItems = _this.DataModel.displayItems;
+	_this.displayItems = _this.DataModel.getDisplayItems();
 }
+
+
 
 
 SearchController.$inject = ['searchService', 'CommonServices', 'DataModel', '$filter', '$scope'];

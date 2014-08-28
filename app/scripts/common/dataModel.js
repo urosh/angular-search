@@ -8,8 +8,10 @@ angular.module('common-services')
 		this.queryData = {};
 		this.searchResults = [];
 		this.displayItems = [];
+		this.shownItems = [];
 		
-
+		this.displayHistory = [];
+		this.currentDisplay = [];
 
 		// Tools selection. Adding and removing tools to the workspace
 		this.selectTool = function(tools, e){
@@ -41,8 +43,7 @@ angular.module('common-services')
 		this.setDisplayItems = function(disp){
 			this.displayItems  = disp;
       $rootScope.$broadcast('displayItemsSet');
-    	
-		};
+    };
 
     this.getDisplayItems = function(){
       return this.displayItems;
