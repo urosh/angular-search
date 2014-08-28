@@ -1,16 +1,15 @@
 'use strict';
 
 angular.module('common-services')
-	.service('DataModel', function(CommonServices, $filter, $rootScope){
+	.service('DataModel', function(CommonServices, $filter, $rootScope, display){
 		
 
 		this.selectedTools = [];
 		this.queryData = {};
 		
-		//this.searchResults = [];
+		this.searchResults = [];
 		//this.displayItems = [];
-		
-		this.shownItems = [];
+		this.display = display;
 		
 		this.displayHistory = [];
 		this.currentDisplay = [];
@@ -33,8 +32,7 @@ angular.module('common-services')
 		};
 
 		this.setResults = function(res){
-			this.displayHistory.push(res);
-			//this.searchResults = res;
+			this.searchResults = res;
 			$rootScope.$broadcast('searchResultsSet');
     	
 		};
@@ -49,9 +47,13 @@ angular.module('common-services')
       $rootScope.$broadcast('displayItemsSet');
     };
 
+    this.removeCurrentDisplay = function(){
+    	this.displayHistory.pop();
+    };
+
     this.getDisplayItems = function(){
       //return this.displayItems;
-      return this.displayHistory.pop();
+      return this.displayHistory[this.displayHistory.length - 1];
     };
 
 

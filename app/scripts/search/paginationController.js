@@ -1,30 +1,29 @@
 'use strict';
 
-var PaginationController = function(DataModel, $scope){
+var PaginationController = function(DataModel, $scope, display){
 	this.DataModel = DataModel;
 	this.items = DataModel.getDisplayItems();
+	this.display = display;
+	this.numberOfItems = 0;
 	var _this = this;
-	$scope.$on('displayItemsSet', function(){
+	$scope.$on('displayReady', function(){
   	_this.updateShown(_this);
   });
 };
 
-PaginationController.prototype.updateItemsPerPage = function(e){
-	console.log(e);
+PaginationController.prototype.updateDisplay = function (currentPage, perPage){
+	this.display.setDisplay(currentPage, perPage);
 };
 
-PaginationController.prototype.updateItemsPage = function(e){
-	console.log(e)
-};
 
-PaginationController.prototype.talk = function(e){
-	console.log('now we are talking: ' + e);
-};
 
 PaginationController.prototype.updateShown = function(_this){
-	_this.items = _this.DataModel.getDisplayItems();
+	_this.items = _this.display.getDisplayWindow();
+	_this.numberOfItems = _this.display.numberOfItems;
+	//console.log('are we here?');
+	//console.log(_this.display);
 };
 
 
 
-PaginationController.$inject = ['DataModel', '$scope'];
+PaginationController.$inject = ['DataModel', '$scope', 'display'];

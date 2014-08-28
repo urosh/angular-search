@@ -1,11 +1,12 @@
 'use strict';
 
 
-var SearchController = function(searchService, CommonServices, DataModel, $filter, $scope){
+var SearchController = function(searchService, CommonServices, DataModel, display,  $filter, $scope){
 	
 	this.searchService = searchService;
 	this.CommonServices = CommonServices;
 	this.DataModel = DataModel;
+	this.display = display;
 	this.$filter = $filter;
 	this.$scope = $scope;
 
@@ -16,8 +17,10 @@ var SearchController = function(searchService, CommonServices, DataModel, $filte
 	this.selectedTypes = [];
 	this.selectedCollections = [];
 
+	// **********************
 	this.displayItems = [];
 	this.shownItems = [];
+	// **********************
 
 	
 	
@@ -28,12 +31,14 @@ var SearchController = function(searchService, CommonServices, DataModel, $filte
 	
 	var _this = this;
   $scope.$on('displayItemsSet', function(){
-  	_this.updateDisplay(_this);
+  	
   });
 
-  $scope.$on('shownItemsSet', function(){
-  	_this.updateShown(_this);	
-  });
+  $scope.$on('displayReady', function(){
+  	_this.updateDisplay(_this);
+  })
+
+  
 
   this.queryChange = function(query){
   	_this.filterContent(query, _this);
@@ -44,7 +49,8 @@ var SearchController = function(searchService, CommonServices, DataModel, $filte
 
 SearchController.prototype.filterContent = function(query, _this){
 	if(query.input == ''){
-  		_this.displayItems = _this.DataModel.getResults();
+			_this.DataModel.removeCurrentDisplay();
+  		_this.displayItems = _this.DataModel.getDisplayItems();
   		
   }else{
   		_this.displayItems = _this.$filter('filter')(_this.displayItems, query.input);	
@@ -92,10 +98,10 @@ SearchController.prototype.search = function(){
 };
 
 SearchController.prototype.updateDisplay = function(_this){
-	_this.displayItems = _this.DataModel.getDisplayItems();
+	_this.displayItems = _this.display.window;
 }
 
 
 
 
-SearchController.$inject = ['searchService', 'CommonServices', 'DataModel', '$filter', '$scope'];
+SearchController.$inject = ['searchService', 'CommonServices', 'DataModel',  'display', '$filter', '$scope'];

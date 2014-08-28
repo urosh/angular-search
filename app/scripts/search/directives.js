@@ -29,9 +29,8 @@ function PaginationDirective(){
 		templateUrl: 'scripts/search/templates/pagination.tpl.html',
 		scope: {
 			items: '=',
-			// perPage: '&perpage',
-			// itemPage: '&itemspage',
-			talk: '&talk'
+			itemsnum: '=',
+			updateDisplay: '&updatedisplay'
 		},
 		link: function(scope){
 			scope.perShow = false;
@@ -47,7 +46,7 @@ function PaginationDirective(){
 			scope.currentPage = 1;
 			scope.itemsPerPage = 20;
 
-			var numberOfItems = 0;
+			
 			var numberOfPages = 0;
 			
 
@@ -105,15 +104,14 @@ function PaginationDirective(){
 				scope.lastShow = false;
 				scope.nextShow = false;
 
-				numberOfPages = Math.ceil(numberOfItems/scope.itemsPerPage);
+				numberOfPages = Math.ceil(scope.itemsnum/scope.itemsPerPage);
 				scope.paginationNumbers = [];
-				
-				if(numberOfItems === 0){
+				if( scope.itemsnum === 0 ){
 					scope.perShow = false;
 					scope.pagShow = false;
 
 				}
-				if(numberOfItems > scope.itemsPerPage){
+				if( scope.itemsnum > scope.itemsPerPage ){
 					scope.perShow = true;
 					scope.pagShow = true;
 
@@ -137,18 +135,17 @@ function PaginationDirective(){
 					
 					//scope.talk({e: 'jea'});
 				}
+				scope.updateDisplay({currentPage: scope.currentPage, perPage: scope.itemsPerPage} );
+				
 			}
-			scope.$watch('items', function() {
-
-				numberOfItems = scope.items.length;
+			scope.$watchCollection('items', function() {
+				if (scope.items){
+					updatePaginationNumbers();
+				}
 				
 				
 
-				updatePaginationNumbers();
-				
-				console.log('numberOfPages: ' + numberOfPages);
-				console.log(numberOfItems);
-				
+			
 							
 			});
 			//scope.perShow = true;

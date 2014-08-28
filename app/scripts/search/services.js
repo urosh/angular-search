@@ -1,6 +1,6 @@
 'use strict';
 
-function SearchService($http, DataModel){
+function SearchService($http, DataModel, display){
 	
 	this.initializeSearch = function(){
 		return $http.get('http://public.cyi.ac.cy/starcRepo/map/init');
@@ -9,7 +9,8 @@ function SearchService($http, DataModel){
   this.runSearch = function(data){
     return $http.get('http://public.cyi.ac.cy/starcRepo/map/search', {params: DataModel.queryData}).then(function(res){
     	DataModel.setResults(res.data);
-    	DataModel.setDisplayItems(res.data);
+      display.addDisplayData(res.data, 'search');
+    	//DataModel.setDisplayItems(res.data);
     });
   };
 }
