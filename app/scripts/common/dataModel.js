@@ -6,8 +6,10 @@ angular.module('common-services')
 
 		this.selectedTools = [];
 		this.queryData = {};
-		this.searchResults = [];
-		this.displayItems = [];
+		
+		//this.searchResults = [];
+		//this.displayItems = [];
+		
 		this.shownItems = [];
 		
 		this.displayHistory = [];
@@ -31,7 +33,8 @@ angular.module('common-services')
 		};
 
 		this.setResults = function(res){
-			this.searchResults = res;
+			this.displayHistory.push(res);
+			//this.searchResults = res;
 			$rootScope.$broadcast('searchResultsSet');
     	
 		};
@@ -41,12 +44,14 @@ angular.module('common-services')
     };
 
 		this.setDisplayItems = function(disp){
-			this.displayItems  = disp;
+			this.displayHistory.push(disp);
+			//this.displayItems  = disp;
       $rootScope.$broadcast('displayItemsSet');
     };
 
     this.getDisplayItems = function(){
-      return this.displayItems;
+      //return this.displayItems;
+      return this.displayHistory.pop();
     };
 
 
