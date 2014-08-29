@@ -30,10 +30,7 @@ var SearchController = function(searchService, CommonServices, DataModel, displa
 	this.initializeSearchData();
 	
 	var _this = this;
-  $scope.$on('displayItemsSet', function(){
-  	
-  });
-
+  
   $scope.$on('displayReady', function(){
   	_this.updateDisplay(_this);
   })
@@ -49,11 +46,15 @@ var SearchController = function(searchService, CommonServices, DataModel, displa
 
 SearchController.prototype.filterContent = function(query, _this){
 	if(query.input == ''){
-			_this.DataModel.removeCurrentDisplay();
-  		_this.displayItems = _this.DataModel.getDisplayItems();
+		//_this.displayItems = _this.display.getDisplayWindow();
+		_this.display.resetDisplay();
   		
   }else{
-  		_this.displayItems = _this.$filter('filter')(_this.displayItems, query.input);	
+  	if(_this.DataModel.searchResults.length){
+  		_this.display.addDisplayData(_this.$filter('filter')(_this.display.getDisplayData(), query.input), 'filter');
+			
+  	}
+		//_this.displayItems = _this.$filter('filter')(currentDisplay, query.input);
   }
   	
 };
@@ -98,7 +99,9 @@ SearchController.prototype.search = function(){
 };
 
 SearchController.prototype.updateDisplay = function(_this){
-	_this.displayItems = _this.display.window;
+	//console.log(_this.display.window);
+	_this.displayItems = _this.display.getDisplayWindow();
+
 }
 
 

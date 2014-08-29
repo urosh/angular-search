@@ -11,17 +11,15 @@ var PaginationController = function(DataModel, $scope, display){
   });
 };
 
+
 PaginationController.prototype.updateDisplay = function (currentPage, perPage){
 	this.display.setDisplay(currentPage, perPage);
 };
 
-
-
 PaginationController.prototype.updateShown = function(_this){
 	_this.items = _this.display.getDisplayWindow();
 	_this.numberOfItems = _this.display.numberOfItems;
-	//console.log('are we here?');
-	//console.log(_this.display);
+	_this.currentPage = _this.display.currentPage;
 };
 
 

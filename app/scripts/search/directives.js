@@ -30,6 +30,7 @@ function PaginationDirective(){
 		scope: {
 			items: '=',
 			itemsnum: '=',
+			currentPage:'=page',
 			updateDisplay: '&updatedisplay'
 		},
 		link: function(scope){
@@ -92,7 +93,6 @@ function PaginationDirective(){
 
 
 			function updatePaginationNumbers(){
-
 				// last and next?
 				if (scope.currentPage === 1){
 					scope.firstShow = false;

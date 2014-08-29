@@ -10,6 +10,7 @@ function SearchService($http, DataModel, display){
     return $http.get('http://public.cyi.ac.cy/starcRepo/map/search', {params: DataModel.queryData}).then(function(res){
     	DataModel.setResults(res.data);
       display.addDisplayData(res.data, 'search');
+      
     	//DataModel.setDisplayItems(res.data);
     });
   };

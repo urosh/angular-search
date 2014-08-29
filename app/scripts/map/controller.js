@@ -1,10 +1,11 @@
 'use strict';
 
-var MapController = function(DataModel, $scope, $filter) {
+var MapController = function(DataModel, $scope, $filter, display) {
 	this.DataModel = DataModel;
 	this.$scope = $scope;
 	this.$filter = $filter;
 	this.markers = [];
+	this.display = display;
 	
 	this.map = {
     center: {
@@ -18,14 +19,26 @@ var MapController = function(DataModel, $scope, $filter) {
   var _this = this;
   $scope.$on('searchResultsSet', function(){
   	_this.setMarkers(_this);	
-  });
-  $scope.$on('displayItemsSet', function(){
   	_this.showMarkers(_this);
   });
+
+  $scope.$on('displayTaken', function(event, item){
+  	if(item === 'filter'){
+  		_this.resetMarkers();
+  		
+  	}
+  })
+  
 
 
 };
 
+MapController.prototype.resetMarkers = function(){
+	_.each(this.markers, function(marker){
+		marker.clicked = false;
+		marker.icon = null;
+	});
+}
 MapController.prototype.setMarkers = function(_this){
 	var res = _this.DataModel.getResults();
 	
@@ -62,26 +75,30 @@ MapController.prototype.showMarkers = function(_this){
 	_.each(_this.markers, function(marker){
 		  marker.onClicked = function(){
 		  	if(marker.clicked){
-		    	marker.icon=null;
-		      _this.DataModel.setDisplayItems( _this.DataModel.searchResults );
-		    	   
-		      marker.clicked = false;
+		  		marker.icon=null;
+		    	marker.clicked = false;
+		      _this.display.resetDisplay();   
+		     
 		    }else{
 		      _.each(_this.markers, function(thatMarker){
 		        if( thatMarker!=marker && thatMarker.icon ){
 		          thatMarker.icon = null;
+		          thatMarker.clicked = false;
 		        }
 		      })
 		      marker.icon = 'images/green.png';
-		      _this.DataModel.setDisplayItems(_this.$filter('filter')(_this.DataModel.searchResults, function(item){
+		      marker.clicked = true;
+		      
+					_this.display.addDisplayData(_this.$filter('filter')(_this.DataModel.searchResults, function(item){
 		        
 		        if(item.lat == marker.latitude && item.lng == marker.longitude){
+
 		          return true;
 		        }else{
 		          false;
 		        }
-		      }));
-					marker.clicked = true;
+		      }), 'map');
+					
 		    
 		    }
 			}
@@ -89,4 +106,4 @@ MapController.prototype.showMarkers = function(_this){
 };
 
 
-MapController.$inject = ['DataModel', '$scope', '$filter'];
+MapController.$inject = ['DataModel', '$scope', '$filter', 'display'];

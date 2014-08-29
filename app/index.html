@@ -45,9 +45,8 @@
 
           <div class="search-results">
             <div preloader ng-show="searchCtrl.preloaderActive" class="search-preloader"></div>
-            
             <div ng-controller="paginationController as pagCtrl">
-              <div my-pagination items="pagCtrl.items" itemsnum="pagCtrl.numberOfItems" updatedisplay="pagCtrl.updateDisplay(currentPage, perPage)"></div>
+              <div my-pagination items="pagCtrl.items" page="pagCtrl.currentPage" itemsnum="pagCtrl.numberOfItems" updatedisplay="pagCtrl.updateDisplay(currentPage, perPage)"></div>
             </div>
             <div deckgrid class="deckgrid" source="searchCtrl.displayItems" cardTemplate="views/templates/deckgrid-card.html"></div>
           </div>
