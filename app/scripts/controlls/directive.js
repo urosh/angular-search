@@ -16,7 +16,6 @@ function ControllsDirective(){
               
               '</ul></div></div>',
     link: function(scope){
-    	console.log('we are now in a linking function');
     	scope.active = false;
     	
     } 

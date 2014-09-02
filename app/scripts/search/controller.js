@@ -1,7 +1,7 @@
 'use strict';
 
 
-var SearchController = function(searchService, CommonServices, DataModel, display,  $filter, $scope){
+var SearchController = function(searchService, CommonServices, DataModel, display,  $filter, $scope, $rootScope){
 	
 	this.searchService = searchService;
 	this.CommonServices = CommonServices;
@@ -9,7 +9,7 @@ var SearchController = function(searchService, CommonServices, DataModel, displa
 	this.display = display;
 	this.$filter = $filter;
 	this.$scope = $scope;
-
+	this.$rootScope = $rootScope;
 
 	this.collections = [];
 	this.types = [];
@@ -102,9 +102,14 @@ SearchController.prototype.updateDisplay = function(_this){
 	//console.log(_this.display.window);
 	_this.displayItems = _this.display.getDisplayWindow();
 
+};
+
+SearchController.prototype.itemClicked = function(e){
+	this.$rootScope.$broadcast('itemClicked', e);
+	// ok item is clicked. we need to show modal window
 }
 
 
 
 
-SearchController.$inject = ['searchService', 'CommonServices', 'DataModel',  'display', '$filter', '$scope'];
+SearchController.$inject = ['searchService', 'CommonServices', 'DataModel',  'display', '$filter', '$scope', '$rootScope'];
