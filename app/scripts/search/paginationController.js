@@ -6,7 +6,7 @@ var PaginationController = function(DataModel, $scope, display){
 	this.display = display;
 	this.numberOfItems = 0;
 	var _this = this;
-	$scope.$on('displayReady', function(){
+	$scope.$on('displayTaken', function(){
   	_this.updateShown(_this);
   });
 };

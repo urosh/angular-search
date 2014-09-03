@@ -21,6 +21,7 @@ angular
     'common-services',
     'my-controlls',
     'mySearchModule',
-    'mapModule'
+    'mapModule',
+    'ngTinyScrollbar'
   ]);
   

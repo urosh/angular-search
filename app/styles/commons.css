@@ -1,5 +1,8 @@
 /* General styles for the modal */
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+.modal-content{
+	@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+}
 
 
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
@@ -26,32 +29,13 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-	font-size: 14px;
-	color: #2d3956 ;
+	font-size: 12px;
+	color: #808080 ;
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-
-button {
-	border: none;
-	padding: 0.6em 1.2em;
-	background: #c0392b;
-	color: #fff;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
-	font-size: 1em;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	cursor: pointer;
-	display: inline-block;
-	margin: 3px 2px;
-	border-radius: 2px;
-}
-
-button:hover {
-	background: #A5281B;
-}
 
 
 /* 
@@ -100,6 +84,7 @@ perspective effects (not including the modals and the overlay).
 	transition: all 0.3s;
 }
 
+
 .md-show ~ .md-overlay {
 	opacity: 1;
 	visibility: visible;
@@ -108,7 +93,9 @@ perspective effects (not including the modals and the overlay).
 /* Content styles */
 .md-content {
 	color: #2d3956;
-	background: #eee;
+	background: #efefef;
+
+	border: solid 4px #C0C0C0;
 	
 	position: relative;
 	margin: 0 auto;
@@ -128,73 +115,72 @@ perspective effects (not including the modals and the overlay).
 }
 
 
+
+
 .md-content  {
-	padding: 15px ;
+	padding: 5px ;
 	margin: 0;
-	font-weight: 300;
-	font-size: 1.15em;
+	font-size: 0.9em;
 	position: relative;
 }
-.metadata-label{
-	font-weight: 500;
-
-}
-.metadata-container{
-	float: right;
-	margin: 15px 0 0;
-	width: 240px;
-	padding: 0;
-	max-height: 650px;
-	overflow-y: auto;
-}
-.image-container{
-	width: 350px;
-	margin: 0;
-	padding: 0;
-	float: left;
-}
-.md-icon-close{
-	display: inline-block;
-	position: absolute;
-	top: 5px;
-	right: 5px;
+.md-content p{
+	margin: 0 0 3px 0;
 }
 
-.md-icon-close:before {
+.md-content .md-icon-close:before {
 	content: "\e639";
 }
-.md-icon-close:hover:before {
+.md-content .md-icon-close:hover:before {
 	color: #66718b;
 }
 
-.details-modal .title{
+
+.md-content .title{
 	margin: 0 0 5px;
 	font-size: 18px;
 	font-weight: 600;
 }
 
 
-/*
-.md-content > div p {
+
+
+
+.md-content .metadata-container{
+	float: right;
 	margin: 0;
-	padding: 10px 0;
+	padding: 0;
+	overflow: auto;
+	overflow-x: hidden;
+	font-size: 14px;
+}
+.md-content .metadata-label{
+	font-weight: bold;
+
 }
 
-.md-content > div ul {
+.md-content .metadata-container .scroll-viewport{
+	
+	height: 400px;
+	width: 315px;
+	margin-right: 10px;
+}
+
+.md-content .image-container{
+	width: 280px;
 	margin: 0;
-	padding: 0 0 30px 20px;
+	padding: 0;
+	float: left;
+}
+.md-content .md-icon-close{
+	display: inline-block;
+	position: absolute;
+	top: 5px;
+	right: 5px;
 }
 
-.md-content > div ul li {
-	padding: 5px 0;
-}
 
-.md-content button {
-	display: block;
-	margin: 0 auto;
-	font-size: 0.8em;
-}
-*/
+
+
 
 /* Individual modal styles with animations/transitions */
 
@@ -217,3 +203,5 @@ perspective effects (not including the modals and the overlay).
 	transform: scale(1);
 	opacity: 1;
 }
+
+

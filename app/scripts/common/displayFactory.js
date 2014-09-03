@@ -20,7 +20,7 @@ angular.module('common-services')
 			}
 			Display.window = Display.filterItems(Display.currentPage, Display.itemsPerPage);
 			Display.numberOfItems = Display.sources[Display.sources.length-1].length;
-			$rootScope.$broadcast('displayReady');
+			//$rootScope.$broadcast('displayReady');
 			$rootScope.$broadcast('displayTaken', Display.history[Display.history.length-1]);
 
 		};
@@ -45,12 +45,7 @@ angular.module('common-services')
 				Display.currentPage = 1;
 				Display.sources=[items];
 			}else{
-				// if(source === Display.history[Display.history.length-1]){
-				// 	Display.sources[Display.sources.length-1] = items;
-				// }else{
-				// 	Display.sources.push(items);
-				// 	Display.history.push(source);
-				// }
+				
 				Display.history[1] = source;
 				Display.sources[1] = items;
 			}

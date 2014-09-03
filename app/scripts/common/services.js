@@ -3,7 +3,7 @@
 angular.module('common-services', []);
 
 angular.module('common-services')
-	.service('CommonServices', function(){
+	.service('CommonServices', function($http){
 		
 		this.addObjectFromCollection = function(source, target, property, value){
       // function gets source array, target array, property name, and value
@@ -43,5 +43,11 @@ angular.module('common-services')
         }
         target.splice(removeIndex, 1);
     };
+
+    this.getItem = function(docID){
+    return $http.get('http://public.cyi.ac.cy/starcRepo/map/details', {params: {docID: docID}});
+ 
+    };
+
 	})
 

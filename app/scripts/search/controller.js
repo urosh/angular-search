@@ -31,7 +31,7 @@ var SearchController = function(searchService, CommonServices, DataModel, displa
 	
 	var _this = this;
   
-  $scope.$on('displayReady', function(){
+  $scope.$on('displayTaken', function(){
   	_this.updateDisplay(_this);
   })
 

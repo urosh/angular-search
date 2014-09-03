@@ -13,16 +13,16 @@ searchModule.directive('preloader', function(){
 searchModule.directive('myModal', function(){
 	return{
 		restrict: 'A',
-		template: "<div ng-class=\"(active) ? 'md-modal md-show' : 'md-modal'\" ng-include='commonCtrl.modal'></div><div class='md-overlay' ng-click='removeModal()'></div>",
+		template: "<div ng-class=\"(loading) ? '' : 'ng-hide'\"><div  ng-class=\"(active) ? 'md-modal md-show' : 'md-modal'\" ng-include='commonCtrl.modal' ng-cloak></div><div class='md-overlay' ng-click='removeModal()'></div></div>",
 		link: function(scope){
-			scope.$on('itemClicked', function(){
-  			//$scope.active = true;
-  			console.log('we are managing this inside directive');
-  			// ok so i need to set classes 
-  		})
+			
 			//scope.active = true;
 			scope.removeModal = function(){
 				scope.active = false;	
+				//scope.object = null;
+				scope.title = '';
+				scope.imageLocation = '#';
+				scope.metadata = [];
 			};
 
 			
