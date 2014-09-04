@@ -149,6 +149,7 @@ perspective effects (not including the modals and the overlay).
 	float: right;
 	margin: 0;
 	padding: 0;
+	
 	overflow: auto;
 	overflow-x: hidden;
 	font-size: 14px;
@@ -160,7 +161,7 @@ perspective effects (not including the modals and the overlay).
 
 .md-content .metadata-container .scroll-viewport{
 	
-	height: 400px;
+	
 	width: 315px;
 	margin-right: 10px;
 }
