@@ -33,13 +33,10 @@
 
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="AppCtrl as ctrl" >
-      
-      <div class="menu-container" ng-controller="ControllsController as controllsCtrl" >
-        <div my-dropdown  tools="controllsCtrl.tools" ng-class="(ctrl.active) ? 'active mydropdown' : 'mydropdown'" select="controllsCtrl.toolSelected(e)"></div>
-        <div class="dropdown-items-container">
-          <div selected-items tools="controllsCtrl.selectedTools" remove="controllsCtrl.removeItem(e)"></div> 
-        </div>
-      </div>
+      <selected-tools>
+        <my-dropdown></my-dropdown>
+      </selected-tools>
+        
       
       <div class="tools-container">
         <div class="search-container" ng-controller="searchController as searchCtrl">
@@ -132,7 +129,6 @@
         
         <!-- Dashboard controlls, adding and removing widgets from workspace -->
         <script src="scripts/controlls/services.js"></script>
-        <script src="scripts/controlls/controller.js"></script>
         <script src="scripts/controlls/directive.js"></script>
         <script src="scripts/controlls/controlls.js"></script>
         
