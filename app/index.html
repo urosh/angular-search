@@ -40,8 +40,8 @@
       
       <div class="tools-container">
         
-
-        <div class="search-container" ng-controller="searchController as searchCtrl">
+        <!-- ng-controller="searchController as searchCtrl" -->
+        <div class="search-container" >
           
           <my-search></my-search>
 
@@ -124,9 +124,9 @@
         <script src="scripts/common/services/requestFactory.js"></script>        
         <script src="scripts/common/services/displayFactory.js"></script>        
         <script src="scripts/common/services/dataModel.js"></script>        
-        <script src="scripts/common/controllers/common.js"></script>        
-        <script src="scripts/common/directives/modal.js"></script>        
-        <script src="scripts/common/directives/preloader.js"></script>        
+        <script src="scripts/common/controllers/common_controller.js"></script>        
+        <script src="scripts/common/directives/modal_directive.js"></script>        
+        <script src="scripts/common/directives/preloader_directive.js"></script>        
         <script src="scripts/common/common.js"></script>        
 
         
@@ -142,15 +142,14 @@
         
         <!--  -->
         <!-- Search tool -->
-        <script src="scripts/search/services.js"></script>
-        <script src="scripts/search/controller.js"></script>
-        <script src="scripts/search/paginationController.js"></script>
-        <script src="scripts/search/directives.js"></script>
+        <script src="scripts/search/services/search_services.js"></script>
+        <script src="scripts/search/controllers/pagination_controller.js"></script>
+        <script src="scripts/search/controllers/search_controller.js"></script>
+        <script src="scripts/search/directives/search_directive.js"></script>
+        <script src="scripts/search/directives/pagination_directive.js"></script>
         <script src="scripts/search/search.js"></script>
         
         <!-- Map tool -->
-        <script src="scripts/map/services.js"></script>
-        <script src="scripts/map/controller.js"></script>
         <script src="scripts/map/map.js"></script>
         
         

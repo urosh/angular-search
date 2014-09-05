@@ -8,11 +8,12 @@
 	</div>
 	<div ng-show="pagShow" class="pagination">
 		<ul>
-			<li class="active"><a ng-show="firstShow" ng-click="firstPage()" href="#">First</a></li>
-			<li ><a href="#" ng-show="prevShow" ng-click="prevPage()">Prev</a></li>
+			<li ng-show="firstShow"><a  ng-click="firstPage()" href="#">First</a></li>
+			<li ng-show="prevShow"><a href="#"  ng-click="prevPage()">Prev</a></li>
 			<li ng-repeat="num in paginationNumbers"  ><a href="#" ng-class="{active:  num == currentPage}" ng-click="itemPage(num)">{{num}}</a></li>
-			<li ><a href="#" ng-show="nextShow" ng-click="nextPage()">Next</a></li>
-			<li ><a href="#" ng-show="lastShow" ng-click="lastPage()">Last</a></li>
+			<li ng-show="nextShow"><a href="#"  ng-click="nextPage()">Next</a></li>
+			<li ng-show="lastShow"><a href="#"  ng-click="lastPage()">Last</a></li>
+			
 			
 		</ul>
 	</div>

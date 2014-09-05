@@ -1,19 +1,23 @@
 'use strict';
 
-var searchModule = angular.module('mySearchModule', ['akoenig.deckgrid']);
+angular.module('mySearchModule', ['akoenig.deckgrid']);
 
 
-searchModule.controller('searchController', SearchController);
-searchModule.controller('paginationController', PaginationController);
+angular.module('mySearchModule')
+	.controller('paginationController', PaginationController);
 
 
-searchModule.service('searchService', SearchService);
-
-
-
-searchModule.directive('mySearch', SearchDirective);
+angular.module('mySearchModule')
+	.controller('searchController', SearchController);
 
 
 
-searchModule.directive('myPagination', PaginationDirective);
+angular.module('mySearchModule')
+	.service('searchService', SearchService);
+
+angular.module('mySearchModule')
+	.directive('mySearch', SearchDirective);
+
+angular.module('mySearchModule')
+	.directive('myPagination', PaginationDirective);
 
