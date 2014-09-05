@@ -2,36 +2,111 @@
 
 function SearchDirective($animate){
 	return {
-		restrict: 'A',
+		restrict: 'E',
 		templateUrl: 'scripts/search/templates/search.tpl.html',
-		scope:{
-			collections: '=',
-			types: '=',
-			typeSelected: '&typein',
-			collectionSelected: '&collectionin',
-			search: '&search',
-			query: '=',
-			change: '&change'
+		scope:{},
+		controller: function($scope, searchService, CommonServices, DataModel, requestNotificationChannel){
+			$scope.selectedTypes = [];
+			$scope.selectedCollections = [];
+			$scope.types = [];
+			$scope.collections = [];
+			$scope.displayItems = [];
 
+			$scope.initializeSearchData = function(){
+				var _this = this;
+				
+				var searchInit = searchService.initializeSearch();
+			  searchInit.then(function(res){
+			  	$scope.collections = res.data.collections;
+			    $scope.types = res.data.types;
+			  });
+			};
+
+			$scope.collectionSelected = function(){
+				CommonServices.addItemToArray($scope.selectedCollections, e);
+			}
+
+			$scope.typeSelected = function(e, i){
+				CommonServices.addItemToArray($scope.selectedTypes, e);
+			}
+
+			$scope.search = function(){
+				// search initialized
+				
+				var queryData = {
+			    'search' : $scope.query.input,
+			    'types' : $scope.selectedTypes,
+			    'collections' : $scope.selectedCollections 
+				};
+
+				DataModel.setQueryData(queryData);
+				
+				// results.then(function(res){
+				// 	//_this.preloaderActive = false;
+				// });
+
+
+				var results = searchService.runSearch();
+				
+				requestNotificationChannel.onSearchStarted($scope, function(){
+					console.log('Search initialized');
+				});
+				requestNotificationChannel.searchStarted();
+				
+
+				requestNotificationChannel.onSearchResultsReady($scope, function(){
+					console.log('results are ready');
+				});
+
+				requestNotificationChannel.onDisplayReady($scope, function(){
+					console.log('display ready');
+				})
+
+				requestNotificationChannel.onQueryChange($scope, function(e){
+					console.log(e)
+				})
+		
+			};
+
+			$scope.change = function(query){
+				requestNotificationChannel.queryChange(query.input);
+			};
+
+
+			
 		},
+
 		link: function(scope){
 			scope.advanced = false;
-			scope.changeMe = function(){
-		
-			}
+			scope.initializeSearchData();
 		}
 	}
 };
 
 function PaginationDirective(){
 	return{
-		restrict: 'A',
+		restrict: 'E',
 		templateUrl: 'scripts/search/templates/pagination.tpl.html',
-		scope: {
-			items: '=',
-			itemsnum: '=',
-			currentPage:'=page',
-			updateDisplay: '&updatedisplay'
+		scope: {},
+		controller: function(DataModel, $scope, display, requestNotificationChannel){
+			$scope.numberOfItems = 0;
+			$scope.items = [];
+			requestNotificationChannel.onDisplayReady($scope, function(){
+				
+				initialize();
+			})
+			var initialize = function(){
+				$scope.items = display.getDisplayWindow();
+				$scope.numberOfItems = display.numberOfItems;
+				$scope.currentPage = display.currentPage;
+			};
+
+			$scope.updateDisplay = function(currentPage, perPage){
+				display.setDisplay(currentPage, perPage);
+			}
+
+
+
 		},
 		link: function(scope){
 			scope.perShow = false;
@@ -112,6 +187,7 @@ function PaginationDirective(){
 
 				}
 				if( scope.itemsnum > scope.itemsPerPage ){
+
 					scope.perShow = true;
 					scope.pagShow = true;
 
@@ -131,21 +207,15 @@ function PaginationDirective(){
 						scope.lastShow = true;
 						scope.nextShow = true;
 					}
-
-					
-					//scope.talk({e: 'jea'});
+	
 				}
-				scope.updateDisplay({currentPage: scope.currentPage, perPage: scope.itemsPerPage} );
+				scope.updateDisplay(scope.currentPage, scope.itemsPerPage);
 				
 			}
 			scope.$watchCollection('items', function() {
 				if (scope.items){
 					updatePaginationNumbers();
 				}
-				
-				
-
-			
 							
 			});
 			//scope.perShow = true;

@@ -1,4 +1,4 @@
-<input type="search" ng-model="query.input" ng-change="change({e: query})" >
+<input type="search" ng-model="query.input" ng-change="change(query)" >
 <a href="#" ng-click="search()"  class="searchButton">SEARCH</a>
 <span class="advanced-search-link">
 	<a href="#" ng-click="searchCtrl.advanced=!searchCtrl.advanced">Advanced Search</a>
@@ -10,7 +10,7 @@
       <h4>Choose collection</h4>
       <ul>
         
-        <li ng-repeat="coll in collections"><label  class='checkbox'><input ng-model="col" ng-change="collectionSelected({e: coll, i: col})" type="checkbox" class="typeClass" value="{{coll}}"/>{{coll}}</label></li>
+        <li ng-repeat="coll in collections"><label  class='checkbox'><input ng-model="col" ng-change="collectionSelected( coll)" type="checkbox" class="typeClass" value="{{coll}}"/>{{coll}}</label></li>
         
       </ul>
 
@@ -19,7 +19,7 @@
     <section class="types">
       <h4>Choose object type</h4>
         <ul>
-           <li ng-repeat="type in types"><label class='checkbox'><input ng-model="tp" ng-change="typeSelected({e: type.type, i: tp})" type="checkbox" class="typeClass" value="{{type.type}}"/>{{type.title}}</label></li>
+           <li ng-repeat="type in types"><label class='checkbox'><input ng-model="tp" ng-change="typeSelected(type.type)" type="checkbox" class="typeClass" value="{{type.type}}"/>{{type.title}}</label></li>
          
         </ul>
         <a href="#" class="searchButton browse">BROWSE</a>

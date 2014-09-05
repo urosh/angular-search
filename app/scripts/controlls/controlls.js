@@ -1,20 +1,12 @@
 'use strict';
 
+angular.module('my-controlls', []);
 
-var myControlls = angular.module('my-controlls', []);
+angular.module('my-controlls')
+	.service('ControllsService', ControllsService);
 
+angular.module('my-controlls')
+	.directive('myDropdown', DropdownDirective);	
 
-
-
-
-
-myControlls.service('ControllsService', ControllsServiceFunction);
-
-myControlls.directive('selectedTools', SelectedItemsDirective);
-
-
-myControlls.directive('myDropdown', ControllsDirective);
-
-
-
-	
+angular.module('my-controlls')
+	.directive('selectedTools', ToolsDirective);	

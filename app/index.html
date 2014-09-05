@@ -42,14 +42,14 @@
         
 
         <div class="search-container" ng-controller="searchController as searchCtrl">
-          <div my-search collections="searchCtrl.collections" change="searchCtrl.queryChange(e)" query="searchCtrl.query" typein="searchCtrl.typeSelected(e, i)"  collectionin="searchCtrl.collectionSelected(e, i)" search="searchCtrl.search()" types="searchCtrl.types">
-          </div>
+          
+          <my-search></my-search>
 
           <div class="search-results">
-            <div preloader ng-show="searchCtrl.preloaderActive" class="search-preloader"></div>
-            <div ng-controller="paginationController as pagCtrl">
-              <div my-pagination items="pagCtrl.items" page="pagCtrl.currentPage" itemsnum="pagCtrl.numberOfItems" updatedisplay="pagCtrl.updateDisplay(currentPage, perPage)"></div>
-            </div>
+            <preloader class="search-preloader"></preloader>
+
+            <my-pagination ></my-pagination>
+            
             <div deckgrid class="deckgrid" clickhandler="searchCtrl.itemClicked(docID)" source="searchCtrl.displayItems" cardTemplate="views/templates/deckgrid-card.html"></div>
           </div>
         </div>
@@ -115,27 +115,32 @@
         
         <script src="scripts/app.js"></script>
         
-        <script src="scripts/factories/services.js"></script>
         
 
         <!-- 
         Common services
-         -->
-        <script src="scripts/common/directives.js"></script>
-        <script src="scripts/common/commons.js"></script>
-        
-        <script src="scripts/common/services.js"></script>
-        <script src="scripts/common/dataModel.js"></script>
-        
-        <script src="scripts/common/displayFactory.js"></script>
-        <script src="scripts/common/controller.js"></script>
-        <script src="scripts/common/requestFactory.js"></script>
+        -->
+        <script src="scripts/common/services/commonService.js"></script>        
+        <script src="scripts/common/services/requestFactory.js"></script>        
+        <script src="scripts/common/services/displayFactory.js"></script>        
+        <script src="scripts/common/services/dataModel.js"></script>        
+        <script src="scripts/common/controllers/common.js"></script>        
+        <script src="scripts/common/directives/modal.js"></script>        
+        <script src="scripts/common/directives/preloader.js"></script>        
+        <script src="scripts/common/common.js"></script>        
+
         
         <!-- Dashboard controlls, adding and removing widgets from workspace -->
-        <script src="scripts/controlls/services.js"></script>
-        <script src="scripts/controlls/directive.js"></script>
+        
+        <script src="scripts/controlls/services/service.js"></script>
+        <script src="scripts/controlls/controllers/dropdown.js"></script>
+        <script src="scripts/controlls/controllers/tools.js"></script>
+        <script src="scripts/controlls/directives/dropdown.js"></script>
+        <script src="scripts/controlls/directives/tools.js"></script>
         <script src="scripts/controlls/controlls.js"></script>
         
+        
+        <!--  -->
         <!-- Search tool -->
         <script src="scripts/search/services.js"></script>
         <script src="scripts/search/controller.js"></script>
