@@ -2,7 +2,7 @@
 
 var PaginationController = function(DataModel, $scope, display){
 	this.DataModel = DataModel;
-	this.items = DataModel.getDisplayItems();
+	this.items = [];
 	this.display = display;
 	this.numberOfItems = 0;
 	var _this = this;

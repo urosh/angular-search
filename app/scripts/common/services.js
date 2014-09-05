@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('common-services', []);
 
-angular.module('common-services')
+angular.module('commons')
 	.service('CommonServices', function($http){
 		
 		this.addObjectFromCollection = function(source, target, property, value){
@@ -45,7 +44,7 @@ angular.module('common-services')
     };
 
     this.getItem = function(docID){
-    return $http.get('http://public.cyi.ac.cy/starcRepo/map/details', {params: {docID: docID}});
+      return $http.get('http://public.cyi.ac.cy/starcRepo/map/details', {params: {docID: docID}});
  
     };
 

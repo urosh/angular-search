@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('common-services')
+angular.module('commons')
 	.factory('display', function($rootScope){
 		var Display = {};
 		Display.itemsPerPage = 20;
@@ -18,10 +18,12 @@ angular.module('common-services')
 			if(perPage){
 				Display.itemsPerPage = perPage;
 			}
-			Display.window = Display.filterItems(Display.currentPage, Display.itemsPerPage);
-			Display.numberOfItems = Display.sources[Display.sources.length-1].length;
-			//$rootScope.$broadcast('displayReady');
-			$rootScope.$broadcast('displayTaken', Display.history[Display.history.length-1]);
+			if(Display.sources.length){
+				Display.window = Display.filterItems(Display.currentPage, Display.itemsPerPage);
+				Display.numberOfItems = Display.sources[Display.sources.length-1].length;
+				$rootScope.$broadcast('displayTaken', Display.history[Display.history.length-1]);				
+			}
+
 
 		};
 

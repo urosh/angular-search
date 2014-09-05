@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('common-services')
+angular.module('commons')
 	.service('DataModel', function(CommonServices, $filter, $rootScope, display){
 		
 
@@ -11,9 +11,7 @@ angular.module('common-services')
 		//this.displayItems = [];
 		this.display = display;
 		
-		this.displayHistory = [];
-		this.currentDisplay = [];
-
+		
 		// Tools selection. Adding and removing tools to the workspace
 		this.selectTool = function(tools, e){
 			CommonServices.addObjectFromCollection(tools, this.selectedTools, 'name', e);
@@ -41,20 +39,7 @@ angular.module('common-services')
       return this.searchResults;
     };
 
-		this.setDisplayItems = function(disp){
-			this.displayHistory.push(disp);
-			//this.displayItems  = disp;
-      $rootScope.$broadcast('displayItemsSet');
-    };
 
-    this.removeCurrentDisplay = function(){
-    	this.displayHistory.pop();
-    };
-
-    this.getDisplayItems = function(){
-      //return this.displayItems;
-      return this.displayHistory[this.displayHistory.length - 1];
-    };
 
 
 

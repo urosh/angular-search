@@ -8,7 +8,6 @@ angular.module('starcSearchApp')
 		this.modal = 'scripts/common/templates/modal.tpl.html';
 		var _this = this;
 		$scope.object = {};
-		$scope.testVar = 'uros';
 		$scope.$on('itemClicked', function(e, docID){
   		
 
@@ -26,8 +25,7 @@ angular.module('starcSearchApp')
 					}
 				}
 				$scope.active = true;
-				console.log(res.data);
-				console.log($scope.metadata);
+				
 			});
   		// ok so i need to set classes 
   	})
