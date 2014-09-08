@@ -17,8 +17,6 @@ angular.module('commons')
 
 
 
-angular.module('commons')
-	.controller('CommonCtrl', CommonsController);
 
 angular.module('commons')
 	.directive('preloader', PreloaderDirective);

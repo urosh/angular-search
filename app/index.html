@@ -26,7 +26,7 @@
 
 
   </head>
-  <body ng-app="starcSearchApp" ng-controller="CommonCtrl as commonCtrl" >
+  <body ng-app="starcSearchApp"  >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -40,17 +40,12 @@
       
       <div class="tools-container">
         
-        <!-- ng-controller="searchController as searchCtrl" -->
         <div class="search-container" >
-          
           <my-search></my-search>
-
           <div class="search-results">
             <preloader class="search-preloader"></preloader>
-
             <my-pagination ></my-pagination>
-            
-            <div deckgrid class="deckgrid" clickhandler="searchCtrl.itemClicked(docID)" source="searchCtrl.displayItems" cardTemplate="views/templates/deckgrid-card.html"></div>
+            <div deckgrid class="deckgrid"  cardTemplate="scripts/deckgrid/template/card.tpl.html"></div>
           </div>
         </div>
 
@@ -104,7 +99,6 @@
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
         <script src="bower_components/lodash/dist/lodash.compat.js"></script>
         <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
         <script src="bower_components/ng-tiny-scrollbar/dist/ng-tiny-scrollbar.js"></script>
@@ -124,7 +118,7 @@
         <script src="scripts/common/services/requestFactory.js"></script>        
         <script src="scripts/common/services/displayFactory.js"></script>        
         <script src="scripts/common/services/dataModel.js"></script>        
-        <script src="scripts/common/controllers/common_controller.js"></script>        
+        <script src="scripts/common/controllers/modal_controller.js"></script>        
         <script src="scripts/common/directives/modal_directive.js"></script>        
         <script src="scripts/common/directives/preloader_directive.js"></script>        
         <script src="scripts/common/common.js"></script>        
@@ -148,6 +142,7 @@
         <script src="scripts/search/directives/search_directive.js"></script>
         <script src="scripts/search/directives/pagination_directive.js"></script>
         <script src="scripts/search/search.js"></script>
+        <script src="scripts/deckgrid/deckgrid.js"></script>
         
         <!-- Map tool -->
         <script src="scripts/map/map.js"></script>

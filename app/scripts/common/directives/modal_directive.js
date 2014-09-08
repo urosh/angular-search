@@ -3,7 +3,8 @@
 function ModalDirective(){
 	return{
 		restrict: 'A',
-		template: "<div ng-class=\"(loading) ? '' : 'ng-hide'\"><div  ng-class=\"(active) ? 'md-modal md-show' : 'md-modal'\" ng-include='commonCtrl.modal' ng-cloak></div><div class='md-overlay' ng-click='removeModal()'></div></div>",
+		template: "<div ng-class=\"(loading) ? '' : 'ng-hide'\"><div  ng-class=\"(active) ? 'md-modal md-show' : 'md-modal'\" ng-include='modal' ng-cloak></div><div class='md-overlay' ng-click='removeModal()'></div></div>",
+		controller: ModalController,
 		link: function(scope){
 			
 			//scope.active = true;

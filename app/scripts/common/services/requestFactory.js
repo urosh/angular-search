@@ -27,13 +27,13 @@ function RequestFactory($rootScope){
 			})
 		};
 
-		var displayReady = function(){
-			$rootScope.$broadcast(_DISPLAY_READY_)
+		var displayReady = function(item){
+			$rootScope.$broadcast(_DISPLAY_READY_, {display: item});
 		};
 
 		var onDisplayReady = function($scope, handler){
-			$scope.$on(_DISPLAY_READY_, function(event){
-				handler();
+			$scope.$on(_DISPLAY_READY_, function(event, args){
+				handler(args.display);
 			})
 		}
 
@@ -45,6 +45,16 @@ function RequestFactory($rootScope){
 			$scope.$on(_QUERY_CHANGE_, function(event, args){
 				handler(args.query);
 			})
+		};
+
+		var itemSelect = function(docID){
+			$rootScope.$broadcast(_ITEM_CLICKED_, {docID: docID});
+		};
+
+		var onItemSelected = function($scope, handler){
+			$scope.$on(_ITEM_CLICKED_, function(event, args){
+				handler(args.docID);
+			})
 		}
 
 		return {
@@ -55,7 +65,9 @@ function RequestFactory($rootScope){
 			displayReady: displayReady,
 			onDisplayReady: onDisplayReady,
 			queryChange: queryChange, 
-			onQueryChange: onQueryChange
+			onQueryChange: onQueryChange,
+			itemSelect: itemSelect, 
+			onItemSelected: onItemSelected
 		}
 };
 

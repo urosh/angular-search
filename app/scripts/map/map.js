@@ -4,7 +4,7 @@ var mapModule = angular.module('mapModule', ['google-maps']);
 
 mapModule.controller('mapController', MapController);
 
-function MapController(DataModel, $scope, $filter, display) {
+function MapController(DataModel, $scope, $filter, display, requestNotificationChannel) {
 	this.DataModel = DataModel;
 	this.$scope = $scope;
 	this.$filter = $filter;
@@ -19,20 +19,20 @@ function MapController(DataModel, $scope, $filter, display) {
     zoom: 8
   };
   
-  //this.markers = this.DataModel.resultMarkers;
   var _this = this;
-  $scope.$on('searchResultsSet', function(){
+
+  requestNotificationChannel.onSearchResultsReady($scope, function(){
   	_this.setMarkers(_this);	
   	_this.showMarkers(_this);
+  
   });
-
-  $scope.$on('displayTaken', function(event, item){
+  
+  requestNotificationChannel.onDisplayReady($scope, function(item){
   	if(item === 'filter'){
   		_this.resetMarkers();
   		
   	}
-  })
-  
+  });
 
 
 };
@@ -43,6 +43,7 @@ MapController.prototype.resetMarkers = function(){
 		marker.icon = null;
 	});
 }
+
 MapController.prototype.setMarkers = function(_this){
 	var res = _this.DataModel.getResults();
 	
@@ -110,5 +111,5 @@ MapController.prototype.showMarkers = function(_this){
 };
 
 
-MapController.$inject = ['DataModel', '$scope', '$filter', 'display'];
+MapController.$inject = ['DataModel', '$scope', '$filter', 'display', 'requestNotificationChannel'];
 

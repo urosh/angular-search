@@ -20,7 +20,7 @@ function DisplayFactory($rootScope, requestNotificationChannel){
 				Display.window = Display.filterItems(Display.currentPage, Display.itemsPerPage);
 				Display.numberOfItems = Display.sources[Display.sources.length-1].length;
 				//$rootScope.$broadcast('displayTaken', Display.history[Display.history.length-1]);	
-				requestNotificationChannel.displayReady();			
+				requestNotificationChannel.displayReady(Display.history[Display.history.length-1]);			
 			}
 
 
