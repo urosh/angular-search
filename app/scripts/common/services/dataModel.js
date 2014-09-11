@@ -3,7 +3,8 @@
 function DataModel(CommonServices, $filter, $rootScope, display, requestNotificationChannel){
 	this.selectedTools = [];
 		this.queryData = {};
-		
+		this.selectedTools = [];
+
 		this.searchResults = [];
 		//this.displayItems = [];
 		this.display = display;
@@ -17,6 +18,10 @@ function DataModel(CommonServices, $filter, $rootScope, display, requestNotifica
 		this.removeTool = function(e){
 			CommonServices.removeObjectFromCollection(this.selectedTools, 'name', e);
 		};
+
+		this.getSelectedTools = function(){
+			return this.selectedTools;
+		}
 		
 
 

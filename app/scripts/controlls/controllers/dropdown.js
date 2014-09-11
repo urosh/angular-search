@@ -6,6 +6,7 @@ function DropDownController ($scope, ControllsService,  DataModel){
 	
   promise.then(function(res){
     $scope.tools = res.data;
+    DataModel.selectTool($scope.tools, 'map');
   });
 
 };

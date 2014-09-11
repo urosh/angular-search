@@ -3,7 +3,9 @@
 function DropdownDirective(){
 	
 	function DropDownLink (scope, element, attrs, selectedToolsCtrl){
+		//selectedToolsCtrl.itemSelected(scope.tools, 'map');
 		scope.select = function(tool){
+			//console.log(scope.tools);
 	  	selectedToolsCtrl.itemSelected(scope.tools, tool);
 	  }
 	}
