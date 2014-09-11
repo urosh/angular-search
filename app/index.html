@@ -36,31 +36,7 @@
       <selected-tools>
         <my-dropdown></my-dropdown>
       </selected-tools>
-        
       
-      <div class="tools-container" >
-        
-        <div class="search-container" >
-          <my-search></my-search>
-          <div class="search-results">
-            <preloader class="search-preloader"></preloader>
-            <my-pagination ></my-pagination>
-            <div deckgrid class="deckgrid"  cardTemplate="scripts/deckgrid/template/card.tpl.html"></div>
-          </div>
-        </div>
-
-          <div class="angular-google-map-container" ng-controller="mapController as mapCtrl">
-            <google-map draggable="true"  center="mapCtrl.map.center" zoom="mapCtrl.map.zoom">
-              <markers models="mapCtrl.markers" coords="'self'" icon="'icon'" click="'onClicked'" >
-               
-              </markers> 
-            </google-map>
-
-          </div>
-
-        
-          
-      </div>
     </div>
       
       
