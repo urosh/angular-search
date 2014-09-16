@@ -1,5 +1,5 @@
 .collections-container{
-	width: 535px;
+	width: 529px;
 	overflow: auto;
 	overflow-y: hidden;
 	
@@ -9,6 +9,7 @@
 	position: relative;
 	background-color: #e7e7e7;
 	padding: 3px;
+	padding-left: 6px;
 	/*border: solid 1px #2d3956;*/
 }
 .collections-menu{
