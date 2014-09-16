@@ -1,20 +1,17 @@
 <div class="collections-container">
 	<div class="collections-menu">
 		<h3>Manage collection</h3>
-		<span ng-click="saveCollection()" title="Save collecion" class="icon-save"></span>
+		<span ng-click="saveDialog=!saveDialog; dialogActive=false;" title="Save collecion" class="icon-save"></span>
 		<span ng-click="clearCollection()" title="Clear collection" class="icon-clear"></span>
 		
-		<div ng-show="dialog" ng-class="{'collection-dialog clear': !dialog2}">
-			<p>Are you sure you want to empty the collection?</p>
-			<a href="#" ng-click="clearCollection(true)" class="button">Yes</a>
-			<a href="#" ng-click="dialog=false" class="button">Cancel</a>
-		</div>
+		
+		<my-dialog ng-show="dialogActive" classes="dialogClasses" type="dialogType" text="dialogText" response="clearCollection(option)"></my-dialog>	
 		
 		<div ng-show="saveDialog" ng-class="{'collection-dialog save': !dialog2}">
 			<p>Collection title</p>
-			<input ng-model="collection.title" type="text">
+			<input ng-model="collectionTitle" type="text">
 			<p>Collection description</p>
-			<textarea  ng-model="collection.text" ></textarea>
+			<textarea  ng-model="collectionText" ></textarea>
 			<a href="#"  ng-click="saveCollection(true)" class="button">Save</a>
 			
 		</div>

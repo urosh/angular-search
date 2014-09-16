@@ -23,4 +23,7 @@ angular.module('commons')
 
 angular.module('commons')
 	.directive('myModal', ModalDirective);
+
+angular.module('commons')
+	.directive('myDialog', DialogDirective);
 	

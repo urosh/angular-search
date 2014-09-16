@@ -20,7 +20,9 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 		}
 		
 	});
-
+	
+	
+	
 	$scope.showDetails = function(id){
 		requestNotificationChannel.itemSelect(id);
 	};
@@ -29,22 +31,37 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 		CommonServices.removeObjectFromCollection(this.items, 'docID', id);
 	};
 
+	
 	$scope.clearCollection = function(option){
 		if(option){
-			$scope.items = [];
-			$scope.dialog = false;
+			$scope.dialogActive = false;	
+			if(option === 'ok'){
+				$scope.items = [];
+			}
+		}else{
+			if($scope.items.length){
+				$scope.dialogText = "Are you sure you want to empty the collection?";
+				$scope.dialogClasses = 'my-dialog question';
+				$scope.dialogType = 'question';
+				$scope.dialogActive = true;
+			}	
 		}
-		if($scope.items.length){
-			$scope.dialog = true;
-		}
+		
 	};
 
 	$scope.saveCollection = function(option){
-		$scope.dialog = false;
+		$scope.dialogActive = false;
 		$scope.saveDialog = true;
 		if(option){
-			console.log('ok we can now save the collection');
-			console.log($scope.collection.text);
+			if(!$scope.collectionTitle){
+				$scope.dialogText = 'Collection title cannot be empty. Please try again';
+				$scope.dialogType = 'notification';
+				$scope.dialogClasses = 'my-dialog notification';
+				$scope.dialogActive = true;
+				
+			}
+				
+			
 		}
 	};
 

@@ -1,0 +1,8 @@
+<div  ng-class="{true: 'my-dialog question', false: 'my-dialog notification'}[type==='question']" >
+	<p>{{text}}</p>
+	<div ng-show="type === 'question'">
+		<a href="#" ng-click="response({option: 'ok'})" class="button">Yes</a>
+		<a href="#" ng-click="response({option: 'cancel'})" class="button">Cancel</a>
+
+	</div>
+</div>

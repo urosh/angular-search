@@ -1,5 +1,5 @@
 .collections-container{
-	width: 529px;
+	width: 526px;
 	overflow: auto;
 	overflow-y: hidden;
 	
@@ -8,8 +8,8 @@
 	color: #2d3956;
 	position: relative;
 	background-color: #e7e7e7;
-	padding: 3px;
-	padding-left: 6px;
+	padding:3px 6px 3px 6px ;
+
 	/*border: solid 1px #2d3956;*/
 }
 .collections-menu{
@@ -114,33 +114,58 @@
 }
 
 
+.my-dialog{
+	margin-top: 5px;
+	background: rgba(45,57,86,0.4);
+	padding: 5px;
+	}
+
+
+.my-dialog.question{
+	height: 46px;
+}
+
+.my-dialog.notification{
+	height: 25px;
+}
+
+
+
+
+.my-dialog p{
+	font-weight: bold;
+	margin: 0;
+	padding: 2px 0 7px 0;
+	font-size: 14px;
+}
+.my-dialog .button{
+	display: inline-block;
+	width: 50px;
+	height: 20px;
+	background-color: #66718b;
+	margin: 0px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	padding: 0px;
+	font-size: 13px;
+	line-height: 20px;
+	margin-right: 5px;
+
+}
+
+.my-dialog .button:hover{
+	color: #C0C0C0;
+}
+
+
+
+
+
+
 .collection-dialog{
 	margin-top: 5px;
-	
 	padding: 5px;
-
-	-webkit-transition:0.2s linear all;
-  transition:0.2s linear all;
-  opacity:1;
-  height: 46px;
-}
-
-.collection-dialog.clear{
-	background: rgba(45,57,86,0.4);
-}
-
-.collection-dialog.clear.ng-hide{
-	opacity: 0;
-	height: 0;
-}
-
-.collection-dialog.save.ng-hide{
-	opacity: 0;
-	height: 0;
-}
-
-
-.collection-dialog.save{
 	-webkit-transition:0.2s linear all;
   transition:0.2s linear all;
   opacity:1;
@@ -148,6 +173,13 @@
   padding-left: 0;
 
 }
+
+.collection-dialog.ng-hide{
+	opacity: 0;
+	height: 0;
+}
+
+
 
 .collection-dialog.save textarea{
 	display: block;
