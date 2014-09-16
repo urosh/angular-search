@@ -45,4 +45,13 @@ function CommonService($http){
       return $http.get('http://public.cyi.ac.cy/starcRepo/map/details', {params: {docID: docID}});
  
     };
+
+    this.getItemById = function(collection, id){
+      for (var i = 0, j = collection.length; i < j; i++) {
+        if( collection[i].docID === id ){
+          return collection[i];
+        }
+      };
+      return [];
+    }
 }

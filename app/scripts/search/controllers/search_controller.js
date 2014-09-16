@@ -7,8 +7,6 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 	$scope.displayItems = [];
 
 	$scope.initializeSearchData = function(){
-		var _this = this;
-		
 		var searchInit = searchService.initializeSearch();
 	  searchInit.then(function(res){
 	  	$scope.collections = res.data.collections;
@@ -23,6 +21,9 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 	$scope.typeSelected = function(e, i){
 		CommonServices.addItemToArray($scope.selectedTypes, e);
 	}
+
+	
+
 
 	$scope.search = function(){
 		// search initialized
@@ -44,5 +45,9 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 	};
 			
 };
+
+
+
+
 
 SearchController.$inject = ['$scope', 'searchService', 'CommonServices', 'DataModel', 'requestNotificationChannel'];

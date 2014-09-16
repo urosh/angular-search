@@ -13,10 +13,13 @@ function DataModel(CommonServices, $filter, $rootScope, display, requestNotifica
 		// Tools selection. Adding and removing tools to the workspace
 		this.selectTool = function(tools, e){
 			CommonServices.addObjectFromCollection(tools, this.selectedTools, 'name', e);
+			requestNotificationChannel.toolAdded(e);
+
 		};
 
 		this.removeTool = function(e){
 			CommonServices.removeObjectFromCollection(this.selectedTools, 'name', e);
+			requestNotificationChannel.toolRemoved(e);
 		};
 
 		this.getSelectedTools = function(){
@@ -42,6 +45,14 @@ function DataModel(CommonServices, $filter, $rootScope, display, requestNotifica
     this.getResults = function(){
       return this.searchResults;
     };
+
+    this.getItemById = function(id){
+    	return CommonServices.getItemById(this.searchResults, id);
+    };
+
+    this.removeItemById = function(id){
+    	CommonServices.removeItemById()
+    }
 
 }
 

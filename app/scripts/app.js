@@ -20,6 +20,7 @@ angular
     'my-controlls',
     'mySearchModule',
     'mapModule',
-    'ngTinyScrollbar'
+    'ngTinyScrollbar',
+    'myCollectionsModule'
   ]);
   

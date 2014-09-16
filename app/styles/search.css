@@ -6,13 +6,15 @@ input[type="search"] {
 }
 
 .search-container{
-	width: 480px;
+	width: 474px;
 	min-height: 400px;
 	overflow: auto;
-	padding: 0px;
+	padding: 3px;
 	overflow-y: hidden;
 	color: #2d3956;
 	float: left;
+	background-color: #e7e7e7;
+	/*border: solid 1px #2d3956;*/
 
 
 }
@@ -88,7 +90,7 @@ input[type="search"] {
 
 .advanced-search-container{
 	padding: 0;
-	height: 340px;
+	height: 370px;
 	width: 470px;
 	display: block;
 	overflow: auto;
@@ -100,7 +102,7 @@ input[type="search"] {
   -webkit-transition:0.5s linear all;
   transition:0.5s linear all;
   opacity:1;
-  height: 330px;
+  height: 370px;
 }
 
 
@@ -140,7 +142,7 @@ input[type="search"] {
 }
 
 .search-results{
-	width: 480px;
+	width: 476px;
 	min-height: 300px;
 	overflow: auto;
 	margin-top: 8px;
@@ -189,6 +191,7 @@ input[type="search"] {
 	border-radius: 3px;
 	color: white;
 	cursor: pointer;
+	position: relative;
 
 }
 .a-card h4{
@@ -203,6 +206,36 @@ input[type="search"] {
 	top: 62px;
 	left: 203px;
 }
+
+
+.a-card .tools-icons{
+	height: 16px;	
+}
+
+.a-card .tools-icons span{
+	color: #66718b;
+	float: right;
+	display: inline-block;
+	padding: 1px 2px 2px 3px;
+	/*width: 14px;
+	height: 14px;*/
+	background-color: #fff;
+}
+.tools-icons span:hover{
+	background-color: #ddd;
+}
+
+.icon-add:hover:before {
+	color: #2d3956;
+		font-size: 10px;
+
+}
+
+.icon-add:before {
+	content: "\e63b";
+		font-size: 10px;
+}
+
 
 
 

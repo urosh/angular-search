@@ -1,3 +1,4 @@
 [
-	{"id": 1, "name": "map", "template":"scripts/map/template.tpl.html"}
+	{"id": 1, "name": "map", "template":"scripts/map/template.tpl.html"},
+	{"id": 1, "name": "collections", "template":"scripts/collections/template.tpl.html"}
 ]

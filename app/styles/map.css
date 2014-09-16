@@ -1,7 +1,14 @@
 
+.angular-google-map{
+	
+	
+}
 .angular-google-map-container{
-	width: 530px;
+	width: 540px;
 	height: 430px;
 	float: right;
+	padding: 0;
+	/*border: solid 1px #2d3956;*/
+	margin: 0 0 3px 0;
 	
 }

@@ -46,7 +46,7 @@ function DisplayFactory($rootScope, requestNotificationChannel){
 				Display.currentPage = 1;
 				Display.sources=[items];
 			}else{
-				
+				Display.currentPage = 1;
 				Display.history[1] = source;
 				Display.sources[1] = items;
 			}

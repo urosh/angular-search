@@ -70,27 +70,7 @@ angular.module('akoenig.deckgrid').factory('DeckgridDescriptor', [
                 
                 'clickhandler': '&'
             };
-            this.controller = function($scope, $filter){
-                
-                requestNotificationChannel.onDisplayReady($scope, function(){
-                    $scope.model = display.getDisplayWindow();
-                });
-
-                requestNotificationChannel.onQueryChange($scope, function(query){
-                    if(query == ''){
-                        display.resetDisplay();
-                    }else{
-                        if(DataModel.searchResults.length){
-                            display.addDisplayData($filter('filter')(display.getDisplayData(), query), 'filter');
-                        }
-                    
-                    }
-                });
-
-                $scope.itemClicked = function(e){
-                    requestNotificationChannel.itemSelect(e);
-                }
-            }
+            this.controller = DeckgridController;
             //
             // Will be created in the linking function.
             //

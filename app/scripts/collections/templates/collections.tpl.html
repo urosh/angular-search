@@ -1,0 +1,31 @@
+<div class="collections-container">
+	<div class="collections-menu">
+		<h3>Manage collection</h3>
+		<span ng-click="saveCollection()" title="Save collecion" class="icon-save"></span>
+		<span ng-click="clearCollection()" title="Clear collection" class="icon-clear"></span>
+		
+		<div ng-show="dialog" ng-class="{'collection-dialog clear': !dialog2}">
+			<p>Are you sure you want to empty the collection?</p>
+			<a href="#" ng-click="clearCollection(true)" class="button">Yes</a>
+			<a href="#" ng-click="dialog=false" class="button">Cancel</a>
+		</div>
+		
+		<div ng-show="saveDialog" ng-class="{'collection-dialog save': !dialog2}">
+			<p>Collection title</p>
+			<input ng-model="collection.title" type="text">
+			<p>Collection description</p>
+			<textarea  ng-model="collection.text" ></textarea>
+			<a href="#"  ng-click="saveCollection(true)" class="button">Save</a>
+			
+		</div>
+
+	</div>
+	<div ng-click="itemActive($index)" class="image-container" ng-repeat="item in items">
+		<img  ng-src="{{item.imageLocation}}" height="60"/>
+		<div ng-show="item.active" class="item-icons">
+			<span ng-click="showDetails(item.docID)" class="icon-details"></span>
+			<span ng-click="removeItem(item.docID)" class="icon-delete"></span>
+		</div>
+	
+	</div>
+</div>

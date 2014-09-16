@@ -1,0 +1,193 @@
+.collections-container{
+	width: 535px;
+	overflow: auto;
+	overflow-y: hidden;
+	
+	float: right;
+	margin: 0 0 3px 0;
+	color: #2d3956;
+	position: relative;
+	background-color: #e7e7e7;
+	padding: 3px;
+	/*border: solid 1px #2d3956;*/
+}
+.collections-menu{
+	margin-bottom: 3px;
+}
+
+.collections-container h3{
+	padding: 0 0 2px;
+	margin: 0;
+	width: 150px;
+
+}
+
+.collections-container span{
+	
+	background-color: #66718b;
+	width: 18px;
+	height: 18px;
+	padding: 5px 3px 4px 4px;
+	cursor: pointer;
+}
+
+
+.collections-container .image-container {
+	padding:0;
+	display: inline-block;
+	height: 60px;
+	float: left;
+	margin: 0 1px 1px 0;
+	border: solid 1px #2d3956;
+	position: relative;
+
+}
+
+.collections-container .image-container.active {
+	border: solid 2px #2d3956;
+
+}
+
+.collections-container img{
+	
+	padding: 0;
+	cursor: pointer;
+
+}
+.collections-container  .item-icons {
+	position: absolute;
+	top: 2px;
+	right: 3px;
+	width: 20px;
+	height: 44px;
+}
+
+.collections-container  .item-icons span{
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	cursor: pointer;
+	margin-bottom: 2px;
+}
+
+.item-icons .icon-details:before{
+	content: "\e61d";
+	font-size: 12px;
+}
+
+ .item-icons .icon-delete:before{
+	content: "\e62e";
+	font-size: 12px;
+}
+
+.item-icons .icon-delete:hover:before{
+	color: #C0C0C0;
+	
+}
+.item-icons .icon-details:hover:before{
+	color: #C0C0C0;
+	
+}
+
+.collections-container .icon-save:hover:before {
+	color: #C0C0C0;
+		font-size: 14px;
+
+}
+
+.collections-container .icon-save:before {
+	content: "\e61f";
+		font-size: 14px;
+}
+
+.collections-container .icon-clear{
+	padding: 5px 3px 4px 3px;
+}
+.collections-container .icon-clear:before{
+	content: "\e62e";
+	font-size: 14px;
+}
+
+.collections-container .icon-clear:hover:before{
+	color: #C0C0C0;
+}
+
+
+.collection-dialog{
+	margin-top: 5px;
+	
+	padding: 5px;
+
+	-webkit-transition:0.2s linear all;
+  transition:0.2s linear all;
+  opacity:1;
+  height: 46px;
+}
+
+.collection-dialog.clear{
+	background: rgba(45,57,86,0.4);
+}
+
+.collection-dialog.clear.ng-hide{
+	opacity: 0;
+	height: 0;
+}
+
+.collection-dialog.save.ng-hide{
+	opacity: 0;
+	height: 0;
+}
+
+
+.collection-dialog.save{
+	-webkit-transition:0.2s linear all;
+  transition:0.2s linear all;
+  opacity:1;
+  height: 230px;
+  padding-left: 0;
+
+}
+
+.collection-dialog.save textarea{
+	display: block;
+	margin: 0 0 5px 0;
+	width: 300px;
+	height: 120px;
+}
+
+.collection-dialog.save input[type="text"]{
+	margin: 0 0 5px 0;
+	width: 300px;
+	height: 18px;
+	
+}
+
+
+.collection-dialog p{
+	font-weight: bold;
+	margin: 0;
+	padding: 2px 0 7px 0;
+	font-size: 14px;
+}
+.collection-dialog .button{
+	display: inline-block;
+	width: 50px;
+	height: 20px;
+	background-color: #66718b;
+	margin: 0px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	padding: 0px;
+	font-size: 13px;
+	line-height: 20px;
+	margin-right: 5px;
+
+}
+
+.collection-dialog .button:hover{
+	color: #C0C0C0;
+}
+
+
+

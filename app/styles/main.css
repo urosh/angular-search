@@ -3,7 +3,7 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-top: 10px;
-  background-color: #C0C0C0;
+  background-color: #bdbdbd;
   padding: 30px;
   margin: 0px;
   color: white;
@@ -44,14 +44,19 @@ body {
 
 .container{
   width: 1024px;
+  overflow: auto;
+  overflow-y: hidden;
   margin: auto;
-  border: solid 1px red;
 
 }
 
 .menu-container{
-  width: 100%;
+  width: 1018px;
   height: 70px;
+  /*border: solid 1px #2d3956;*/
+  background-color: #e7e7e7;
+  margin-bottom: 3px;
+  padding: 3px;
 }
 
 .mydropdown{
@@ -79,8 +84,9 @@ body {
 
 .tools-container{
   
-  width: 1020px;
+  width: 1024px;
   overflow: auto;
+  overflow-y: hidden;
   padding: 0;
   
 
