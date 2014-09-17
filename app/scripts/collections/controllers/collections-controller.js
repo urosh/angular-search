@@ -1,6 +1,6 @@
 'use strict';
 
-function CollectionsController($scope, requestNotificationChannel, DataModel, CommonServices){
+function CollectionsController($scope, requestNotificationChannel, DataModel, CommonServices, $timeout){
 	$scope.items = [];
 	
 	
@@ -34,14 +34,13 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 	
 	$scope.clearCollection = function(option){
 		if(option){
-			$scope.dialogActive = false;	
+			closeDialog();
 			if(option === 'ok'){
 				$scope.items = [];
 			}
 		}else{
 			if($scope.items.length){
 				$scope.dialogText = "Are you sure you want to empty the collection?";
-				$scope.dialogClasses = 'my-dialog question';
 				$scope.dialogType = 'question';
 				$scope.dialogActive = true;
 			}	
@@ -49,18 +48,26 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 		
 	};
 
-	$scope.saveCollection = function(option){
+	var closeDialog = function(){
 		$scope.dialogActive = false;
+		$scope.dialogType = 'none';
+		$scope.dialogText="";
+	};
+
+	$scope.saveCollection = function(option){
+		
+		closeDialog();
 		$scope.saveDialog = true;
 		if(option){
 			if(!$scope.collectionTitle){
 				$scope.dialogText = 'Collection title cannot be empty. Please try again';
 				$scope.dialogType = 'notification';
-				$scope.dialogClasses = 'my-dialog notification';
 				$scope.dialogActive = true;
+				$timeout(function(){
+             closeDialog();
+         }, 5000);
 				
 			}
-				
 			
 		}
 	};
@@ -68,4 +75,4 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 
 }
 
-CollectionsController.$inject = ['$scope', 'requestNotificationChannel', 'DataModel', 'CommonServices'];
+CollectionsController.$inject = ['$scope', 'requestNotificationChannel', 'DataModel', 'CommonServices', '$timeout'];

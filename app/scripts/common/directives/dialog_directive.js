@@ -1,6 +1,6 @@
 'use strict';
 
-function DialogDirective(){
+function DialogDirective($timeout){
 	return {
 		restrict: 'E', 
 		templateUrl: 'scripts/common/templates/dialog.tpl.html',
@@ -11,11 +11,10 @@ function DialogDirective(){
 			classes: '='
 		},
 		replace: true,
-		controller: function(){
-
-		},
-		link: function(){
-
+		controller: function($scope){
+			
 		}
 	}
-}
+};
+
+DialogDirective.$inject = ['$timeout'];

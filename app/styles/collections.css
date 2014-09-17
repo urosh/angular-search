@@ -115,10 +115,10 @@
 
 
 .my-dialog{
-	margin-top: 5px;
 	background: rgba(45,57,86,0.4);
+	margin-top: 5px;
 	padding: 5px;
-	}
+}
 
 
 .my-dialog.question{
@@ -128,9 +128,6 @@
 .my-dialog.notification{
 	height: 25px;
 }
-
-
-
 
 .my-dialog p{
 	font-weight: bold;

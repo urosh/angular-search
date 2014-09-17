@@ -20,7 +20,10 @@ function MapController(DataModel, $scope, $filter, display, requestNotificationC
   };
   
   var _this = this;
-
+  
+  _this.setMarkers(_this);	
+  _this.showMarkers(_this);
+  
   requestNotificationChannel.onSearchResultsReady($scope, function(){
   	_this.setMarkers(_this);	
   	_this.showMarkers(_this);
