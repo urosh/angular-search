@@ -26,6 +26,15 @@
 	padding: 0;
 }
 
+.statistics-container span{
+	font-weight: normal;
+
+}
+.statistics-container span .val{
+	font-weight: normal;
+}
+
+
 .statistics-container ul{
 	margin: 0;
 	padding: 2px 0 2px 10px;

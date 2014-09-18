@@ -15,6 +15,9 @@ angular.module('commons')
 angular.module('commons')
 	.service('DataModel', DataModel);
 
+angular.module('commons')
+	.service('searchService', SearchService);
+
 
 
 

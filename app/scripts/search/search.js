@@ -12,8 +12,7 @@ angular.module('mySearchModule')
 
 
 
-angular.module('mySearchModule')
-	.service('searchService', SearchService);
+
 
 angular.module('mySearchModule')
 	.directive('mySearch', SearchDirective);
