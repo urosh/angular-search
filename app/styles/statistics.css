@@ -1,0 +1,44 @@
+.statistics-container{
+	width: 526px;
+	overflow: auto;
+	overflow-y: hidden;
+	float: right;
+	margin: 0 0 3px 0;
+	color: #2d3956;
+	position: relative;
+	background-color: #e7e7e7;
+	padding:3px 6px 3px 6px ;
+
+}
+
+
+.statistics-container h3{
+	padding: 0 0 2px;
+	margin: 0;
+	margin-bottom: 5px;
+	width: 150px;
+
+}
+
+.statistics-container p{
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+}
+
+.statistics-container ul{
+	margin: 0;
+	padding: 2px 0 2px 10px;
+	list-style: none;
+}
+
+.statistics-container ul li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.statistics-container .data-collections-list li{
+	display: inline;
+	margin-right: 5px;
+}

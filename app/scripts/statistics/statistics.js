@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('statistics', []);
+angular.module('myStatistics', []);
 
-angular.module('statistics')
+angular.module('myStatistics')
 	.directive('myStat', StatisticsDirective);

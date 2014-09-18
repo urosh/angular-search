@@ -21,6 +21,7 @@ angular
     'mySearchModule',
     'mapModule',
     'ngTinyScrollbar',
-    'myCollectionsModule'
+    'myCollectionsModule',
+    'myStatistics'
   ]);
   
