@@ -14,26 +14,30 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 	  });
 	};
 
-	$scope.collectionSelected = function(){
+	$scope.collectionSelected = function(e){
 		CommonServices.addItemToArray($scope.selectedCollections, e);
-	}
+	};
 
 	$scope.typeSelected = function(e, i){
 		CommonServices.addItemToArray($scope.selectedTypes, e);
-	}
+	};
 
 	
 
 
-	$scope.search = function(){
+	$scope.search = function(option){
 		// search initialized
 		requestNotificationChannel.searchStarted();
-		
 		var queryData = {
-	    'search' : $scope.query.input,
 	    'types' : $scope.selectedTypes,
 	    'collections' : $scope.selectedCollections 
 		};
+		if(option === 'browse'){
+			queryData.search = '';
+		}else{
+			queryData.search = $scope.query.input
+	    
+		}
 
 		DataModel.setQueryData(queryData);
 		var results = searchService.runSearch();

@@ -22,7 +22,7 @@
            <li ng-repeat="type in types"><label class='checkbox'><input ng-model="tp" ng-change="typeSelected(type.type)" type="checkbox" class="typeClass" value="{{type.type}}"/>{{type.title}}</label></li>
          
         </ul>
-        <a href="#" class="searchButton browse">BROWSE</a>
+        <a href="#" ng-click="search('browse')" class="searchButton browse">BROWSE</a>
     </section>
 
 	</div>

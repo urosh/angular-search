@@ -1,4 +1,6 @@
 [
 	{"id": 1, "name": "map", "template":"scripts/map/template.tpl.html"},
-	{"id": 1, "name": "collections", "template":"scripts/collections/template.tpl.html"}
+	{"id": 2, "name": "collections", "template":"scripts/collections/template.tpl.html"},
+	{"id": 3, "name": "statistics", "template":"scripts/statistics/template.tpl.html"}
+
 ]

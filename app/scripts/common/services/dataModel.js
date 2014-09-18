@@ -34,6 +34,12 @@ function DataModel(CommonServices, $filter, $rootScope, display, requestNotifica
 
 		};
 
+		this.getQueryData = function(){
+			return this.queryData;
+		};
+		
+
+
 		this.setResults = function(res){
 			this.searchResults = res;
 			requestNotificationChannel.searchResultsReady();

@@ -1,6 +1,6 @@
 'use strict';
 
-function CollectionsController($scope, requestNotificationChannel, DataModel, CommonServices, $timeout){
+function CollectionsController($scope, $timeout, requestNotificationChannel, DataModel, CommonServices, collectionsService ){
 	$scope.items = [];
 	
 	
@@ -40,9 +40,8 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 			}
 		}else{
 			if($scope.items.length){
-				$scope.dialogText = "Are you sure you want to empty the collection?";
-				$scope.dialogType = 'question';
-				$scope.dialogActive = true;
+				setDialog('Are you sure you want to empty the collection?', 'question');
+				
 			}	
 		}
 		
@@ -54,19 +53,39 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 		$scope.dialogText="";
 	};
 
+	var setDialog = function(text, type){
+		$scope.dialogText = text;
+		$scope.dialogType = type;
+		$scope.dialogActive = true;
+		if(type === 'notification'){
+			$timeout(function(){
+	      closeDialog();
+	    }, 5000);
+		}
+	};
+
+
 	$scope.saveCollection = function(option){
 		
 		closeDialog();
 		$scope.saveDialog = true;
 		if(option){
 			if(!$scope.collectionTitle){
-				$scope.dialogText = 'Collection title cannot be empty. Please try again';
-				$scope.dialogType = 'notification';
-				$scope.dialogActive = true;
-				$timeout(function(){
-             closeDialog();
-         }, 5000);
+				setDialog('Collection title cannot be empty. Please try again', 'notification')
+			}else if(!$scope.items.length){
+				setDialog('No items selected. Please add objects to collection', 'notification');
+			}
+			else{
+				collectionsService.saveCollection($scope.collectionTitle, $scope.collectionText, $scope.items).then(function(res){
+		    	if(res.data === 'success'){
+		    		setDialog('Collection saved.', 'notification');
+		    	}else{
+		    		setDialog('There was problem saving the collection. Please try again.', 'notification');
+		    	}
+    	
+    		});
 				
+
 			}
 			
 		}
@@ -75,4 +94,4 @@ function CollectionsController($scope, requestNotificationChannel, DataModel, Co
 
 }
 
-CollectionsController.$inject = ['$scope', 'requestNotificationChannel', 'DataModel', 'CommonServices', '$timeout'];
+CollectionsController.$inject = ['$scope',  '$timeout', 'requestNotificationChannel', 'DataModel', 'CommonServices', 'collectionsService'];
