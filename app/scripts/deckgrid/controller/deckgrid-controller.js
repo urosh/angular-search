@@ -7,7 +7,7 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
   $scope.active = false;
   requestNotificationChannel.onDisplayReady($scope, function(){
      $scope.model = display.getDisplayWindow();
-     //$scope.active = false;
+     $scope.active = false;
   });
 
   $scope.toolsShown = false;

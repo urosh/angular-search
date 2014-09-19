@@ -6,7 +6,6 @@ function StatisticsController($scope, searchService){
 	$scope.active = true;
 
 	stat.then(function(res){
-		console.log('we have our data ready');
 		$scope.active = false;
 	})
 

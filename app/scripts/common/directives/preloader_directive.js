@@ -16,7 +16,7 @@ function PreloaderDirective(){
 				$scope.preloaderActive = false;
 			});*/
 		},
-		template: '<div ng-show="active" ><img  src="images/preloader3.gif"/></div>',
+		template: '<div ng-show="active" ><img  src="images/preloader4.gif"/></div>',
 		link: function(scope){
 			
 		}
