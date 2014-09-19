@@ -1,13 +1,15 @@
 .statistics-container{
-	width: 526px;
+	width: 538px;
+	min-height: 250px;
 	overflow: auto;
 	overflow-y: hidden;
 	float: right;
-	margin: 0 0 3px 0;
 	color: #2d3956;
 	position: relative;
 	background-color: #e7e7e7;
-	padding:3px 6px 3px 6px ;
+	margin: 0 0 3px 0;
+	margin: 0 0 3px 0;
+	/*padding:3px 6px 3px 6px ;*/
 
 }
 
@@ -50,4 +52,35 @@
 .statistics-container .data-collections-list li{
 	display: inline;
 	margin-right: 5px;
+}
+
+.stat-preloader{
+	/*width: 34px;
+	height: 34px;
+	position: absolute;
+	top: 42px;
+	left: 253px;
+	*/
+	width: 100%;
+	height: 100%;
+	background-color: #f2f2f2;
+	opacity: 0.3;
+	position: absolute;
+	top: 0;
+}
+
+.stat-preloader img{
+	position: absolute;
+	top: 100px;
+	left: 255px;
+	
+}
+
+
+
+.statistics-content{
+	height: 320px;
+
+	padding:3px 6px 3px 6px ;
+	
 }

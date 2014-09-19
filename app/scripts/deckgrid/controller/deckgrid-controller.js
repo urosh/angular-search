@@ -4,10 +4,10 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
 	$scope.itemAddedToCollection = function(item){
     requestNotificationChannel.itemAddedToCollection(item);
   };
-
+  $scope.active = false;
   requestNotificationChannel.onDisplayReady($scope, function(){
      $scope.model = display.getDisplayWindow();
-
+     //$scope.active = false;
   });
 
   $scope.toolsShown = false;
@@ -17,6 +17,10 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
       $scope.toolsShown = true;
     }
   });
+  requestNotificationChannel.onSearchStarted($scope, function(){
+    $scope.active = true;
+  });
+
 
   requestNotificationChannel.onToolRemoved($scope, function(item){
     if(item === 'collections'){
