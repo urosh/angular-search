@@ -8,8 +8,11 @@
 	position: relative;
 	background-color: #e7e7e7;
 	margin: 0 0 3px 0;
-	margin: 0 0 3px 0;
 	/*padding:3px 6px 3px 6px ;*/
+
+	
+	
+
 
 }
 
@@ -43,10 +46,24 @@
 	list-style: none;
 }
 
+.statistics-container a{
+	font-weight: bold;
+	color: #2d3956;
+}
 .statistics-container ul li{
-	margin: 0;
+	margin: 0 0 1px 0;
 	padding: 0;
 	list-style: none;
+	line-height: 24px;
+}
+.statistics-container li span{
+	padding: 2px;
+	
+}
+.statistics-container  .selected{
+	background: #66718b;
+	opacity: 0.7;
+	color: white;
 }
 
 .statistics-container .data-collections-list li{
@@ -79,8 +96,8 @@
 
 
 .statistics-content{
-	height: 320px;
-
+	min-height: 320px;
 	padding:3px 6px 3px 6px ;
 	
 }
+

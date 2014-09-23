@@ -20,3 +20,5 @@ angular.module('mySearchModule')
 angular.module('mySearchModule')
 	.directive('myPagination', PaginationDirective);
 
+angular.module('mySearchModule')
+	.directive('myFacets', FacetDirective);

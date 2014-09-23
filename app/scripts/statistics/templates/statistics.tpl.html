@@ -2,20 +2,28 @@
 	<preloader active="active" class="stat-preloader"></preloader>
 		<div class="statistics-content" ng-show="!active">
 			<h3>Repository statistics</h3>
-			<p>Number of objects: <span class="val">1222</span></p>
+			<p>Number of objects: <span class="val">{{ stats.numberOfObjects }}</span></p>
 			<p>Object types</p>
 			<ul>
-				<li>Images (1000)</li>
-				<li>3D Pdf (1000)</li>
-				<li>X3D (1000)</li>
-
+				<li ng-repeat="type in stats.types" >
+					<span ng-class="{selected: type.selected}">{{type.type}} (<a href="#">{{type.number}}</a>)</span>	
+				</li>
+				
+				
 			</ul>
 			<p>Data collections</p>
 			<ul class="data-collections-list">
-				<li>Images (1000)</li>
-				<li>3D Pdf (1000)</li>
-				<li>X3D (1000)</li>
+				<li ng-repeat="collection in stats.collections">
+					<span>{{collection.collection}} (<a href="#">{{collection.number}}</a>)</span>
+				</li>	
 			</ul>
+			<p>Personal collections</p>
+			<ul class="data-collections-list">
+				<li ng-repeat="collection in stats.personal">
+					<span>{{collection.name}} (<a href="#">{{collection.number}}</a>)</span>
+				</li>	
+			</ul>
+
 		</div>
 		
 	

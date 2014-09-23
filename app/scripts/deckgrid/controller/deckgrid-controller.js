@@ -18,6 +18,7 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
     }
   });
   requestNotificationChannel.onSearchStarted($scope, function(){
+    $scope.model = [];
     $scope.active = true;
   });
 
