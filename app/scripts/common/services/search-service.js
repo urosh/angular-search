@@ -14,6 +14,7 @@ function SearchService($http, DataModel, display){
       'types[]': params.types
     };
 
+   
     return $http.get('http://public.cyi.ac.cy/starcRepo/map/search', {params: data}).then(function(res){
     	DataModel.setResults(res.data);
       display.addDisplayData(res.data, 'search');

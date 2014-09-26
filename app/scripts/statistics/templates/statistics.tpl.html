@@ -6,7 +6,7 @@
 			<p>Object types</p>
 			<ul>
 				<li ng-repeat="type in stats.types" >
-					<span ng-class="{selected: type.selected}">{{type.type}} (<a href="#">{{type.number}}</a>)</span>	
+					<span ng-class="{selected: type.selected}">{{type.type}} (<a href="#" ng-click="search('types', type.type)">{{type.number}}</a>)</span>	
 				</li>
 				
 				
@@ -14,7 +14,7 @@
 			<p>Data collections</p>
 			<ul class="data-collections-list">
 				<li ng-repeat="collection in stats.collections">
-					<span>{{collection.collection}} (<a href="#">{{collection.number}}</a>)</span>
+					<span>{{collection.collection}} (<a ng-click="search('collections', collection.collection)" href="#">{{collection.number}}</a>)</span>
 				</li>	
 			</ul>
 			<p>Personal collections</p>

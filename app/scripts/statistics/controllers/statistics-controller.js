@@ -1,4 +1,4 @@
-function StatisticsController($scope, searchService){
+function StatisticsController($scope, searchService, DataModel, requestNotificationChannel){
 	var stat = searchService.getStats();
 	$scope.numberOfObject = 0;
 	$scope.collections = [];
@@ -10,8 +10,21 @@ function StatisticsController($scope, searchService){
 		$scope.stats = res.data;	
 		
 	//	$scope.types = [{'type': 'some', 'name': 'nm'}, {'type': 'sm2', 'name': 'nm2'}];
-	})
+	});
+
+	$scope.search = function(type, value){
+		DataModel.setQueryData({
+			'search' : '',
+      'collections': (type === 'collections' ? [value] : []),
+      'types': (type === 'types' ? [value]: [])
+		});
+		requestNotificationChannel.searchStarted();
+		searchService.runSearch();
+
+		
+	};
+
 
 };
 
-StatisticsController.$inject = ['$scope', 'searchService'];
+StatisticsController.$inject = ['$scope', 'searchService', 'DataModel', 'requestNotificationChannel'];
