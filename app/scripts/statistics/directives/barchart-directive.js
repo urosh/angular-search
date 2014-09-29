@@ -12,13 +12,17 @@ function BarchartDirective(d3Service, searchService){
     template: '<div class="barchart-div"></div>',
     controller: BarchartController,
     link: function(scope, element, attrs){
-      d3Service.d3().then(function(d3){
-        var format = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
-        var margin = {top: 10, right: 10, bottom: 50, left: 10},
-          width = 530 - margin.left - margin.right,
-          height = 320 - margin.top - margin.bottom;
+      d3Service.d3()
+        .then(function(_d3_) {
+          var d3 = _d3_;
+          return searchService.getStatTime();
+        })
+        .then(function(res){
+          var format = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
+          var margin = {top: 10, right: 10, bottom: 50, left: 10},
+            width = 530 - margin.left - margin.right,
+            height = 320 - margin.top - margin.bottom;
 
-        searchService.getStatTime().then(function(res){
           var data = res.data;
           data.sort(function(a, b){
             return new Date(a.time) - new Date(b.time);
@@ -52,7 +56,6 @@ function BarchartDirective(d3Service, searchService){
             .domain([0, maxBin])
             .range([height, 0]);
 
-          console.log(element);
 
           var svg = d3.select(element[0]).append("svg")
             .attr("width", width + margin.left + margin.right )
@@ -86,9 +89,6 @@ function BarchartDirective(d3Service, searchService){
             .attr("dx", "-1em")
             .attr("dy", "-.2em")
             .attr("transform", "rotate(-90)" );
-
-        });
-
 
       });
     }
