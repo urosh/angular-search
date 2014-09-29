@@ -34,8 +34,13 @@
     cursor: pointer;
 }
 
+.statistics-content .myicon:hover{
+    background-color: #2d3956;
+	
+}
+
 .statistics-container .myicon:hover:before{
-    color: #C0C0C0;
+    /*color: #C0C0C0;*/
 }
 .statistics-container .icon-graph{
     padding-bottom: 4px;
@@ -51,10 +56,6 @@
     font-size: 14px;
 }
 
-
-.statistics-container {
-
-}
 .statistics-container p{
 	font-weight: bold;
 	margin: 0;
