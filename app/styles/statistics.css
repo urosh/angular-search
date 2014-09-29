@@ -18,13 +18,43 @@
 
 
 .statistics-container h3{
-	padding: 0 0 2px;
-	margin: 0;
-	margin-bottom: 5px;
+    padding: 0 0 2px;
+    margin: 0;
 	width: 150px;
 
 }
+.statistics-container .buttons-div{
+    margin-bottom: 4px;
+}
+.statistics-container .myicon{
+    background-color: #66718b;
+    width: 18px;
+    height: 18px;
+    padding: 5px 3px 4px 4px;
+    cursor: pointer;
+}
 
+.statistics-container .myicon:hover:before{
+    color: #C0C0C0;
+}
+.statistics-container .icon-graph{
+    padding-bottom: 4px;
+    padding-left: 3px;
+}
+.statistics-container  .icon-bar:before {
+    content: "\e618";
+    font-size: 14px;
+}
+
+.statistics-container  .icon-graph:before {
+    content: "\e617";
+    font-size: 14px;
+}
+
+
+.statistics-container {
+
+}
 .statistics-container p{
 	font-weight: bold;
 	margin: 0;
@@ -99,5 +129,30 @@
 	min-height: 320px;
 	padding:3px 6px 3px 6px ;
 	
+}
+.barchart-div .axis{
+    font: 10px sans-serif;
+}
+
+.statistics-content .bar rect {
+    fill: #2d3956;
+    shape-rendering: crispEdges;
+}
+
+.statistics-content .bar text {
+    fill: #fff;
+}
+
+.statistics-content .axis path, .axis line {
+    fill: none;
+    stroke: #2d3956;
+    shape-rendering: crispEdges;
+}
+.statistics-content rect{
+    cursor: pointer;
+}
+.statistics-content rect:hover{
+
+    fill: #66718b;
 }
 

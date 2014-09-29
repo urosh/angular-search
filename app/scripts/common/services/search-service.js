@@ -24,5 +24,9 @@ function SearchService($http, DataModel, display){
 
   this.getStats = function(){
     return $http.get('http://public.cyi.ac.cy/starcRepo/map/stats');
-  }
+  };
+
+  this.getStatTime = function(){
+    return $http.get('http://public.cyi.ac.cy/starcRepo/map/time');
+  };
 }

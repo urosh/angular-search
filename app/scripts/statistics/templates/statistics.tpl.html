@@ -2,6 +2,12 @@
 	<preloader active="active" class="stat-preloader"></preloader>
 		<div class="statistics-content" ng-show="!active">
 			<h3>Repository statistics</h3>
+      <div class="buttons-div">
+        <span  title="Repository history" class="myicon icon-bar"></span>
+        <span  title="Repository history" class="myicon icon-graph"></span>
+
+      </div>
+      <my-barchart></my-barchart>
 			<p>Number of objects: <span class="val">{{ stats.numberOfObjects }}</span></p>
 			<p>Object types</p>
 			<ul>

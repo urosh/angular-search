@@ -4,3 +4,6 @@ angular.module('myStatistics', []);
 
 angular.module('myStatistics')
 	.directive('myStat', StatisticsDirective);
+
+angular.module('myStatistics')
+  .directive('myBarchart', BarchartDirective);

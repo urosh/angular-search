@@ -22,6 +22,8 @@ angular
     'mapModule',
     'ngTinyScrollbar',
     'myCollectionsModule',
+    'd3',
     'myStatistics'
+
   ]);
   
