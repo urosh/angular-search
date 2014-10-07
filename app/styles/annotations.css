@@ -1,0 +1,180 @@
+.annotation-container{
+	width: 526px;
+	overflow: auto;
+	overflow-y: hidden;
+	display: inline-block;
+	float: right;
+	margin: 0 0 3px 0;
+	color: #2d3956;
+	min-height: 450px;
+	background-color: #e7e7e7;
+	padding:3px 6px 3px 6px ;
+
+	
+
+
+
+}
+
+.annotation-container h3{
+	padding: 0 0 4px;
+  margin: 0;
+	width: 150px;
+}
+
+
+.image-container{
+	position: relative;
+	height: 400px;
+	width: 400px;
+}
+
+
+.annotation-container .img-mask{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	clip: rect(20px, 140px, 60px, 20px);
+	
+	 -moz-user-select: none;
+  -webkit-user-select: none;
+  /* this will work for QtWebKit in future */
+  -webkit-user-drag: none;
+
+	cursor: move; 
+}
+
+.annotation-container .mask-div{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 120px;
+	height: 40px;
+	outline: dotted 1px grey;
+	
+	
+}
+.annotation-container .img-original{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.4;
+	pointer-events: none;
+	-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+-webkit-tap-highlight-color:transparent;
+
+}
+
+.annotation-container .handler{
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	background-color: black;
+	cursor: pointer;
+}
+
+.annotation-container .handler.top-left{
+	top: -8px;
+	left: -8px;
+
+}
+
+.annotation-container .handler.top-right{
+	top: -8px;
+	right: -8px;
+}
+
+.annotation-container .handler.bottom-left{
+	bottom: -8px;
+	left: -8px;
+
+}
+
+.annotation-container .handler.bottom-right{
+	right: -8px;
+	bottom: -8px;
+}
+
+.annotation-form{
+	margin-bottom: 5px;
+}
+
+.annotation-form textarea{
+	display: block;
+	margin: 0 0 5px 0;
+	width: 350px;
+	height: 120px;
+}
+
+.annotation-form input[type="text"]{
+	margin: 0 0 5px 0;
+	width: 350px;
+	height: 18px;
+	
+}
+
+
+.annotation-form p{
+	font-weight: bold;
+	margin: 0;
+	padding: 2px 0 7px 0;
+	font-size: 14px;
+}
+.annotation-form .button{
+	display: inline-block;
+	width: 50px;
+	height: 20px;
+	background-color: #66718b;
+	margin: 0px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	padding: 0px;
+	font-size: 13px;
+	line-height: 20px;
+	margin-right: 5px;
+
+}
+
+.annotation-menu{
+    margin-bottom: 5px;
+}
+.annotation-menu .my-icon{
+    background-color: #66718b;
+    width: 18px;
+    height: 18px;
+    padding: 5px 3px 4px 4px;
+    cursor: pointer;
+}
+
+.annotation-menu .my-icon:hover{
+    background-color: #2d3956;
+}
+
+.annotation-menu span:before{
+    font-size: 14px;
+}
+.annotation-menu .icon-list{
+    padding-left: 3px;
+}
+.annotation-menu .icon-list:before{
+    content: "\e630";
+}
+.annotation-menu .icon-annotate:before{
+    content: "\e600";
+}
+
+.annotation-menu .my-icon.active{
+    background-color: #2d3956;
+}
+
+
+
+
+
+

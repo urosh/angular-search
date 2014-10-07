@@ -23,7 +23,8 @@ angular
     'ngTinyScrollbar',
     'myCollectionsModule',
     'd3',
-    'myStatistics'
+    'myStatistics',
+    'annotationsModule'
 
   ]);
   

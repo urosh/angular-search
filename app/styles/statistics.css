@@ -36,9 +36,16 @@
 
 .statistics-content .myicon:hover{
     background-color: #2d3956;
+
+}
+.statistics-container .myicon.active{
+  background-color: #2d3956;
 	
 }
-
+.statistics-container .icon-stats:before{
+	content: "\e630";
+	font-size: 14px;
+}
 .statistics-container .myicon:hover:before{
     /*color: #C0C0C0;*/
 }
@@ -46,6 +53,11 @@
     padding-bottom: 4px;
     padding-left: 3px;
 }
+.statistics-container .icon-bar{
+	padding-right: 2px; 
+}
+
+
 .statistics-container  .icon-bar:before {
     content: "\e618";
     font-size: 14px;
@@ -125,7 +137,10 @@
 }
 
 
-
+.barchart-div .title{
+	font-weight: normal;
+	margin-bottom: 10px;
+}
 .statistics-content{
 	min-height: 320px;
 	padding:3px 6px 3px 6px ;
@@ -156,4 +171,6 @@
 
     fill: #66718b;
 }
+
+
 

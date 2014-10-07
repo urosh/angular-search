@@ -3,32 +3,37 @@
 		<div class="statistics-content" ng-show="!active">
 			<h3>Repository statistics</h3>
       <div class="buttons-div">
-        <span  title="Repository history" class="myicon icon-bar"></span>
-        <span  title="Repository history" class="myicon icon-graph"></span>
+        <span title="Repository stats" ng-click="setContent('stat');" ng-class="(statActive) ? 'myicon icon-stats active' : 'myicon icon-stats'" ></span>
+        <span  title="Repository history" ng-click="setContent('barchart');" ng-class="(barchartActive) ? 'myicon icon-bar active' : 'myicon icon-bar'"></span>
+        <span  title="Repository history" ng-click="setContent('graph');" ng-class="(graphActive) ? 'myicon icon-graph active' : 'myicon icon-graph'"></span>
 
       </div>
-      <my-barchart></my-barchart>
-			<p>Number of objects: <span class="val">{{ stats.numberOfObjects }}</span></p>
-			<p>Object types</p>
-			<ul>
-				<li ng-repeat="type in stats.types" >
-					<span ng-class="{selected: type.selected}">{{type.type}} (<a href="#" ng-click="search('types', type.type)">{{type.number}}</a>)</span>	
-				</li>
-				
-				
-			</ul>
-			<p>Data collections</p>
-			<ul class="data-collections-list">
-				<li ng-repeat="collection in stats.collections">
-					<span>{{collection.collection}} (<a ng-click="search('collections', collection.collection)" href="#">{{collection.number}}</a>)</span>
-				</li>	
-			</ul>
-			<p>Personal collections</p>
-			<ul class="data-collections-list">
-				<li ng-repeat="collection in stats.personal">
-					<span>{{collection.name}} (<a href="#">{{collection.number}}</a>)</span>
-				</li>	
-			</ul>
+      <my-barchart ng-show="barchartActive" title="Number of uploaded objects per time interval"></my-barchart>
+			
+			<div ng-show="statActive">
+				<p>Number of objects: <span class="val">{{ stats.numberOfObjects }}</span></p>
+				<p>Object types</p>
+				<ul>
+					<li ng-repeat="type in stats.types" >
+						<span ng-class="{selected: type.selected}">{{type.type}} (<a href="#" ng-click="search('types', type.type)">{{type.number}}</a>)</span>	
+					</li>
+					
+					
+				</ul>
+				<p>Data collections</p>
+				<ul class="data-collections-list">
+					<li ng-repeat="collection in stats.collections">
+						<span>{{collection.collection}} (<a ng-click="search('collections', collection.collection)" href="#">{{collection.number}}</a>)</span>
+					</li>	
+				</ul>
+				<p>Personal collections</p>
+				<ul class="data-collections-list">
+					<li ng-repeat="collection in stats.personal">
+						<span>{{collection.name}} (<a href="#">{{collection.number}}</a>)</span>
+					</li>	
+				</ul>
+			</div>
+			
 
 		</div>
 		

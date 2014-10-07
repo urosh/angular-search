@@ -9,6 +9,8 @@ function RequestFactory($rootScope){
   var _TOOL_ADDED_ = '_TOOL_ADDED_';
   var _TOOL_REMOVED_ = '_TOOL_REMOVED_';
   var _ITEM_ADDED_TO_COLLECTION = '_ITEM_ADDED_TO_COLLECTION';
+  var _ITEM_ANNOTATE_ = '_ITEM_ANNOTATE_';
+
   
   var searchStarted = function(){
   	$rootScope.$broadcast(_SEARCH_START_);
@@ -90,6 +92,17 @@ function RequestFactory($rootScope){
 		})
 	};
 
+	var itemAnnotate = function(item){
+		$rootScope.$broadcast(_ITEM_ANNOTATE_, {id: item});
+	}
+
+	var onItemAnnotate = function($scope, handler){
+		$scope.$on(_ITEM_ANNOTATE_, function(event, args){
+			handler(args.id);
+		})
+	};
+
+
 	
 
 
@@ -113,7 +126,9 @@ function RequestFactory($rootScope){
 		toolRemoved: toolRemoved,
 		onToolRemoved: onToolRemoved,
 		itemAddedToCollection: itemAddedToCollection,
-		onItemAddedToCollection: onItemAddedToCollection
+		onItemAddedToCollection: onItemAddedToCollection,
+		itemAnnotate: itemAnnotate,
+		onItemAnnotate: onItemAnnotate
 	}
 };
 

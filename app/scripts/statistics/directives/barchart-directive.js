@@ -7,9 +7,11 @@ function BarchartDirective(d3Service, searchService){
 
   return {
     restrict: 'E',
-    scope: {},
+    scope: {
+      title: '@'
+    },
     replace: true,
-    template: '<div class="barchart-div"></div>',
+    template: '<div class="barchart-div"><p class="title">{{ title }}</p></div>',
     controller: BarchartController,
     link: function(scope, element, attrs){
       d3Service.d3()

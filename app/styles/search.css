@@ -221,20 +221,31 @@ input[type="search"] {
 	/*width: 14px;
 	height: 14px;*/
 	background-color: #fff;
+	margin-left: 2px;
 }
 .tools-icons span:hover{
 	background-color: #ddd;
 }
 
-.icon-add:hover:before {
+.a-card .icon-add:hover:before {
 	color: #2d3956;
 		font-size: 10px;
 
 }
 
-.icon-add:before {
+.a-card .icon-add:before {
 	content: "\e63b";
 		font-size: 10px;
+}
+
+.a-card .icon-annotate:hover:before{
+	color: #2d3956;
+		font-size: 10px;
+}
+.a-card .icon-annotate:before{
+	content: "\e600";
+	font-size: 10px;
+
 }
 
 
