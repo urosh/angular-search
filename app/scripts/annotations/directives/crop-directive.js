@@ -56,7 +56,7 @@ CropDirective = function($document){
 
       var container = angular.element(elm.children()[0]);
       container.css({
-        height: imageH + 10 + 'px'
+        height: imageH + 5 + 'px'
       });
       maskElement.css({
         top: initTop + 'px',

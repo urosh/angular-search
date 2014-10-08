@@ -23,6 +23,19 @@ AnnotationsController = function($scope, requestNotificationChannel, CommonServi
       $scope.imageh = parseInt ( 350  * parseInt(res.data.imageHeight) / parseInt(res.data.imageWidth) );
       $scope.objectLoaded = true;
       annotationData.docID = id;
+      var list = res.data.annotations;
+      _.each(list, function(item){
+        item.width = parseInt(item.coordinates.width);
+        item.height = parseInt(item.coordinates.height);
+        item.top = parseInt(item.coordinates.top);
+        item.left = parseInt(item.coordinates.left);
+        item.center = {
+          top: item.top + item.height / 2 - 4,
+          left: item.left + item.width / 2 -4
+        }
+      });
+
+      $scope.annotationsList = list;
     });
   });
 

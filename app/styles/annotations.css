@@ -23,7 +23,7 @@
 }
 
 
-.image-container{
+.annotation-container .image-container{
 	position: relative;
 	height: 400px;
 	width: 400px;
@@ -171,6 +171,41 @@ user-select: none;
 
 .annotation-menu .my-icon.active{
     background-color: #2d3956;
+}
+.annotations-list-container {
+    position: relative;
+}
+
+.annotations-list-container .annotation-marker{
+    border: dotted 2px #2d3956;
+    position: absolute;
+
+}
+
+.annotations-list-container img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.annotations-list-container span{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: orange;
+    border-radius: 6px;
+    border: solid 2px firebrick;
+    cursor: pointer;
+    z-index: 10000;
+}
+.annotation-list-description{
+    min-height: 200px;
+}
+
+.annotation-list-description p{
+    font-weight: bold;
+    margin: 0;
+    padding: 2px 0 0 0;
+    font-size: 14px;
 }
 
 
