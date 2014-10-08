@@ -6,7 +6,7 @@
     <span ng-class="(annotateMode) ? 'my-icon icon-annotate active' : 'my-icon icon-annotate'" title="Annotate object" ng-click="annotateMode = true;"></span>
     <span ng-class="(!annotateMode) ? 'my-icon icon-list active' : 'my-icon icon-list'" title="Show available annotations" ng-click="annotateMode = false;"></span>
   </div>
-	<my-crop ng-show="annotateMode"></my-crop>
+	<my-crop imsource="imageSource" imageh="imageh" ng-show="annotateMode"></my-crop>
   <my-list-annotations ng-show="!annotateMode"></my-list-annotations>
 	<div ng-show="objectLoaded" class="annotation-form">
 		<my-dialog ng-show="dialogActive"  type="dialogType" text="dialogText" ></my-dialog>		

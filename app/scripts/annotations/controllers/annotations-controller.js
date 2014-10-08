@@ -1,26 +1,40 @@
 /**
  * Created by urosdamnjanovic on 10/7/14.
  */
-AnnotationsController = function($scope){
-  this.removeNotification = function(docID){
-    $scope.objectLoaded = true;
-  };
-  $scope.annotateMode = true;
-  var annotation = {
+AnnotationsController = function($scope, requestNotificationChannel, CommonServices, annotationsService, $timeout){
+  var annotationData = {
     top: '',
     left: '',
     w: '',
     h: '',
     title: '',
-    description: ''
+    description: '',
+    docID: ''
   };
 
-  this.setArea = function(top, left, w, h, docID){
-    annotation.top = top;
-    annotation.left = left;
-    annotation.w = w;
-    annotation.h = h;
-    annotation.docID = docID;
+  $scope.annotation = {};
+
+  $scope.annotateMode = true;
+
+
+  requestNotificationChannel.onItemAnnotate($scope, function(id){
+    var object = CommonServices.getItem(id).then(function(res){
+      $scope.imageSource = res.data.imageLocation;
+      $scope.imageh = parseInt ( 350  * parseInt(res.data.imageHeight) / parseInt(res.data.imageWidth) );
+      $scope.objectLoaded = true;
+      annotationData.docID = id;
+    });
+  });
+
+
+
+
+  this.setArea = function(top, left, w, h){
+    annotationData.top = top;
+    annotationData.left = left;
+    annotationData.w = w;
+    annotationData.h = h;
+
   };
 
 
@@ -30,7 +44,6 @@ AnnotationsController = function($scope){
     $scope.dialogType = 'none';
     $scope.dialogText="";
   };
-  $scope.annotation = {};
 
   var setDialog = function(text, type){
     $scope.dialogText = text;
@@ -45,15 +58,14 @@ AnnotationsController = function($scope){
   };
 
   $scope.saveAnnotation = function() {
-    console.log(annotation);
     if(!$scope.annotation.title){
       setDialog('Please add annotation title and try again.', 'notification');
     }else{
-      annotation.title = $scope.annotation.title;
+      annotationData.title = $scope.annotation.title;
       if($scope.annotation.text){
-        annotation.description = $scope.annotation.text;
+        annotationData.description = $scope.annotation.text;
       }
-      annotationsService.saveAnnotation(annotation).then(function(res){
+      annotationsService.saveAnnotation(annotationData).then(function(res){
         if(res.data === 'success'){
           setDialog('Annotation saved.', 'notification');
           $scope.annotation.title = '';
@@ -70,4 +82,4 @@ AnnotationsController = function($scope){
 
 }
 
-AnnotationsController.$inject = ['$scope'];
+AnnotationsController.$inject = ['$scope', 'requestNotificationChannel', 'CommonServices', 'annotationsService', '$timeout'];

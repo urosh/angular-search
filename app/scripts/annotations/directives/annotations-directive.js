@@ -1,4 +1,4 @@
-AnnotationsDirective = function($timeout, annotationsService){
+AnnotationsDirective = function(){
 	"use strict";
 
 	return {
@@ -12,5 +12,3 @@ AnnotationsDirective = function($timeout, annotationsService){
 	};
 
 };
-
-AnnotationsDirective.$inject = ["$timeout", "annotationsService"];

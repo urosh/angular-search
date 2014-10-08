@@ -11,17 +11,20 @@ CropDirective = function($document){
 	var span_bl = angular.element("<span ng-mousedown='mouseDownHandler($event, \"bl\")' class='handler bottom-left'></span>");
 	var span_br = angular.element("<span ng-mousedown='mouseDownHandler($event, \"br\")' class='handler bottom-right'></span>");
 	
-	var maskElement = angular.element('<div ng-show="imageAdded" class="mask-div"></div>');
+	var maskElement = angular.element('<div ng-show="objectAdded" class="mask-div"></div>');
 
 
   link = function (scope, elm, attrs, myAnnotationCtrl) {
     scope.imageSource = "";
+    scope.objectAdded = false;
+
     var startX, startY, initialMouseX, initialMouseY,
       w, h, initialW, initialH, dx,
-      dy, top, left, source;
+      dy, top, left, source, imageW, imageH;
 
-    initialW = 120;
-    initialH = 40;
+
+
+
 
 
     scope.mouseDownHandler = function ($event, _source_) {
@@ -38,19 +41,23 @@ CropDirective = function($document){
 
     };
 
-    scope.initializeMask = function () {
+
+    var initializeMask = function () {
+
       initialW = 120;
       initialH = 40;
-      myAnnotationCtrl.removeNotification();
-      var initTop = parseInt(scope.imageH / 2 - initialH / 2);
+      imageW = 350;
 
-      var initLeft = parseInt(scope.imageW / 2 - initialW / 2);
+      imageH = scope.imageH;
+      scope.objectAdded = true;
+      var initTop = parseInt(imageH / 2 - initialH / 2);
+
+      var initLeft = parseInt(imageW / 2 - initialW / 2);
 
       var container = angular.element(elm.children()[0]);
       container.css({
-        height: scope.imageH + 20 + 'px'
+        height: imageH + 10 + 'px'
       });
-
       maskElement.css({
         top: initTop + 'px',
         left: initLeft + 'px',
@@ -65,8 +72,15 @@ CropDirective = function($document){
         clip: clip
       });
 
-      myAnnotationCtrl.setArea(initTop, initLeft, initialW, initialH, scope.docID);
+      myAnnotationCtrl.setArea(initTop, initLeft, initialW, initialH);
     };
+
+    scope.$watch('imageSource', function(){
+      if(scope.imageSource) {
+        initializeMask();
+      }
+    });
+
 
     function mousemove($event) {
       var coef = [];
@@ -101,14 +115,14 @@ CropDirective = function($document){
         top = 0;
       }
 
-      if (left + initialW + coef[2] * dx < scope.imageW) {
+      if (left + initialW + coef[2] * dx < imageW) {
         w = initialW + coef[2] * dx;
       }
-      if (top + initialH + coef[3] * dy < scope.imageH) {
+      if (top + initialH + coef[3] * dy < imageH) {
         h = initialH + coef[3] * dy;
       }
 
-      if ((left + w) < scope.imageW && (top + h) < scope.imageH && w > 5 && h > 5) {
+      if ((left + w) < imageW && (top + h) < imageH && w > 5 && h > 5) {
         maskElement.css({
           top: top + 'px',
           left: left + 'px',
@@ -143,8 +157,10 @@ CropDirective = function($document){
 		
 		require: '^myAnnotation',
 		template: '<div class="image-container"><img width="350" class="img-original" ng-src="{{ imageSource }}"></div>',
-		controller: CropController, 
-
+		scope:{
+      imageSource: '=imsource',
+      imageH: '=imageh'
+    },
 		compile: function(tElem){
 			
 			maskElement.append(span_tl);
