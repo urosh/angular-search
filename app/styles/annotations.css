@@ -172,12 +172,12 @@ user-select: none;
 .annotation-menu .my-icon.active{
     background-color: #2d3956;
 }
-.annotations-list-container {
+.annotations-list-container div:first-child {
     position: relative;
 }
 
 .annotations-list-container .annotation-marker{
-    border: dotted 2px #2d3956;
+    border: dotted 2px orange;
     position: absolute;
 
 }
@@ -196,9 +196,6 @@ user-select: none;
     border: solid 2px firebrick;
     cursor: pointer;
     z-index: 10000;
-}
-.annotation-list-description{
-    min-height: 200px;
 }
 
 .annotation-list-description p{

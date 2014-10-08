@@ -17,8 +17,8 @@ ListannotationDirective = function(){
     link: function(scope, element, attrs){
       scope.$watch('imageSource', function(){
         if(scope.imageSource){
-          //var dEl = angular.element(element.children()[2]);
-          //dEl.css({top: (scope.imageH + 5) + 'px'});
+          var dEl = angular.element(element.children()[0]);
+          dEl.css({height: (scope.imageH + 5) + 'px'});
           scope.annotationSelected = false;
         }
 
@@ -26,14 +26,14 @@ ListannotationDirective = function(){
 
       scope.selectAnnotation = function(item){
         scope.annotationSelected = true;
-        var mEl = angular.element(element.children()[1]);
+        var mEl = angular.element(angular.element(element.children()[0]).children()[2]);
         mEl.css({
           width: item.coordinates.width + 'px',
           height: item.coordinates.height + 'px',
           top: item.coordinates.top + 'px',
           left: item.coordinates.left + 'px'
         });
-        console.log(item);
+
         scope.title = item.title;
         scope.description = item.description;
 
