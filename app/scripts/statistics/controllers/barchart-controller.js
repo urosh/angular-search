@@ -4,7 +4,13 @@
 
 
 
-function BarchartController(){
+function BarchartController($scope, searchService){
+  var data = [];
 
+  searchService.getStatTime().then(function(res){
+    $scope.data = res.data;
+  });
 }
+
+BarchartController.$inject = ['$scope', 'searchService'];
 

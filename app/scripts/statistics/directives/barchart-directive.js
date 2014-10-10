@@ -8,91 +8,127 @@ function BarchartDirective(d3Service, searchService){
   return {
     restrict: 'E',
     scope: {
-      title: '@'
+      bartitle: '@'
     },
     replace: true,
     template: '<div class="barchart-div"><p class="title">{{ title }}</p></div>',
     controller: BarchartController,
     link: function(scope, element, attrs){
       d3Service.d3()
-        .then(function(_d3_) {
-          var d3 = _d3_;
-          return searchService.getStatTime();
-        })
-        .then(function(res){
-          var format = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
-          var margin = {top: 10, right: 10, bottom: 50, left: 10},
-            width = 530 - margin.left - margin.right,
-            height = 320 - margin.top - margin.bottom;
+        .then(function(d3) {
 
-          var data = res.data;
-          data.sort(function(a, b){
-            return new Date(a.time) - new Date(b.time);
-          });
+          //return
+          scope.$watch('data', function(data, oldData){
+            if(data){
+              var format = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 
+              var margin = {top: 10, right: 10, bottom: 50, left: 10},
+                width = 530 - margin.left - margin.right,
+                height = 320 - margin.top - margin.bottom;
 
-          var x = d3.time.scale()
-            .domain([new Date('2012 11 1'), new Date()])
-            .range([0, width]);
+              data.sort(function(a, b){
+                return new Date(a.time) - new Date(b.time);
+              });
 
-          var months = d3.time.months(new Date('2012 11 1'), new Date());
+              var x = d3.time.scale()
+                .domain([new Date('2012 11 1'), d3.time.month.offset(new Date(), 1)])
+                .range([0, width]);
 
-          var xAxis = d3.svg.axis()
-            .scale(x)
-            .tickFormat(d3.time.format("%Y-%m"))
-            .tickSize(2,0)
-            .tickValues(months)
-            .orient("bottom");
+              var months = d3.time.months(new Date('2012 11 1'), d3.time.month.offset(new Date(), 1));
 
-          var histogram = d3.layout.histogram()
-            .bins(22)
-            .value(function(d) {return format(d.time) })
-          (data);
+              var histogramBins = [];
+              var currentDate;
+              for (var i = 0; i < months.length-1; i++) {
+                histogramBins[i] = 0;
+                for (var j = 0; j < data.length; j++) {
+                  currentDate = new Date(data[j].time);
 
+                  if( currentDate < months[i+1] && currentDate > months[i]){
+                    histogramBins[i]++;
+                  }
 
-          var maxBin = d3.max(histogram, function(d){
-            return d.y;
-          });
+                }
 
-          var y = d3.scale.linear()
-            .domain([0, maxBin])
-            .range([height, 0]);
+              }
 
-
-          var svg = d3.select(element[0]).append("svg")
-            .attr("width", width + margin.left + margin.right )
-            .attr("height", height + margin.top + margin.bottom)
+              var xAxis = d3.svg.axis()
+                .scale(x)
+                .tickFormat(d3.time.format("%Y-%m"))
+                .tickSize(2,0)
+                .tickValues(months)
+                .orient("bottom");
 
 
 
-          var bar = svg.selectAll(".bar")
-            .data(histogram)
-            .enter().append("g")
-            .attr("class", "bar")
-            .attr("transform", function(d) { return "translate(" + (x(d.x) - 2) + "," + y(d.y) + ")"; });
 
-          bar.append("rect")
-            .attr("x", 1)
-            .attr("width", function(d){
-              var w =   x(histogram[1].x) - x(histogram[0].x) -1 ;
-              return w;
-            })
-            .attr("height", function(d) {
-              var h = height - y(d.y);
-              return h;
-            });
+              var maxBin = d3.max(histogramBins, function(d){
+                return d;
+              });
 
-          svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(5," + (height) + ")")
-            .call(xAxis)
-            .selectAll("text")
-            .style("text-anchor", "end")
-            .attr("dx", "-1em")
-            .attr("dy", "-.2em")
-            .attr("transform", "rotate(-90)" );
+              var y = d3.scale.linear()
+                .domain([0, maxBin])
+                .range([height, 0]);
 
-      });
+
+              var svg = d3.select(element[0]).append("svg")
+                .attr("width", width + margin.left + margin.right )
+                .attr("height", height + margin.top + margin.bottom)
+
+
+
+              var bar = svg.selectAll(".bar")
+                .data(histogramBins)
+                .enter().append("g")
+                .attr("class", "bar")
+                .attr("transform", function(d, i){
+                  return "translate(" + (x(months[i]) + 5)  + "," + y(d) + ")";
+                });
+
+              bar.append("rect")
+                .attr("x", 1)
+                .attr("width", function(d, i){
+                  return  x(months[i+1]) - x(months[i]) -2;
+                })
+                .attr("height", function(d) {
+                  return height - y(d);
+                });
+
+
+              bar.append("text")
+                .text(function(d) {
+                  if(d < 35){ return '';}
+                  else{
+                    return d;
+                  }
+                })
+                .attr("x", function(d, i) {
+                  //return 4;
+                  return ( x(months[i+1]) - x(months[i]) ) / 2;
+                })
+                .attr("y", function(d) {
+                  return 12;
+                  //return height - y(d.y) + 15;
+                })
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "9px")
+                .attr("fill", "white")
+                .attr("text-anchor", "middle");
+
+              svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(5," + (height) + ")")
+                .call(xAxis)
+                .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-1em")
+                .attr("dy", "-.2em")
+                .attr("transform", "rotate(-90)" );
+            }
+
+
+          })
+        });
+
     }
   };
 }
