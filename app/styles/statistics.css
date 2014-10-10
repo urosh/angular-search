@@ -172,5 +172,9 @@
     fill: #66718b;
 }
 
+.statistics-container rect.active{
+    fill: #66718b;
+}
+
 
 

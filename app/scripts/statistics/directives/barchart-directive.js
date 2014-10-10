@@ -11,7 +11,7 @@ function BarchartDirective(d3Service, searchService){
       bartitle: '@'
     },
     replace: true,
-    template: '<div class="barchart-div"><p class="title">{{ title }}</p></div>',
+    template: '<div class="barchart-div"><p class="title">{{ bartitle }}</p></div>',
     controller: BarchartController,
     link: function(scope, element, attrs){
       d3Service.d3()
@@ -91,7 +91,19 @@ function BarchartDirective(d3Service, searchService){
                 })
                 .attr("height", function(d) {
                   return height - y(d);
-                });
+                })
+                .on("click", function(e){
+                  var selected = d3.select(this).classed("active");
+
+                  d3.selectAll('rect').classed("active", false);
+
+                  if(!selected) {
+                    d3.select(this).classed("active", true);
+                  }else{
+                    d3.select(this).classed("active", false);
+                  }
+
+                })
 
 
               bar.append("text")
