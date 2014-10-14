@@ -7,3 +7,5 @@ angular.module('myStatistics')
 
 angular.module('myStatistics')
   .directive('myBarchart', BarchartDirective);
+
+

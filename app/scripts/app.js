@@ -24,7 +24,8 @@ angular
     'myCollectionsModule',
     'd3',
     'myStatistics',
-    'annotationsModule'
+    'annotationsModule',
+    'visualizationModule'
 
   ]);
   

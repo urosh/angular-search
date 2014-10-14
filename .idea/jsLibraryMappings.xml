@@ -2,6 +2,7 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{starc-search node_modules}" />
+    <file url="file://$PROJECT_DIR$/app/scripts/visualizations/directives/time-bar.js" libraries="{angular}" />
     <file url="PROJECT" libraries="{angularjs-DefinitelyTyped, d3-DefinitelyTyped}" />
     <includedPredefinedLibrary name="WebGL" />
   </component>

@@ -95,12 +95,12 @@ function BarchartDirective(d3Service, searchService){
                 .on("click", function(e){
                   var selected = d3.select(this).classed("active");
 
-                  d3.selectAll('rect').classed("active", false);
+                  //d3.selectAll('rect').classed("active", false);
 
                   if(!selected) {
-                    d3.select(this).classed("active", true);
+                    //d3.select(this).classed("active", true);
                   }else{
-                    d3.select(this).classed("active", false);
+                    //d3.select(this).classed("active", false);
                   }
 
                 })

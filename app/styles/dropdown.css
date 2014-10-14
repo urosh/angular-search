@@ -39,6 +39,12 @@
 
     /* Styles */
     background: #66718b ;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
 
     box-shadow: 0 1px 0 rgba(0,0,0,0.2);
     cursor: pointer;
