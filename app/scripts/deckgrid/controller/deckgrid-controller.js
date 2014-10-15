@@ -16,8 +16,11 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
 
   $scope.active = false;
   requestNotificationChannel.onDisplayReady($scope, function(){
-     $scope.model = display.getDisplayWindow();
-     $scope.active = false;
+
+    //console.log(display.getDisplayWindow());
+
+    $scope.model = display.getDisplayWindow();
+    $scope.active = false;
   });
 
   $scope.tools = [];
@@ -73,7 +76,6 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
     }
   });
 
-  	
 }
 
 DeckgridController.$inject = ['$scope', '$filter', 'requestNotificationChannel', 'DataModel', 'display'];

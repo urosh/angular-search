@@ -10,7 +10,9 @@ function DisplayFactory($rootScope, requestNotificationChannel){
 
 
 		Display.setDisplay = function(currentPage, perPage){
-			if (currentPage){
+      //console.log('how many times?');
+
+      if (currentPage){
 				Display.currentPage = currentPage;
 			}
 			if(perPage){
@@ -20,7 +22,8 @@ function DisplayFactory($rootScope, requestNotificationChannel){
 				Display.window = Display.filterItems(Display.currentPage, Display.itemsPerPage);
 				Display.numberOfItems = Display.sources[Display.sources.length-1].length;
 				//$rootScope.$broadcast('displayTaken', Display.history[Display.history.length-1]);	
-				requestNotificationChannel.displayReady(Display.history[Display.history.length-1]);			
+				requestNotificationChannel.displayReady(Display.history[Display.history.length-1]);
+        //console.log('and we are here?');
 			}
 
 
@@ -50,7 +53,7 @@ function DisplayFactory($rootScope, requestNotificationChannel){
 				Display.history[1] = source;
 				Display.sources[1] = items;
 			}
-			Display.displaySourceChange(source);
+      //Display.displaySourceChange(source);
 			Display.setDisplay();
 		};
 

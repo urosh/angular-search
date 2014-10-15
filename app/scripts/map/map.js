@@ -96,8 +96,7 @@ MapController.prototype.showMarkers = function(_this){
 		      })
 		      marker.icon = 'images/green.png';
 		      marker.clicked = true;
-		      
-					_this.display.addDisplayData(_this.$filter('filter')(_this.DataModel.searchResults, function(item){
+		      _this.display.addDisplayData(_this.$filter('filter')(_this.DataModel.searchResults, function(item){
 		        
 		        if(item.lat == marker.latitude && item.lng == marker.longitude){
 

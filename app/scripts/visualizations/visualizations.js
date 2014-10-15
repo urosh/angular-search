@@ -8,22 +8,24 @@ angular.module('visualizationModule', []);
 angular.module('visualizationModule')
   .controller('VisController', ['$scope', 'visService', function($scope, visService){
 
-    this.resActive = false;
+    this.resultsActive = false;
 
     this.visList = visService.getVisList();
 
     this.selectTool = function(index){
       visService.visSelected(index);
       this.visList = visService.getVisList();
-      console.log(this.visList);
+
     };
+
+
 
 
 
   }]);
 
 angular.module('visualizationModule')
-  .service('visService', function(){
+  .service('visService', ['DataModel', function(DataModel){
     var visList = [
       {'name' : 'upload distribution', 'visible': false},
       {'name' : 'object types', 'visible': false},
@@ -42,6 +44,23 @@ angular.module('visualizationModule')
       return visList;
     };
 
+    this.getResultsData = function(data){
+      var results = DataModel.getResults();
+      var newData = [];
+      for (var i = 0; i < data.length; i++) {
+        for (var j = 0; j < results.length; j++) {
+          if(data[i].docID === results[j].docID){
+            newData.push(data[i]);
+          }
+
+        }
+      }
+
+      return newData;
+    };
+
+
+
     return this;
-  });
+  }]);
 

@@ -67,3 +67,60 @@
 .vis-container .vis{
 
 }
+
+/*  D3 visualization styles, svg etc.   */
+
+.vis-container .vis .title{
+    font-weight: bold;
+    margin-bottom: 10px;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.vis-container .axis{
+    font: 10px sans-serif;
+}
+
+.vis-container .bar rect {
+    fill: #2d3956;
+    shape-rendering: crispEdges;
+}
+
+.vis-container .bar text {
+    fill: #fff;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+
+.vis-container .vis .axis path, .axis line {
+    fill: none;
+    stroke: #2d3956;
+    shape-rendering: crispEdges;
+}
+.vis-container .vis rect{
+    cursor: pointer;
+}
+.vis-container .vis rect:hover{
+
+    fill: #66718b;
+}
+
+.vis-container .vis rect.active{
+    fill: #66718b;
+}
+
+
