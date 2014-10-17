@@ -3,38 +3,90 @@
  */
 
 angular.module('visualizationModule')
-  .controller('timeBarController', ['$scope', 'searchService', 'visService', 'requestNotificationChannel',  function($scope, searchService, visService, requestNotificationChannel){
+  .controller('timeBarController', ['$scope', 'searchService', 'visService', 'requestNotificationChannel', 'display', '$filter', 'DataModel',  function($scope, searchService, visService, requestNotificationChannel, display, $filter, DataModel){
     var data = [];
     $scope.dataSource = 'repo';
     $scope.filterActive = false;
+    $scope.histogramData = [];
+    $scope.histogramBins = [];
 
-    searchService.getStatTime().then(function(res){
-      $scope.data = res.data;
-      data = res.data;  // this is our data from the repository. It holds information about all existing objects.
+    $scope.getData = function(){
+      searchService.getStatTime().then(function(res){
+        $scope.data = res.data;
+        data = res.data;  // this is our data from the repository. It holds information about all existing objects.
 
-      $scope.$watch('datasrc', function(val){
-        if(val){
-          $scope.dataSource = 'search';
-          /* source = search results */
-          $scope.data = visService.getResultsData(data);
-        }else{
-          $scope.dataSource = 'repo';
-          $scope.data = data;
-        }
+        $scope.$watch('datasrc', function(val){
+          $scope.resetDisplay();
+          if(val){
+            $scope.dataSource = 'search';
+            /* source = search results */
+            $scope.data = visService.getResultsData(data);
+          }else{
+            $scope.dataSource = 'repo';
+            $scope.data = data;
+          }
+        });
+
       });
-
-    });
+    }
 
     requestNotificationChannel.onSearchResultsReady($scope, function(){
+
+      $scope.resetDisplay();
       if($scope.dataSource === 'search'){
+
         $scope.data = visService.getResultsData(data);
       }
     });
 
+    $scope.barClicked = function(i, selected){
+      if($scope.dataSource === 'search'){
+        if(selected){
+          $scope.$apply(display.resetDisplay());
+        } else{
+          $scope.$apply(filterData(i));
+        }
+
+      }else{
+        $scope.$apply(searchData(i));
+      }
+    };
+
+
+    var filterData = function(i){
+
+      $scope.filterActive = true;
+      display.addDisplayData($filter('filter')(DataModel.searchResults, function(item){
+        var result = false;
+        _.each($scope.histogramData[i], function(obj){
+          if(item.docID === obj) {
+            result = true;
+          }
+        });
+        return result;
+      }), 'vis');
+    };
+
+    var searchData = function(i){
+      requestNotificationChannel.searchStarted();
+      searchService.listItems($scope.histogramData[i]);
+    };
+
+    $scope.resetDisplay = function(){
+
+      if($scope.filterActive){
+        $scope.filterActive = false;
+        display.resetDisplay();
+      }
+
+    };
+
+
+
   }]);
 
 angular.module('visualizationModule')
-  .directive('timeBar',['d3Service','display', 'DataModel', '$filter', function (d3Service, display, DataModel, $filter) {
+  .directive('timeBar',['d3Service', function (d3Service) {
     return {
       restrict: 'E',
       scope: {
@@ -44,41 +96,10 @@ angular.module('visualizationModule')
       controller: 'timeBarController',
       template: '<div class="barchart-div"><p class="title">{{ bartitle }}</p></div>',
       link: function(scope, element, attrs){
-        var histogramBins = [];
-        var histogramData = [];
-
-        var barClicked = function(i, selected){
-          if(scope.dataSource === 'search'){
-            if(selected){
-              scope.filterActive = false;
-              scope.$apply(display.resetDisplay());
-            } else{
-              scope.$apply(filterData(i));
-            }
-
-          }else{
-            scope.$apply(searchData(i));
-          }
-        };
 
 
-        var filterData = function(i){
-          scope.filterActive = true;
-          display.addDisplayData($filter('filter')(DataModel.searchResults, function(item){
-            var result = false;
-             _.each(histogramData[i], function(obj){
-              if(item.docID === obj) {
-                result = true;
-              }
-             });
-             return result;
-          }), 'vis');
-        };
 
-        var searchData = function(i){
-          console.log('ok now we will search data');
 
-        };
 
         var margin = {top: 10, right: 10, bottom: 50, left: 10},
           width = 530 - margin.left - margin.right,
@@ -87,6 +108,9 @@ angular.module('visualizationModule')
 
         d3Service.d3()
           .then(function(d3){
+            scope.getData();
+
+
 
             var x = d3.time.scale()
               .domain([new Date('2012 11 1'), d3.time.month.offset(new Date(), 1)])
@@ -125,32 +149,29 @@ angular.module('visualizationModule')
             scope.$watch('data', function(data, oldData){
               if(!data) return;
 
-              if(scope.filterActive){
-                display.resetDisplay();
-                scope.filterActive = false;
-              }
+
 
               var currentDate;
 
               for (var i = 0; i < months.length-1; i++) {
-                histogramBins[i] = 0;
-                histogramData[i] = [];
+                scope.histogramBins[i] = 0;
+                scope.histogramData[i] = [];
                 for (var j = 0; j < data.length; j++) {
                   currentDate = new Date(data[j].time);
                   if( currentDate < months[i+1] && currentDate > months[i]){
-                    histogramBins[i]++;
-                    histogramData[i].push(data[j].docID);
+                    scope.histogramBins[i]++;
+                    scope.histogramData[i].push(data[j].docID);
                   }
                 }
               }
 
-              y.domain([0, d3.max(histogramBins, function(d){ return d; }) ]);
+              y.domain([0, d3.max(scope.histogramBins, function(d){ return d; }) ]);
 
 
               if(!oldData) {
                 /* Initializae visualization */
                 svg.selectAll(".bar")
-                  .data(histogramBins)
+                  .data(scope.histogramBins)
                   .enter()
                     .append("g")
                     .attr("class", "bar")
@@ -165,7 +186,7 @@ angular.module('visualizationModule')
                         }else{
                           d3.select(this).classed("active", false);
                         }
-                        barClicked(i, selected);
+                        scope.barClicked(i, selected);
                       })
                       .attr("width", function (d, i) { return  x(months[i + 1]) - x(months[i]) - 2; })
                       .attr("height", function (d) { return height - y(d); });
@@ -191,7 +212,7 @@ angular.module('visualizationModule')
                 d3.selectAll('rect').classed("active", false);
 
                 svg.selectAll(".bar")
-                  .data(histogramBins)
+                  .data(scope.histogramBins)
                   .transition()
                   .duration(500)
                   .attr("transform", function (d, i) { return "translate(" + (x(months[i]) + 5) + "," + y(d) + ")"; })
@@ -200,7 +221,7 @@ angular.module('visualizationModule')
 
 
                 svg.selectAll(".bar")
-                  .data(histogramBins)
+                  .data(scope.histogramBins)
                   .select("text")
                   .text(function(d) {
                     //console.log(d);
@@ -210,7 +231,7 @@ angular.module('visualizationModule')
                     }
                   });
 
-                }
+              }
 
             });
           });

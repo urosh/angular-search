@@ -249,6 +249,53 @@ input[type="search"] {
 }
 
 
+.search-history{
+    min-height: 16px;
+    overflow: auto;
+    position: relative;
+    margin-bottom: 8px;
+    color: #212a40;
+    color: #2d3956;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.search-history .indicators-container{
+    position: absolute;
+    top: 3px;
+    left: 80px;
+    display: inline-block;
+}
+.search-history .indicator{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    border: solid 2px #2d3956;
+    background-color: #fff;
+    margin-right: 2px;
+    top: 2px;
+    cursor: pointer;
+}
+.search-history .label{
+    display: inline-block;
+    line-height: 16px;
+    top: 0px;
+
+}
+
+.search-history .active{
+    background-color: #fff;
+    background-color: #66718b;
+
+
+}
+
+
+
 
 
 

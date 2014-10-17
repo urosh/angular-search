@@ -22,6 +22,22 @@ function SearchService($http, DataModel, display){
     });
   };
 
+  this.listItems = function(items){
+
+    var data  = JSON.stringify({
+      'items' : items
+    });
+
+    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+    return $http.post('http://public.cyi.ac.cy/starcRepo/map/list', data).then(function(res){
+      DataModel.setResults(res.data);
+      display.addDisplayData(res.data, 'search');
+    });
+
+
+  }
+
   this.getStats = function(){
     return $http.get('http://public.cyi.ac.cy/starcRepo/map/stats');
   };

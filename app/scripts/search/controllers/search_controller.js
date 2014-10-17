@@ -22,7 +22,11 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 		CommonServices.addItemToArray($scope.selectedTypes, e);
 	};
 
-	
+
+  requestNotificationChannel.onHistorySet($scope, function(query){
+    $scope.query.input = query.search;
+
+  });
 
 
 	$scope.search = function(option){
@@ -35,7 +39,7 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 		if(option === 'browse'){
 			queryData.search = '';
 		}else{
-			queryData.search = $scope.query.input
+			queryData.search = $scope.query.input;
 	    
 		}
 

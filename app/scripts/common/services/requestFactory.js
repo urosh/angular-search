@@ -10,6 +10,7 @@ function RequestFactory($rootScope){
   var _TOOL_REMOVED_ = '_TOOL_REMOVED_';
   var _ITEM_ADDED_TO_COLLECTION = '_ITEM_ADDED_TO_COLLECTION';
   var _ITEM_ANNOTATE_ = '_ITEM_ANNOTATE_';
+  var _SET_HISTORY_ = '_SET_HISTORY_';
 
   
   var searchStarted = function(){
@@ -99,8 +100,18 @@ function RequestFactory($rootScope){
 	var onItemAnnotate = function($scope, handler){
 		$scope.$on(_ITEM_ANNOTATE_, function(event, args){
 			handler(args.id);
-		})
+		});
 	};
+
+  var historySet = function(item){
+    $rootScope.$broadcast(_SET_HISTORY_, {query: item});
+  }
+
+  var onHistorySet = function($scope, handler){
+    $scope.$on(_SET_HISTORY_, function(event, args){
+      handler(args.query);
+    });
+  }
 
 
 	
@@ -128,8 +139,10 @@ function RequestFactory($rootScope){
 		itemAddedToCollection: itemAddedToCollection,
 		onItemAddedToCollection: onItemAddedToCollection,
 		itemAnnotate: itemAnnotate,
-		onItemAnnotate: onItemAnnotate
-	}
-};
+		onItemAnnotate: onItemAnnotate,
+    historySet : historySet,
+    onHistorySet: onHistorySet
+	};
+}
 
 RequestFactory.$inject = ['$rootScope'];
