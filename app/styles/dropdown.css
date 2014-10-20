@@ -49,11 +49,6 @@
     box-shadow: 0 1px 0 rgba(0,0,0,0.2);
     cursor: pointer;
     outline: none;
-    /*-webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;*/
 
     font-size: 16px;
     color: #fff;
@@ -89,47 +84,17 @@
     border-top: none;
     border-bottom: none;
     list-style: none;
-    -webkit-transition: all 0.6s ease-out;
-    -moz-transition: all 0.6s ease-out;
-    -ms-transition: all 0.6s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
     -o-transition: all 0.6s ease-out;
-    transition: all 0.6s ease-out;
+    transition: all 0.3s ease-out;
 
     /* Hiding */
     max-height: 0;
     overflow: hidden;
     z-index: 1000000;
 }
-
-/*
-.wrapper-dropdown .dropdown .ng-hide{
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-
-}
-
-.wrapper-dropdown .dropdown .ng-hide-add{
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-
-}
-
-.wrapper-dropdown .dropdown .ng-hide-remove{
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-
-}
-*/
-
 
 
 
@@ -145,8 +110,7 @@
     text-decoration: none;
     color: #2d3956;
     padding: 6px 0 6px 0px;
-    /*transition: all 0.3s ease-out;*/
-    
+
 }
 
 
@@ -185,13 +149,13 @@
 
 .wrapper-dropdown.active .dropdown {
     border-bottom: 1px solid rgba(0,0,0,0.2);
-    -webkit-transition: all 0.6s ease-out;
-    -moz-transition: all 0.6s ease-out;
-    -ms-transition: all 0.6s ease-out;
-    -o-transition: all 0.6s ease-out;
-    transition: all 0.9s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 
-    max-height: 400px;
+    max-height: 200px;
 
 }
 
