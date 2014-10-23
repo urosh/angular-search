@@ -2,8 +2,8 @@
 
 function ToolsController($scope, DataModel){
 	$scope.tools = DataModel.getSelectedTools();
-  
-	//$scope.tools = [{'id': 1, 'name': "map", 'template': "scripts/map/template.tpl.html"}];
+
+  //$scope.tools = [{'id': 1, 'name': "map", 'template': "scripts/map/template.tpl.html"}];
 
 	$scope.remove = function(tool){
 		DataModel.removeTool(tool);
@@ -14,9 +14,9 @@ function ToolsController($scope, DataModel){
 		DataModel.selectTool(tools, tool);
 		
 		$scope.tools = DataModel.getSelectedTools();
-	//	console.log($scope.tools);
 	}
-	//DataModel.selectTool($scope.tools, 'map');
+
+  //DataModel.selectTool($scope.tools, 'map');
 
 };
 

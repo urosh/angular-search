@@ -10,7 +10,6 @@ function MapController(DataModel, $scope, $filter, display, requestNotificationC
 	this.$filter = $filter;
 	this.markers = [];
 	this.display = display;
-	
 	this.map = {
     center: {
         latitude: 35.1,

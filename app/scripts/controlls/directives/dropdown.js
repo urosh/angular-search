@@ -6,7 +6,7 @@ function DropdownDirective(){
 		//selectedToolsCtrl.itemSelected(scope.tools, 'map');
 		scope.select = function(tool){
 			//console.log(scope.tools);
-	  	selectedToolsCtrl.itemSelected(scope.tools, tool);
+      selectedToolsCtrl.itemSelected(scope.tools, tool);
 	  }
 	}
 

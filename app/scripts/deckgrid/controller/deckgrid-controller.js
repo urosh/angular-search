@@ -15,55 +15,52 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
 
 
   $scope.active = false;
+
   requestNotificationChannel.onDisplayReady($scope, function(){
-
-    //console.log(display.getDisplayWindow());
-
     $scope.model = display.getDisplayWindow();
     $scope.active = false;
   });
 
-  $scope.tools = [];
-  $scope.toolsShown = false;
-  requestNotificationChannel.onToolAdded($scope, function(item){
-    
-    
-    if(item === 'collections'){
-      $scope.collectionsActive = true;
-      $scope.toolsShown = true;
-    }
-    if(item === 'annotations'){
-      $scope.annotationsActive = true;
-      $scope.toolsShown = true;
-    }
+  $scope.tools = {
+    'annotations' : false,
+    'collections' : false,
+    'active' : false
+  };
 
+  $scope.toolsShown = false;
+
+
+  requestNotificationChannel.onToolAdded($scope, function(item){
+    if ($scope.tools.hasOwnProperty(item)) {
+      $scope.tools[item] = true;
+      $scope.tools['active'] = true;
+    }
 
   });
 
   requestNotificationChannel.onToolRemoved($scope, function(item){
-    
-    if(item === 'collections'){
-      $scope.collectionsActive = false;
-      if(!$scope.annotationsActive){
-        $scope.toolsShown = false;
+    if ($scope.tools.hasOwnProperty(item)) {
+      $scope.tools[item] = false;
+      var removeTools = true;
+      for (var property in $scope.tools) {
+        if ($scope.tools.hasOwnProperty(property)) {
+          if (property !== 'active' && $scope.tools[property]) {
+            removeTools = false;
+          }
+        }
       }
-    }
-    if(item === 'annotations'){
-      $scope.annotationsActive = false;
-      if(!$scope.collectionsActive){ $scope.shown = false; }
+      if (removeTools) {
+        $scope.tools['active'] = false;
+      }
     }
 
 
   });
-
 
   requestNotificationChannel.onSearchStarted($scope, function(){
     $scope.model = [];
     $scope.active = true;
   });
-
-
-  
 
   requestNotificationChannel.onQueryChange($scope, function(query){
     if(query == ''){

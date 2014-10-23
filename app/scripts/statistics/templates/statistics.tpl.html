@@ -2,14 +2,7 @@
 	<preloader active="active" class="stat-preloader"></preloader>
 		<div class="statistics-content" ng-show="!active">
 			<h3>Repository statistics</h3>
-      <div class="buttons-div">
-        <span title="Repository stats" ng-click="setContent('stat');" ng-class="(statActive) ? 'myicon icon-stats active' : 'myicon icon-stats'" ></span>
-        <span  title="Repository history" ng-click="setContent('barchart');" ng-class="(barchartActive) ? 'myicon icon-bar active' : 'myicon icon-bar'"></span>
-        <span  title="Repository history" ng-click="setContent('graph');" ng-class="(graphActive) ? 'myicon icon-graph active' : 'myicon icon-graph'"></span>
 
-      </div>
-      <my-barchart ng-show="barchartActive" bartitle="Number of uploaded objects per month"></my-barchart>
-			
 			<div ng-show="statActive">
 				<p>Number of objects: <span class="val">{{ stats.numberOfObjects }}</span></p>
 				<p>Object types</p>

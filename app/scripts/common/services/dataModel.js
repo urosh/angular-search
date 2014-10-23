@@ -4,30 +4,36 @@ function DataModel(CommonServices, $filter, $rootScope, display, requestNotifica
 	this.selectedTools = [];
 		this.queryData = {};
 		this.selectedTools = [];
+    this.tools = [];
 
 		this.searchResults = [];
 		this.resultCollections = [];
 		this.resultTypes = [];
-
+    this.testArray = [];
 		//this.displayItems = [];
 		this.display = display;
 		var _this = this;
 		
 		// Tools selection. Adding and removing tools to the workspace
-		this.selectTool = function(tools, e){
-			CommonServices.addObjectFromCollection(tools, this.selectedTools, 'name', e);
+		this.selectTool = function(source, e){
+      CommonServices.addObjectFromCollection(this.tools, this.selectedTools, 'name', e);
 			requestNotificationChannel.toolAdded(e);
 
 		};
 
-		this.removeTool = function(e){
+		this.removeTool = function( e){
 			CommonServices.removeObjectFromCollection(this.selectedTools, 'name', e);
 			requestNotificationChannel.toolRemoved(e);
 		};
 
 		this.getSelectedTools = function(){
 			return this.selectedTools;
-		}
+		};
+
+    this.setTools = function(tools){
+      this.tools = tools;
+    }
+
 		
 
 
