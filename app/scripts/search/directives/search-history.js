@@ -66,7 +66,7 @@ angular.module('mySearchModule')
   return {
     restrict: 'E',
     controller: 'searchHistoryController',
-    template: '<div class="search-history">'+
+    template: '<div ng-show="history.length" class="search-history">'+
               '<span class="label">Search history</span>'+
               '<div class="indicators-container">'+
               '<span ng-repeat="item in history" ng-click="historySelected($index)" ng-class="(item.active) ? \' indicator active\' : \' indicator\'"></span>'+
