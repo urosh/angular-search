@@ -15,7 +15,7 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 	};
 
 	$scope.collectionSelected = function(e){
-		CommonServices.addItemToArray($scope.selectedCollections, e);
+    CommonServices.addItemToArray($scope.selectedCollections, e);
 	};
 
 	$scope.typeSelected = function(e, i){

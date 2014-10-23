@@ -8,22 +8,15 @@
 	<div>
 		<section class="collections">
       <h4>Choose collection</h4>
-      <ul>
-        
-        <li ng-repeat="coll in collections"><label  class='checkbox'><input ng-model="col" ng-change="collectionSelected( coll)" type="checkbox" class="typeClass" value="{{coll}}"/>{{coll}}</label></li>
-        
-      </ul>
+      <span ng-class="(active) ? 'active' : ''"  ng-click="collectionSelected(coll);active=!active" ng-repeat="coll in collections">{{coll}}</span>
 
     </section>
 
     <section class="types">
       <h4>Choose object type</h4>
-        <ul>
-           <li ng-repeat="type in types"><label class='checkbox'><input ng-model="tp" ng-change="typeSelected(type.type)" type="checkbox" class="typeClass" value="{{type.type}}"/>{{type.title}}</label></li>
-         
-        </ul>
-        <a href="#" ng-click="search('browse')" class="searchButton browse">BROWSE</a>
-    </section>
+      <span ng-class="(active) ? 'active' : ''"  ng-click="typeSelected(type.type);active=!active" ng-repeat="type in types">{{type.title}}</span>
 
+    </section>
+    <a href="#" ng-click="search('browse')" class="searchButton browse">BROWSE</a>
 	</div>
 </div>

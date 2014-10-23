@@ -94,7 +94,6 @@ input[type="search"] {
 	width: 470px;
 	display: block;
 	overflow: auto;
-	border: solid 1px yellow;
 	overflow-y:	hidden;
 	
 }
@@ -124,11 +123,37 @@ input[type="search"] {
 	width: 230px;
 	overflow: auto;
 	display: inline-block;
-	border: solid 1px red;
-	
+
+}
+.advanced-search-container section.collections{
+    width: 450px;
+}
+
+.advanced-search-container section.types{
+    width: 450px;
+}
+
+.advanced-search-container section span{
+    display: inline-block;
+    padding: 3px;
+    margin-bottom: 2px;
+    background-color: #66718b;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.advanced-search-container section span:hover{
+    background-color: #2d3956;
+}
+
+.advanced-search-container section span.active{
+    background-color: white;
+    color: #2d3956;
 }
 .advanced-search-container h4{
-	margin: 2px 0;
+	margin: 3px 0;
 	font-size: 14px;
 }
 
