@@ -31,7 +31,7 @@
 
 
   </head>
-  <body ng-app="starcSearchApp"  >
+  <body ng-app="app"  >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -149,13 +149,12 @@
         <script src="scripts/statistics/statistics.js"></script>
         
         <!-- Annotations tool -->
-        <script src="scripts/annotations/directives/crop-directive.js"></script>
-        <script src="scripts/annotations/services/annotations-service.js"></script>
-        <script src="scripts/annotations/controllers/annotations-controller.js"></script>
-
-        <script src="scripts/annotations/directives/annotations-directive.js"></script>
-        <script src="scripts/annotations/directives/listannotations-directive.js"></script>
-        <script src="scripts/annotations/annotations.js"></script>
+        <script src="scripts/annotations/annotations.module.js"></script>
+        <script src="scripts/annotations/controllers/annotations.controller.js"></script>
+        <script src="scripts/annotations/directives/crop.directive.js"></script>
+        <script src="scripts/annotations/services/annotations.service.js"></script>
+        <script src="scripts/annotations/directives/annotations.directive.js"></script>
+        <script src="scripts/annotations/directives/listannotations.directive.js"></script>
 
 
         <!-- Vis tool -->

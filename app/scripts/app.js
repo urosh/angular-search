@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('starcSearchApp', [
+  .module('app', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -24,7 +24,7 @@ angular
     'myCollectionsModule',
     'd3',
     'myStatistics',
-    'annotationsModule',
+    'app.annotations',
     'visualizationModule'
 
   ]);
