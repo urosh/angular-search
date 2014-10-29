@@ -21,7 +21,7 @@ angular
     'mySearchModule',
     'mapModule',
     'ngTinyScrollbar',
-    'myCollectionsModule',
+    'app.collections',
     'd3',
     'myStatistics',
     'app.annotations',

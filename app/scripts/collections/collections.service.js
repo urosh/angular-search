@@ -1,4 +1,8 @@
+
 'use strict';
+
+angular.module('app.collections')
+  .service('collectionsService', CollectionsService);
 
 function CollectionsService($http){
 	
@@ -30,10 +34,7 @@ function CollectionsService($http){
 		
 		return $http.post('http://public.cyi.ac.cy/starcRepo/map/savecollection', collectionData);
 
-		/*$http.post('http://public.cyi.ac.cy/starcRepo/map/savecollection').then(function(){
-			console.log('are we here?');
-		})*/
-		
+
 
 
 	};
