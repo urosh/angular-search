@@ -6,12 +6,13 @@
 			
 			<img  ng-src="{{vm.imageLocation}}" width="280">
 		</div>
-		<div class="metadata-container" scrollbar >
-				<p ng-repeat="key in vm.metadata">
-					<span class="metadata-label">{{key[0]}}</span> : <span class="metadata-content">{{key[1]}}</span>
+		<div class="metadata-container" scrollbar  >
+
+      <p ng-repeat="key in vm.metadata">
+				<span class="metadata-label">{{key[0]}}</span> : <span class="metadata-content">{{key[1]}}</span>
 				
-				</p>
-			
+			</p>
+
 		</div>
 	</div>
 </div>
