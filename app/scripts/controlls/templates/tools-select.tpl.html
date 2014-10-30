@@ -1,9 +1,9 @@
 <div class="menu-container">
   <div><div ng-transclude></div></div>
 	<div class="dropdown-items-container">
-		<div class="dropdown-item" ng-repeat="tool in tools">
+		<div class="dropdown-item" ng-repeat="tool in vm.tools">
 			<div class="item-name">{{ tool.name }}</div>
-			<div class="icon-remove" ng-click="remove(tool.name)"></div>
+			<div class="icon-remove" ng-click="vm.remove(tool.name)"></div>
 		</div>
 	</div>
 </div>
@@ -18,7 +18,7 @@
 	    <div deckgrid class="deckgrid"  cardTemplate="scripts/deckgrid/template/card.tpl.html"></div>
 	  </div>
 	</div>
-	<div ng-repeat="tool in tools" ng-include="tool.template">
+	<div ng-repeat="tool in vm.tools" ng-include="tool.template">
 		
 	</div>
 </div>

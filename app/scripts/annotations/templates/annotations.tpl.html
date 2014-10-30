@@ -9,7 +9,7 @@
 	<starc-crop imsource="vm.imageSource" imageh="vm.imageh" ng-show="vm.annotateMode"></starc-crop>
   <starc-list-annotations imsource="vm.imageSource" imageh="vm.imageh" docid="vm.docID" list="vm.annotationsList" ng-show="!vm.annotateMode"></starc-list-annotations>
 	<div ng-show="vm.objectLoaded && vm.annotateMode" class="annotation-form">
-		<my-dialog ng-show="vm.dialogActive"  type="vm.dialogType" text="vm.dialogText" ></my-dialog>
+		<starc-dialog ng-show="vm.dialogActive"  type="vm.dialogType" text="vm.dialogText" ></starc-dialog>
 		<p>Annotation title</p>
 		<input ng-model="vm.annotation.title" type="text">
 		<p>Annotation description</p>

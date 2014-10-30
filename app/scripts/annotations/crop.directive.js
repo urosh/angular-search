@@ -5,32 +5,48 @@
   angular.module('app.annotations')
     .directive('starcCrop', CropDirective);
 
+  CropDirective.$inject = ['$document'];
+
   function CropDirective($document) {
-
-    var link;
-    var imgElement;
-
-
     var span_tl = angular.element("<span ng-mousedown='mouseDownHandler($event, \"tl\")' class='handler top-left'></span>");
     var span_tr = angular.element("<span ng-mousedown='mouseDownHandler($event, \"tr\")' class='handler top-right'></span>");
     var span_bl = angular.element("<span ng-mousedown='mouseDownHandler($event, \"bl\")' class='handler bottom-left'></span>");
     var span_br = angular.element("<span ng-mousedown='mouseDownHandler($event, \"br\")' class='handler bottom-right'></span>");
 
     var maskElement = angular.element('<div ng-show="objectAdded" class="mask-div"></div>');
+    var imgElement;
 
+    var directive  = {
+      restrict: 'E',
+      require: '^starcAnnotation',
+      template: '<div class="image-container"><img width="350" class="img-original" ng-src="{{ imageSource }}"></div>',
+      scope:{
+        imageSource: '=imsource',
+        imageH: '=imageh'
+      },
+      compile: compileFunc
+    };
+    return directive;
 
-    link = function (scope, elm, attrs, starcAnnotationCtrl) {
+    function compileFunc(tElem) {
+      maskElement.append(span_tl);
+      maskElement.append(span_tr);
+      maskElement.append(span_bl);
+      maskElement.append(span_br);
+      imgElement = angular.element('<img width="350" ng-mousedown="mouseDownHandler($event, \'img\')" class="img-mask" ng-src="{{imageSource}}">');
+      maskElement.append(imgElement);
+
+      var el = angular.element(tElem.children()[0]);
+      el.append(maskElement);
+      return linkFunc;
+    }
+    function linkFunc (scope, elm, attrs, starcAnnotationCtrl) {
       scope.imageSource = "";
       scope.objectAdded = false;
 
       var startX, startY, initialMouseX, initialMouseY,
         w, h, initialW, initialH, dx,
         dy, top, left, source, imageW, imageH;
-
-
-
-
-
 
       scope.mouseDownHandler = function ($event, _source_) {
         startX = maskElement.prop('offsetLeft');
@@ -45,7 +61,6 @@
         $document.bind('mouseup', mouseup);
 
       };
-
 
       var initializeMask = function () {
 
@@ -85,7 +100,6 @@
           initializeMask();
         }
       });
-
 
       function mousemove($event) {
         var coef = [];
@@ -155,32 +169,9 @@
         $document.unbind('mouseup', mouseup);
         starcAnnotationCtrl.setArea(top, left, w, h, scope.docID);
       }
-    };
+    }
 
-    return {
-      restrict: 'E',
 
-      require: '^starcAnnotation',
-      template: '<div class="image-container"><img width="350" class="img-original" ng-src="{{ imageSource }}"></div>',
-      scope:{
-        imageSource: '=imsource',
-        imageH: '=imageh'
-      },
-      compile: function(tElem){
-
-        maskElement.append(span_tl);
-        maskElement.append(span_tr);
-        maskElement.append(span_bl);
-        maskElement.append(span_br);
-        imgElement = angular.element('<img width="350" ng-mousedown="mouseDownHandler($event, \'img\')" class="img-mask" ng-src="{{imageSource}}">');
-        maskElement.append(imgElement);
-
-        var el = angular.element(tElem.children()[0]);
-        el.append(maskElement);
-        return link;
-      }
-
-    };
 
   }
 })();

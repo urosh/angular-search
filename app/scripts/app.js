@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'app.commons',
-    'my-controlls',
+    'app.controlls',
     'mySearchModule',
     'mapModule',
     'ngTinyScrollbar',

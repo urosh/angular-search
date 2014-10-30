@@ -38,14 +38,14 @@
 
     <!-- Add your site or application content here -->
     <div class="container"  >
-      <selected-tools>
-        <my-dropdown></my-dropdown>
-      </selected-tools>
+      <starc-selected-tools>
+        <starc-dropdown></starc-dropdown>
+      </starc-selected-tools>
       
     </div>
       
       
-    <div my-modal></div>
+    <div starc-modal></div>
  
       
  
@@ -96,7 +96,7 @@
         <!-- 
         Common services
         -->
-        <script src="scripts/common/common.js"></script>
+        <script src="scripts/common/commons.module.js"></script>
         <script src="scripts/common/services/common.services.js"></script>
         <script src="scripts/common/services/request.factory.js"></script>
         <script src="scripts/common/services/display.factory.js"></script>
@@ -112,13 +112,11 @@
         
         <!-- Dashboard controlls, adding and removing widgets from workspace -->
         
-        <script src="scripts/controlls/services/service.js"></script>
-        <script src="scripts/controlls/controllers/dropdown.js"></script>
-        <script src="scripts/controlls/controllers/tools.js"></script>
-        <script src="scripts/controlls/directives/dropdown.js"></script>
-        <script src="scripts/controlls/directives/tools.js"></script>
-        <script src="scripts/controlls/controlls.js"></script>
-        
+        <script src="scripts/controlls/controlls.module.js"></script>
+        <script src="scripts/controlls/controlls.service.js"></script>
+        <script src="scripts/controlls/dropdown.directive.js"></script>
+        <script src="scripts/controlls/tools.directive.js"></script>
+
         
         <!--  -->
         <!-- Search tool -->
@@ -148,11 +146,10 @@
         
         <!-- Annotations tool -->
         <script src="scripts/annotations/annotations.module.js"></script>
-        <script src="scripts/annotations/annotations.controller.js"></script>
         <script src="scripts/annotations/crop.directive.js"></script>
         <script src="scripts/annotations/annotations.service.js"></script>
         <script src="scripts/annotations/annotations.directive.js"></script>
-        <script src="scripts/annotations/listannotations.directive.js"></script>
+        <script src="scripts/annotations/list.annotations.directive.js"></script>
 
 
         <!-- Vis tool -->
