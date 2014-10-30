@@ -7,7 +7,7 @@
         scope: {},
         controller: 'AnnotationsController',
         controllerAs: 'vm',
-        templateUrl: 'scripts/annotations/templates/annotations.tpl.html'
+        templateUrl: 'templates/annotations.tpl.html'
 
       };
     });

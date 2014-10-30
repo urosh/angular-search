@@ -18,7 +18,7 @@
         list: '='
       },
 
-      templateUrl: 'scripts/annotations/templates/list.tpl.html',
+      templateUrl: 'templates/list.tpl.html',
       link: function(scope, element, attrs){
         scope.$watch('imageSource', function(){
           if(scope.imageSource){
