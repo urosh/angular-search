@@ -59,9 +59,10 @@ function PaginationController(DataModel, $scope, display, requestNotificationCha
 	$scope.perPageNumbers = [20, 40, 80];
 
 	var initialize = function(){
-		$scope.items = display.getDisplayWindow();
-		$scope.numberOfItems = display.numberOfItems;
-		$scope.currentPage = display.currentPage;
+  	$scope.items = display.getDisplayWindow();
+    $scope.numberOfItems = display.getNumberOfItems();
+		$scope.currentPage = display.getCurrentPage();
+
 	};
 
 	$scope.updateDisplay = function(currentPage, perPage){
@@ -69,9 +70,9 @@ function PaginationController(DataModel, $scope, display, requestNotificationCha
 	}
 
 	var updatePagination = function(){
-		if ($scope.currentPage === 1){
-			$scope.firstShow = false;
-		};
+    if ($scope.currentPage === 1){
+	    $scope.firstShow = false;
+		}
 		$scope.firstShow = false;
 		$scope.prevShow = false;
 		$scope.lastShow = false;
@@ -84,9 +85,8 @@ function PaginationController(DataModel, $scope, display, requestNotificationCha
 			$scope.perShow = false;
 			$scope.pagShow = false;
 		}
-
-		if( $scope.numberOfItems > $scope.itemsPerPage ) {
-			$scope.perShow = true;
+    if( $scope.numberOfItems > $scope.itemsPerPage ) {
+      $scope.perShow = true;
 			$scope.pagShow = true;
 
 			for (var i = -2; i < 3; i++){

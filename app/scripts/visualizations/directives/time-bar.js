@@ -56,7 +56,7 @@ angular.module('visualizationModule')
     var filterData = function(i){
 
       $scope.filterActive = true;
-      display.addDisplayData($filter('filter')(DataModel.searchResults, function(item){
+      display.addDisplayData($filter('filter')(DataModel.getResults(), function(item){
         var result = false;
         _.each($scope.histogramData[i], function(obj){
           if(item.docID === obj) {

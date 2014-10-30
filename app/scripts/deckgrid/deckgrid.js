@@ -62,7 +62,7 @@ angular.module('akoenig.deckgrid').factory('DeckgridDescriptor', [
         function Descriptor () {
             this.restrict = 'AE';
 
-            this.template = '<preloader active="active" class="search-preloader"></preloader>'+
+            this.template = '<starc-preloader active="active" class="search-preloader"></starc-preloader>'+
                             '<div data-ng-repeat="column in columns" class="{{layout.classList}}">' +
 
                                 '<div data-ng-repeat="card in column" data-ng-include="cardTemplate"></div>' +

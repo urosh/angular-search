@@ -66,7 +66,8 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
     if(query == ''){
       display.resetDisplay();
     }else{
-      if(DataModel.searchResults.length){
+
+      if(DataModel.getResults().length){
         display.addDisplayData($filter('filter')(display.getDisplayData(), query), 'filter');
       }
     

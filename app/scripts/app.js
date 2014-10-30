@@ -16,7 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'commons',
+    'app.commons',
     'my-controlls',
     'mySearchModule',
     'mapModule',

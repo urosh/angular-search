@@ -1,13 +1,13 @@
 <div class='md-content' >
-	<span class="md-icon-close" ng-click="removeModal()"></span>
-	<p class="title">{{title}}</p>
+	<span class="md-icon-close" ng-click="vm.removeModal()"></span>
+	<p class="title">{{vm.title}}</p>
 	<div class="details-modal"  >
 		<div class="image-container">
 			
-			<img  ng-src="{{imageLocation}}" width="280">
+			<img  ng-src="{{vm.imageLocation}}" width="280">
 		</div>
 		<div class="metadata-container" scrollbar >
-				<p ng-repeat="key in metadata">
+				<p ng-repeat="key in vm.metadata">
 					<span class="metadata-label">{{key[0]}}</span> : <span class="metadata-content">{{key[1]}}</span>
 				
 				</p>

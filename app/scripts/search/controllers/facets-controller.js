@@ -5,6 +5,7 @@ function FacetController($scope, requestNotificationChannel, DataModel, display)
   	$scope.collections = [];
 
   	_.each(DataModel.getResultTypes(), function(item){
+
   		$scope.types.push({'name': item, 'selected': false});
   	});
 
@@ -38,13 +39,7 @@ function FacetController($scope, requestNotificationChannel, DataModel, display)
 			display.addDisplayData(newDisplayData, 'facets');	
 		}
 		
-		/*_this.display.addDisplayData(_this.$filter('filter')(_this.DataModel.searchResults, function(item){
-		  if(item.lat == marker.latitude && item.lng == marker.longitude){
-		    return true;
-      }else{
-        false;
-      }
-    }), 'map');*/
+
 
 		
 	};
@@ -80,29 +75,8 @@ function FacetController($scope, requestNotificationChannel, DataModel, display)
 		
 		updateDisplay();
 
-		/*updateDisplay();
-		if( type === 'collection' ){
-			$scope.collections[index].selected = !$scope.collections[index].selected;
-			
-			_.each(display.getDisplayData(), function(item){
-				if($scope.collections.length){
-					_.each($scope.collections, function(coll){
-						if(item === coll){
-							newDisplayData.push(item);
-						}
-					})
-					display.addDisplayData(newDisplayData, 'filter');
-				}else{
-					display.resetDisplay();
-				}
-				
-			});
-			
-		
-		}else{
-			$scope.types[index].selected = !$scope.types[index].selected;
-		}*/
-	}
+
+	};
 
 
 }

@@ -49,7 +49,7 @@ function SearchController($scope, searchService, CommonServices, DataModel, requ
 	};
 
 	$scope.change = function(query){
-		requestNotificationChannel.queryChange(query.input);
+    requestNotificationChannel.queryChange(query.input);
 	};
 			
 };
