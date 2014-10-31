@@ -49,7 +49,6 @@
           vm.metadata = [];
           vm.title = res.data.title;
           vm.imageLocation = res.data.imageLocation;
-
           for (var i in res.data.metadataList ){
             for( var property in res.data.metadataList[i]){
               vm.metadata.push([property, res.data.metadataList[i][property]]);
@@ -57,8 +56,9 @@
           }
           vm.loading = true;
           vm.active = true;
-
+          $scope.dim = [res.data.imageHeight, res.data.imageWidth];
         });
+
       }
       requestNotificationChannel.onItemSelected($scope, showDetails);
 

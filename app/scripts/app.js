@@ -20,7 +20,6 @@ angular
     'app.controlls',
     'mySearchModule',
     'mapModule',
-    'ngTinyScrollbar',
     'app.collections',
     'd3',
     'myStatistics',
