@@ -21,7 +21,7 @@ angular
     'mySearchModule',
     'mapModule',
     'app.collections',
-    'd3',
+    'app.d3',
     'myStatistics',
     'app.annotations',
     'visualizationModule'
