@@ -8,8 +8,6 @@
   angular.module('app.annotations')
     .factory('annotationsService', AnnotationsService);
 
-
-
   function AnnotationsService($http) {
 
     var service = {
@@ -19,14 +17,8 @@
     return service;
 
     function saveAnnotation(annotation){
-
-
-
       $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-
-
       return $http.post('http://public.cyi.ac.cy/starcRepo/map/saveannotation', JSON.stringify(annotation));
-
     }
 
   }
