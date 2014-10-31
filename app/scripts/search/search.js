@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mySearchModule', ['akoenig.deckgrid']);
+angular.module('mySearchModule', ['app.deckgrid']);
 
 
 angular.module('mySearchModule')
