@@ -1,16 +1,15 @@
 (function(){
   'use strict';
 
-  var mapModule = angular.module('mapModule', ['google-maps']);
 
-  mapModule.controller('mapController', MapController);
+  angular.module('app.map')
+    .controller('mapController', MapController);
 
   MapController.$inject = ['DataModel', '$scope', '$filter', 'display', 'requestNotificationChannel'];
 
   function MapController(DataModel, $scope, $filter, display, requestNotificationChannel) {
     var vm = this;
     vm.markers = [];
-    var id = 0;
     vm.map = {
       center: {
         latitude: 35.1,
@@ -18,6 +17,9 @@
       },
       zoom: 8
     };
+
+    var id = 0;
+
 
 
     setMarkers();
@@ -38,7 +40,6 @@
     function setMarkers(){
       var res = DataModel.getResults();
 
-      vm.markers = null;
       vm.markers = [];
 
       for(var key in res){

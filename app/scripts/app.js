@@ -19,7 +19,7 @@ angular
     'app.commons',
     'app.controlls',
     'mySearchModule',
-    'mapModule',
+    'app.map',
     'app.collections',
     'app.d3',
     'myStatistics',
