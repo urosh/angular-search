@@ -39,7 +39,9 @@
         });
 
         requestNotificationChannel.onHistorySet($scope, function(query){
-          vm.query.input = query.search;
+          vm.query.input = '';
+          if(query.search) { vm.query.input = query.search; }
+
         });
 
       }

@@ -22,7 +22,7 @@ angular
     'app.map',
     'app.collections',
     'app.d3',
-    'myStatistics',
+    'app.statistics',
     'app.annotations',
     'visualizationModule'
 
