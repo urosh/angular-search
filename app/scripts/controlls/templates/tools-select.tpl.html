@@ -2,6 +2,7 @@
   <div><div ng-transclude></div></div>
 	<div class="dropdown-items-container">
 		<div class="dropdown-item" ng-repeat="tool in vm.tools">
+
 			<div class="item-name">{{ tool.name }}</div>
 			<div class="icon-remove" ng-click="vm.remove(tool.name)"></div>
 		</div>
@@ -10,11 +11,12 @@
 
 <div class="tools-container">
 	<div class="search-container" >
-	  <my-search></my-search>
+	  <starc-search></starc-search>
 	  <div class="search-results">
-      <search-history ></search-history>
-	    <my-facets></my-facets>
-	    <my-pagination ></my-pagination>
+
+	    <starc-facets></starc-facets>
+	    <starc-pagination ></starc-pagination>
+      <starc-search-history ></starc-search-history>
 	    <div deckgrid class="deckgrid"  cardTemplate="scripts/deckgrid/template/card.tpl.html"></div>
 	  </div>
 	</div>

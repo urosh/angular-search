@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'app.commons',
     'app.controlls',
-    'mySearchModule',
+    'app.search',
     'app.map',
     'app.collections',
     'app.d3',

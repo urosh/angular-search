@@ -21,10 +21,10 @@
       var vm = this;
 
       vm.tools = DataModel.getSelectedTools();
-
       vm.remove = function(tool){
         DataModel.removeTool(tool);
         vm.tools = DataModel.getSelectedTools();
+
       };
 
       this.itemSelected = function(tools, tool){

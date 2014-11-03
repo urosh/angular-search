@@ -1,0 +1,19 @@
+'use strict';
+
+angular.module('app.search', ['app.deckgrid']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
