@@ -1,29 +1,22 @@
-<input type="search" ng-model="query.input" ng-change="change(query)" >
-<a href="#" ng-click="search()"  class="searchButton">SEARCH</a>
+<input type="search" ng-model="vm.query.input" ng-change="vm.change(vm.query)" >
+<a href="#" ng-click="vm.search()"  class="searchButton">SEARCH</a>
 <span class="advanced-search-link">
-	<a href="#" ng-click="search.advanced=!search.advanced">Advanced Search</a>
+	<a href="#" ng-click="vm.search.advanced=!vm.search.advanced">Advanced Search</a>
 </span>
-<div  ng-show="search.advanced"    ng-class="{'advanced-search-container': !searchCtrl.init}">
+<div  ng-show="vm.search.advanced"    ng-class="{'advanced-search-container': !searchCtrl.init}">
 <!-- <div ng-show="ctrl.model.advanced" class="advanced-search-container ng-hide"> -->
 	<div>
 		<section class="collections">
       <h4>Choose collection</h4>
-      <ul>
-        
-        <li ng-repeat="coll in collections"><label  class='checkbox'><input ng-model="col" ng-change="collectionSelected( coll)" type="checkbox" class="typeClass" value="{{coll}}"/>{{coll}}</label></li>
-        
-      </ul>
+      <span ng-class="(active) ? 'active' : ''"  ng-click="vm.collectionSelected(coll);active=!active" ng-repeat="coll in vm.collections">{{coll}}</span>
 
     </section>
 
     <section class="types">
       <h4>Choose object type</h4>
-        <ul>
-           <li ng-repeat="type in types"><label class='checkbox'><input ng-model="tp" ng-change="typeSelected(type.type)" type="checkbox" class="typeClass" value="{{type.type}}"/>{{type.title}}</label></li>
-         
-        </ul>
-        <a href="#" ng-click="search('browse')" class="searchButton browse">BROWSE</a>
-    </section>
+      <span ng-class="(active) ? 'active' : ''"  ng-click="vm.typeSelected(type.type);active=!active" ng-repeat="type in vm.types">{{type.title}}</span>
 
+    </section>
+    <a href="#" ng-click="vm.search('browse')" class="searchButton browse">BROWSE</a>
 	</div>
 </div>

@@ -9,23 +9,22 @@
  * Main module of the application.
  */
 angular
-  .module('starcSearchApp', [
+  .module('app', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'commons',
-    'my-controlls',
-    'mySearchModule',
-    'mapModule',
-    'ngTinyScrollbar',
-    'myCollectionsModule',
-    'd3',
-    'myStatistics',
-    'annotationsModule',
-    'visualizationModule'
+    'app.commons',
+    'app.controlls',
+    'app.search',
+    'app.map',
+    'app.collections',
+    'app.d3',
+    'app.statistics',
+    'app.annotations',
+    'app.visualizations'
 
   ]);
   

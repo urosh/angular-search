@@ -2,9 +2,9 @@
 	<img src="" ng-click="itemClicked(card.docID)" width="110" data-ng-src="{{card.imageLocation}}">
 
 	<h4>{{card.label}}</h4>
-	<div ng--show="toolsShown" class="tools-icons">
-		<span class="icon-add" ng-show="collectionsActive" ng-click="itemAddedToCollection(card.docID)"></span>
-		<span class="icon-annotate" ng-show="annotationsActive" ng-click="annotateItem(card.docID)"></span>
+	<div ng--show="tools.active" class="tools-icons">
+		<span class="icon-add" ng-show="tools.collections" ng-click="itemAddedToCollection(card.docID)"></span>
+		<span class="icon-annotate" ng-show="tools.annotations" ng-click="annotateItem(card.docID)"></span>
 		
 	</div>
 </div>

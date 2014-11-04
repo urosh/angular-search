@@ -30,21 +30,21 @@
 
 
   </head>
-  <body ng-app="starcSearchApp"  >
+  <body ng-app="app"  >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="container"  >
-      <selected-tools>
-        <my-dropdown></my-dropdown>
-      </selected-tools>
+      <starc-selected-tools>
+        <starc-dropdown></starc-dropdown>
+      </starc-selected-tools>
       
     </div>
       
       
-    <div my-modal></div>
+    <div starc-modal></div>
  
       
  
@@ -82,7 +82,6 @@
         <script src="bower_components/angular-route/angular-route.js"></script>
         <script src="bower_components/lodash/dist/lodash.compat.js"></script>
         <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-        <script src="bower_components/ng-tiny-scrollbar/dist/ng-tiny-scrollbar.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -95,77 +94,72 @@
         <!-- 
         Common services
         -->
-        <script src="scripts/common/services/commonService.js"></script>        
-        <script src="scripts/common/services/requestFactory.js"></script>        
-        <script src="scripts/common/services/displayFactory.js"></script>        
-        <script src="scripts/common/services/dataModel.js"></script>        
-        <script src="scripts/common/services/search-service.js"></script>        
-        <script src="scripts/common/controllers/modal_controller.js"></script>        
-        <script src="scripts/common/directives/modal_directive.js"></script>        
-        <script src="scripts/common/directives/preloader_directive.js"></script>        
-        <script src="scripts/common/directives/dialog_directive.js"></script>        
-        <script src="scripts/common/common.js"></script>        
+        <script src="scripts/common/commons.module.js"></script>
+        <script src="scripts/common/services/common.services.js"></script>
+        <script src="scripts/common/services/request.factory.js"></script>
+        <script src="scripts/common/services/display.factory.js"></script>
+        <script src="scripts/common/services/data.model.js"></script>
+        <script src="scripts/common/services/search.service.js"></script>
+        <script src="scripts/common/directives/modal.directive.js"></script>
+        <script src="scripts/common/directives/preloader.directive.js"></script>
+        <script src="scripts/common/directives/dialog.directive.js"></script>
+        <script src="scripts/common/directives/scrollbar.directive.js"></script>
 
-        <!-- d3 module-->
+
+    <!-- d3 module-->
         <script src="scripts/d3/d3.js"></script>
 
         
         <!-- Dashboard controlls, adding and removing widgets from workspace -->
         
-        <script src="scripts/controlls/services/service.js"></script>
-        <script src="scripts/controlls/controllers/dropdown.js"></script>
-        <script src="scripts/controlls/controllers/tools.js"></script>
-        <script src="scripts/controlls/directives/dropdown.js"></script>
-        <script src="scripts/controlls/directives/tools.js"></script>
-        <script src="scripts/controlls/controlls.js"></script>
-        
+        <script src="scripts/controlls/controlls.module.js"></script>
+        <script src="scripts/controlls/controlls.service.js"></script>
+        <script src="scripts/controlls/dropdown.directive.js"></script>
+        <script src="scripts/controlls/tools.directive.js"></script>
+
         
         <!--  -->
         <!-- Search tool -->
-        <script src="scripts/search/controllers/pagination_controller.js"></script>
-        <script src="scripts/search/controllers/search_controller.js"></script>
-        <script src="scripts/search/controllers/facets-controller.js"></script>
-        <script src="scripts/search/directives/search_directive.js"></script>
-        <script src="scripts/search/directives/facets-directive.js"></script>
-        <script src="scripts/search/directives/pagination_directive.js"></script>
-        <script src="scripts/search/search.js"></script>
-        <script src="scripts/search/directives/search-history.js"></script>
+        <script src="scripts/search/search.module.js"></script>
+        <script src="scripts/search/search.directive.js"></script>
+        <script src="scripts/search/facets.directive.js"></script>
+        <script src="scripts/search/pagination.directive.js"></script>
+        <script src="scripts/search/search.history.service.js"></script>
+        <script src="scripts/search/search.history.js"></script>
 
         <!--Deckgrid tool  -->
-        <script src="scripts/deckgrid/controller/deckgrid-controller.js"></script>
-        <script src="scripts/deckgrid/deckgrid.js"></script>
+        <script src="scripts/deckgrid/deckgrid.module.js"></script>
+        <script src="scripts/deckgrid/deckgrid.controller.js"></script>
+        <script src="scripts/deckgrid/deckgrid.directive.js"></script>
 
         <!-- Collections tool -->
-        <script src="scripts/collections/services/collections-service.js"></script> 
-        <script src="scripts/collections/controllers/collections-controller.js"></script> 
-        <script src="scripts/collections/directives/collections-directive.js"></script>
-        <script src="scripts/collections/collections.js"></script>
-        
+        <script src="scripts/collections/collections.module.js"></script>
+        <script src="scripts/collections/collections.service.js"></script>
+        <script src="scripts/collections/collections.directive.js"></script>
+
 
         <!-- Statistics tool -->
-        <script src="scripts/statistics/controllers/statistics-controller.js"></script> 
-        <script src="scripts/statistics/directives/statistics-directive.js"></script>
-        <script src="scripts/statistics/controllers/barchart-controller.js"></script>
-        <script src="scripts/statistics/directives/barchart-directive.js"></script>
-        <script src="scripts/statistics/statistics.js"></script>
-        
-        <!-- Annotations tool -->
-        <script src="scripts/annotations/directives/crop-directive.js"></script>
-        <script src="scripts/annotations/services/annotations-service.js"></script>
-        <script src="scripts/annotations/controllers/annotations-controller.js"></script>
+        <script src="scripts/statistics/statistics.module.js"></script>
+        <script src="scripts/statistics/statistics.directive.js"></script>
 
-        <script src="scripts/annotations/directives/annotations-directive.js"></script>
-        <script src="scripts/annotations/directives/listannotations-directive.js"></script>
-        <script src="scripts/annotations/annotations.js"></script>
+        <!-- Annotations tool -->
+        <script src="scripts/annotations/annotations.module.js"></script>
+        <script src="scripts/annotations/crop.directive.js"></script>
+        <script src="scripts/annotations/annotations.service.js"></script>
+        <script src="scripts/annotations/annotations.directive.js"></script>
+        <script src="scripts/annotations/list.annotations.directive.js"></script>
 
 
         <!-- Vis tool -->
-        <script src="scripts/visualizations/visualizations.js"></script>
-        <script src="scripts/visualizations/directives/time-bar.js"></script>
+        <script src="scripts/visualizations/visualization.module.js"></script>
+        <script src="scripts/visualizations/visualization.service.js"></script>
+        <script src="scripts/visualizations/visualization.controller.js"></script>
+        <script src="scripts/visualizations/time.bar.directive.js"></script>
 
         <!-- Map tool -->
+        <script src="scripts/map/map.module.js"></script>
         <script src="scripts/map/map.js"></script>
-        
+
         
 
         <!-- endbuild -->

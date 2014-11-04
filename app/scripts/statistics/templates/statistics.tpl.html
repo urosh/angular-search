@@ -1,34 +1,27 @@
 <div class='statistics-container'>
-	<preloader active="active" class="stat-preloader"></preloader>
-		<div class="statistics-content" ng-show="!active">
+	<starc-preloader active="vm.active" class="stat-preloader"></starc-preloader>
+		<div class="statistics-content" ng-show="!vm.active">
 			<h3>Repository statistics</h3>
-      <div class="buttons-div">
-        <span title="Repository stats" ng-click="setContent('stat');" ng-class="(statActive) ? 'myicon icon-stats active' : 'myicon icon-stats'" ></span>
-        <span  title="Repository history" ng-click="setContent('barchart');" ng-class="(barchartActive) ? 'myicon icon-bar active' : 'myicon icon-bar'"></span>
-        <span  title="Repository history" ng-click="setContent('graph');" ng-class="(graphActive) ? 'myicon icon-graph active' : 'myicon icon-graph'"></span>
 
-      </div>
-      <my-barchart ng-show="barchartActive" bartitle="Number of uploaded objects per month"></my-barchart>
-			
-			<div ng-show="statActive">
-				<p>Number of objects: <span class="val">{{ stats.numberOfObjects }}</span></p>
+			<div ng-show="vm.statActive">
+				<p>Number of objects: <span class="val">{{ vm.stats.numberOfObjects }}</span></p>
 				<p>Object types</p>
 				<ul>
-					<li ng-repeat="type in stats.types" >
-						<span ng-class="{selected: type.selected}">{{type.type}} (<a href="#" ng-click="search('types', type.type)">{{type.number}}</a>)</span>	
+					<li ng-repeat="type in vm.stats.types" >
+						<span ng-class="{selected: type.selected}">{{type.type}} (<a href="#" ng-click="vm.search('types', type.type)">{{type.number}}</a>)</span>
 					</li>
 					
 					
 				</ul>
 				<p>Data collections</p>
 				<ul class="data-collections-list">
-					<li ng-repeat="collection in stats.collections">
-						<span>{{collection.collection}} (<a ng-click="search('collections', collection.collection)" href="#">{{collection.number}}</a>)</span>
+					<li ng-repeat="collection in vm.stats.collections">
+						<span>{{collection.collection}} (<a ng-click="vm.search('collections', collection.collection)" href="#">{{collection.number}}</a>)</span>
 					</li>	
 				</ul>
 				<p>Personal collections</p>
 				<ul class="data-collections-list">
-					<li ng-repeat="collection in stats.personal">
+					<li ng-repeat="collection in vm.stats.personal">
 						<span>{{collection.name}} (<a href="#">{{collection.number}}</a>)</span>
 					</li>	
 				</ul>
