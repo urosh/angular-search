@@ -15,7 +15,7 @@
       controllerAs: 'vm'
     };
 
-    function FacetController($scope, requestNotificationChannel, DataModel, display) {
+    function FacetController($scope, requestNotificationChannel,   facetService) {
       var vm = this;
 
       vm.active = false;
@@ -35,85 +35,30 @@
         vm.active = true;
         vm.types = [];
         vm.collections = [];
-
-        _.each(DataModel.getResultTypes(), function (item) {
-          vm.types.push({'name': item, 'selected': false});
-        });
-
-        _.each(DataModel.getResultCollections(), function (item) {
-          vm.collections.push({'name': item, 'selected': false});
-        });
-
+        vm.types = facetService.setFacetTypes();
+        vm.collections = facetService.setFacetCollections();
         vm.selectedTypes = [];
         vm.selectedCollections = [];
       }
 
-
-      function updateDisplay() {
-
-        var newDisplayData = [];
-
-        if (!vm.selectedTypes.length && !vm.selectedCollections.length) {
-          display.resetDisplay();
-        } else {
-          _.each(display.getDisplayData(), function (item) {
-            var add = false;
-
-            _.each(vm.selectedCollections, function (collection) {
-              if (item.collection === collection.name) {
-                add = true;
-              }
-            });
-
-            _.each(vm.selectedTypes, function (type) {
-              if (item.type === type.name) {
-                add = true;
-              }
-            });
-
-            if (add) {
-              newDisplayData.push(item);
-            }
-
-          });
-          display.addDisplayData(newDisplayData, 'facets');
-        }
-      }
-
       function filterFacet(type, index) {
-        var collectionName = '';
 
+        var collectionName = '';
         if(type === 'collections'){
-          collectionName = 'selectedCollections'
+          collectionName = 'selectedCollections';
         }else{
           collectionName = 'selectedTypes';
         }
+
         var currentStatus = vm[type][index].selected;
         vm[type][index].selected = !vm[type][index].selected;
-        var add = true;
-        var removeIndex = -1;
-        _.each(vm[collectionName], function(item, i){
-          if(item['name'] === vm[type][index]['name']){
-            add = false;
-            if(currentStatus){
-              removeIndex = i;
-            }
-          }
-        });
-        if(currentStatus && removeIndex > -1){
-          vm[collectionName].splice(removeIndex, removeIndex+1);
-        }
+        vm[collectionName] = facetService.filterFacet(currentStatus, vm[collectionName], vm[type][index]);
 
-        if(add){
-          vm[collectionName].push(vm[type][index]);
-        }
-
-        updateDisplay();
+        facetService.updateDisplay(vm.selectedTypes, vm.selectedCollections);
       }
-
     }
 
-    FacetController.$inject = ['$scope', 'requestNotificationChannel', 'DataModel', 'display'];
+    FacetController.$inject = ['$scope', 'requestNotificationChannel',  'facetService'];
 
     return directive;
 
