@@ -14,9 +14,11 @@
 
     };
 
-    return directive;
+
 
     CollectionsController.$inject = ['$scope',  '$timeout', 'requestNotificationChannel', 'DataModel', 'CommonServices', 'collectionsService'];
+
+    return directive;
 
     function CollectionsController($scope, $timeout, requestNotificationChannel, DataModel, CommonServices, collectionsService){
 
@@ -35,22 +37,23 @@
       vm.saveDialog = false;
       vm.itemActive = itemActive;
 
-      requestNotificationChannel.onItemAddedToCollection($scope, function(id){
-        /* ok now i need to get the item based on id*/
-        var item = DataModel.getItemById(id);
-        var itemExist  = false;
 
-        for (var i = 0; i < vm.items.length; i++) {
-          if( vm.items[i]['docID'] === id ){
-            itemExist = true;
+
+      activate();
+
+
+      function activate() {
+        requestNotificationChannel.onItemAddedToCollection($scope, function(id){
+          /* ok now i need to get the item based on id*/
+          var item = DataModel.getItemById(id);
+
+          if(!collectionsService.itemExist(vm.items, id)){
+            vm.items.push(item);
           }
-        }
 
-        if(!itemExist){
-          vm.items.push(item);
-        }
+        });
 
-      });
+      }
 
 
       function itemActive(index) {
@@ -65,6 +68,7 @@
       }
 
       function removeItem(id) {
+        collectionsService.clearItems(vm.items);
         CommonServices.removeObjectFromCollection(vm.items, 'docID', id);
       }
 

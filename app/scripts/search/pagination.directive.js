@@ -61,6 +61,11 @@
 
       }
 
+      function initialize() {
+        vm.items = display.getDisplayWindow();
+        vm.numberOfItems = display.getNumberOfItems();
+        vm.currentPage = display.getCurrentPage();
+      }
 
 
       function perPage(e) {
@@ -99,12 +104,7 @@
 
 
 
-      function initialize() {
-        vm.items = display.getDisplayWindow();
-        vm.numberOfItems = display.getNumberOfItems();
-        vm.currentPage = display.getCurrentPage();
 
-      }
 
       function updateDisplay(currentPage, perPage) {
         display.setDisplay(currentPage, perPage);
