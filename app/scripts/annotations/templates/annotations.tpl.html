@@ -1,20 +1,20 @@
 <div class="annotation-container">
 	<h3>Annotate Object</h3>
-	<p ng-show="!objectLoaded">Please select object</p>
-  <div ng-show="objectLoaded" class="annotation-menu">
+	<p ng-show="!vm.objectLoaded">Please select object</p>
+  <div ng-show="vm.objectLoaded" class="annotation-menu">
 
-    <span ng-class="(annotateMode) ? 'my-icon icon-annotate active' : 'my-icon icon-annotate'" title="Annotate object" ng-click="annotateMode = true;"></span>
-    <span ng-class="(!annotateMode) ? 'my-icon icon-list active' : 'my-icon icon-list'" title="Show available annotations" ng-click="annotateMode = false;"></span>
+    <span ng-class="(vm.annotateMode) ? 'my-icon icon-annotate active' : 'my-icon icon-annotate'" title="Annotate object" ng-click="vm.annotateMode = true;"></span>
+    <span ng-class="(!vm.annotateMode) ? 'my-icon icon-list active' : 'my-icon icon-list'" title="Show available annotations" ng-click="vm.annotateMode = false;"></span>
   </div>
-	<my-crop imsource="imageSource" imageh="imageh" ng-show="annotateMode"></my-crop>
-  <my-list-annotations imsource="imageSource" imageh="imageh" docid="docID" list="annotationsList" ng-show="!annotateMode"></my-list-annotations>
-	<div ng-show="objectLoaded && annotateMode" class="annotation-form">
-		<my-dialog ng-show="dialogActive"  type="dialogType" text="dialogText" ></my-dialog>		
+	<starc-crop imsource="vm.imageSource" imageh="vm.imageh" ng-show="vm.annotateMode"></starc-crop>
+  <starc-list-annotations imsource="vm.imageSource" imageh="vm.imageh" docid="vm.docID" list="vm.annotationsList" ng-show="!vm.annotateMode"></starc-list-annotations>
+	<div ng-show="vm.objectLoaded && vm.annotateMode" class="annotation-form">
+		<starc-dialog ng-show="vm.dialogActive"  type="vm.dialogType" text="vm.dialogText" ></starc-dialog>
 		<p>Annotation title</p>
-		<input ng-model="annotation.title" type="text">
+		<input ng-model="vm.annotation.title" type="text">
 		<p>Annotation description</p>
-		<textarea  ng-model="annotation.text" ></textarea>
-		<a href="#"  ng-click="saveAnnotation()" class="button">Save</a>
+		<textarea  ng-model="vm.annotation.text" ></textarea>
+		<a href="#"  ng-click="vm.saveAnnotation()" class="button">Save</a>
 
 	</div>
 </div>
