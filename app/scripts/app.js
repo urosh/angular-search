@@ -24,7 +24,7 @@ angular
     'app.d3',
     'app.statistics',
     'app.annotations',
-    'visualizationModule'
+    'app.visualizations'
 
   ]);
   
