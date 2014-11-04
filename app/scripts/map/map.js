@@ -33,7 +33,7 @@
 
       requestNotificationChannel.onDisplayReady($scope, function(item){
         if(item === 'filter'){
-          mapService.resetMarkers();
+          mapService.resetMarkers(vm.markers);
         }
       });
 

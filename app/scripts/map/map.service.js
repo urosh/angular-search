@@ -85,6 +85,7 @@
         marker.clicked = false;
         marker.icon = null;
       });
+      return markers;
     }
     return service;
 
