@@ -13,7 +13,7 @@
       controller : StoriesController,
       controllerAs : 'vm',
       scope : {},
-      template : '<div class="stories-container" ><h3>Create story</h3><starc-stories-block ng-repeat="block in vm.blocks" index="$index"  data="block.type"></starc-stories-block></div>'
+      templateUrl : 'scripts/stories/templates/story.tpl.html'
     };
 
     function StoriesController() {

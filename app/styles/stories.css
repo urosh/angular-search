@@ -25,7 +25,6 @@
     margin-top: 3px;
     background-color: #C0C0C0;
     cursor: pointer;
-    border: solid 2px #e7e7e7;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -109,4 +108,31 @@
     font-weight: bold;
     font-size: 16px;
 
+}
+
+.stories-container .tab-container{
+    height: 20px;
+
+}
+
+.stories-container .tab-container .tab{
+    width: 65px;
+    display: inline-block;
+    background-color: #66718b;
+    color: white;
+   /* font-weight: bold;*/
+    text-align: center;
+    margin-right: 2px;
+    cursor: pointer;
+}
+.stories-container .tab-container .tab-footer{
+    height: 3px;
+    background-color: #2d3956;
+}
+.stories-container .tab:hover{
+    background-color: #2d3956;
+}
+
+.stories-container .tab.active{
+    background-color: #2d3956;
 }

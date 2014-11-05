@@ -1,12 +1,12 @@
 
 <div ng-click="vm.blockSelected()" ng-class="vm.menuActive ? 'story-block active' : 'story-block'">
   <div class="story-block-menu" >
+    <span class="icon-holder icon2-add" ng-click="addBlock()" title="add block"></span>
+    <span ng-show="!vm.title" class="icon-holder icon2-remove" ng-click="removeBlock()" title="remove block"></span>
     <span ng-show="!vm.title" ng-click="vm.addSource('object')" class="icon-holder icon-object" title="add object"></span>
     <span ng-show="!vm.title" ng-click="vm.addSource('text')" title="add text" class="icon-holder icon2-text"></span>
-
-    <span ng-show="!vm.title" class="icon-holder icon2-remove" ng-click="removeBlock()" title="remove block"></span>
-    <span class="icon-holder icon2-add" ng-click="addBlock()" title="add block"></span>
     <span class="block-description">{{vm.blockTitle}}</span>
+
 
   </div>
   <div ng-show="vm.objectActive" class="object-container">
