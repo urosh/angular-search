@@ -263,6 +263,19 @@ input[type="search"] {
 		font-size: 10px;
 }
 
+.a-card .tools-icons .icon-story{
+    padding: 1px 4px 2px 4px;
+}
+.a-card .icon-story:before {
+	content: "S";
+    font-weight: bold;
+		font-size: 11px;
+}
+.a-card .icon-story:hover:before{
+    color: #2d3956;
+    font-size: 11px;
+}
+
 .a-card .icon-annotate:hover:before{
 	color: #2d3956;
 		font-size: 10px;

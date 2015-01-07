@@ -13,10 +13,16 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
     requestNotificationChannel.itemSelect(e);
   };
 
+  $scope.addItemToStory = function(e) {
+    requestNotificationChannel.itemAddToStory(e);
+  };
+
+
 
   $scope.active = false;
 
   requestNotificationChannel.onDisplayReady($scope, function(){
+
     $scope.model = display.getDisplayWindow();
     $scope.active = false;
   });
@@ -24,6 +30,7 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
   $scope.tools = {
     'annotations' : false,
     'collections' : false,
+    'stories' : false,
     'active' : false
   };
 

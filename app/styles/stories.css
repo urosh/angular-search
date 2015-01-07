@@ -1,0 +1,267 @@
+.stories-container{
+    width: 526px;
+    overflow: auto;
+    overflow-y: hidden;
+    display: inline-block;
+    float: right;
+    margin: 0 0 3px 0;
+    color: #2d3956;
+    min-height: 450px;
+    background-color: #e7e7e7;
+    padding:3px 6px 3px 6px ;
+
+}
+
+.stories-container h3{
+    padding: 0 0 4px;
+    margin: 0;
+    width: 150px;
+}
+
+
+.stories-container .story-block {
+    min-height: 40px;
+    overflow: auto;
+    margin-top: 2px;
+    background-color: #C5C5C5;
+    cursor: pointer;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+
+   /* border: solid 2px #66718b;
+*/
+}
+
+
+.stories-container .story-block.active{
+
+
+}
+.stories-container .story-block:hover {
+    background-color: #C5C5C5;
+}
+
+.stories-container .story-block-menu{
+    margin: 2px;
+}
+.stories-container .story-block .icon-holder{
+
+    background-color: #66718b;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    padding: 2px 2px 2px 2px;
+    cursor: pointer;
+    margin-right: 0px;
+    font-size: 12px;
+}
+
+.stories-container .story-block .icon-holder:hover{
+    background-color: #2d3956;
+
+}
+
+.stories-container .story-block .icon-holder.active{
+    background-color: #2d3956;
+
+}
+
+
+
+
+.stories-container .icon-object:before{
+    content: "\e632";
+}
+
+.stories-container .icon2-text:before{
+    content: "\e619";
+}
+
+.stories-container .icon2-remove:before{
+    content: "\e60b";
+}
+
+.stories-container .icon2-add:before{
+    content: "\e60d";
+}
+
+.stories-container .object-container{
+    margin-left: 2px;
+}
+
+.stories-container .text-container{
+    margin-left: 2px;
+}
+
+.stories-container .title-container{
+    margin-left: 2px;
+    height: 30px;
+}
+
+.stories-container .title-container input[type="text"]{
+    height: 20px;
+    width: 510px;
+    font-size: 14px;
+}
+
+
+.stories-container .text-container textarea{
+    width: 510px;
+    min-height: 120px;
+    overflow:  auto;
+    font-size: 14px;
+}
+
+.stories-container .story-block-menu .block-description{
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+.stories-container .tab-container{
+    height: 18px;
+
+}
+
+.stories-container .tab-container .tab{
+    width: 65px;
+    display: inline-block;
+    background-color: #2d3956;
+    color: white;
+   /* font-weight: bold;*/
+    text-align: center;
+    margin-right: 2px;
+    cursor: pointer;
+}
+.stories-container .tab-container .tab-footer{
+    height: 2px;
+    background-color: #66718b;
+    margin-bottom: 0;
+}
+.stories-container .tab:hover{
+    background-color: #66718b;
+}
+
+.stories-container .tab.active{
+    background-color: #66718b;
+}
+
+.stories-container .publish-button{
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+    background-color: #66718b;
+    margin: 0px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    padding: 0px;
+    font-size: 14px;
+    line-height: 25px;
+    margin-top: 5px;
+
+
+}
+.stories-container .publish-button:hover{
+    background-color: #2d3956;
+
+}
+
+.stories-container .stories-block-container{
+    background-color: #66718b;
+    margin-top: 0;
+    padding: 2px;
+
+
+}
+
+.stories-container .preview-container{
+    margin-top: 0;
+    min-height: 200px;
+    overflow: auto;
+    padding: 2px;
+    background-color: #C5C5C5;
+    border: solid 2px #66718b;
+    border-top: solid 4px #66718b;
+    font-size: 14px;
+}
+
+.stories-container .preview-container h3{
+    width: 100%;
+}
+
+.stories-container .preview-container p {
+    margin: 0;
+    padding: 2px;
+}
+.stories-container .object-container{
+    min-height: 80px;
+    overflow: auto;
+}
+.stories-container .object-container .selected-objects{
+    min-height: 60px;
+    overflow: auto;
+    float: left;
+    margin-right: 2px;
+}
+.stories-container .object-container .notification-container{
+    float: left;
+    height: 60px;
+    width: 80px;
+    border: dashed 2px #2d3956;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 15px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    font-weight: bold;
+
+}
+
+.stories-container .object-container .selected-container{
+    display: inline-block;
+    margin-right: 5px;
+    text-align: center;
+    position: relative;
+
+}
+
+.stories-container .object-container .selected-container .label{
+    text-align: center;
+    height: 30px;
+    width: 50px;
+    font-size: 12px;
+    overflow:hidden;
+    /* Required for text-overflow to do anything */
+
+}
+
+.stories-container .object-container .selected-container .remove-button{
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    padding: 0;
+}
+.stories-container .object-container .selected-container .icon2-remove{
+    font-size: 11px;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.stories-container .selected-container .icon2-remove:hover{
+    color: #66718b;
+}
+
+.on-drag-enter{
+
+    background-color: #737373;
+}
+
+.stories-container .object-container .notification-container{
+
+}

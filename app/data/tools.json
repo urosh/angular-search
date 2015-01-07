@@ -3,7 +3,8 @@
 	{"id": 2, "name": "collections", "template":"scripts/collections/template.tpl.html"},
 	{"id": 3, "name": "statistics", "template":"scripts/statistics/template.tpl.html"},
 	{"id": 4, "name": "annotations", "template":"scripts/annotations/template.tpl.html"},
-	{"id": 5, "name": "visualizations", "template":"scripts/visualizations/template.tpl.html"}
+	{"id": 5, "name": "visualizations", "template":"scripts/visualizations/template.tpl.html"},
+	{"id": 6, "name": "stories", "template":"scripts/stories/template.tpl.html"}
 
 
 ]

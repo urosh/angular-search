@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'app.commons',
+    'ngDragDrop',
     'app.controlls',
     'app.search',
     'app.map',
@@ -24,7 +25,8 @@ angular
     'app.d3',
     'app.statistics',
     'app.annotations',
-    'app.visualizations'
+    'app.visualizations',
+    'app.stories'
 
   ]);
   

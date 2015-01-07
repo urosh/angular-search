@@ -20,7 +20,10 @@
 	    <div deckgrid class="deckgrid"  cardTemplate="scripts/deckgrid/template/card.tpl.html"></div>
 	  </div>
 	</div>
-	<div ng-repeat="tool in vm.tools" ng-include="tool.template">
-		
-	</div>
+  <div class="right-tools-container">
+    <div ng-repeat="tool in vm.tools" ng-include="tool.template" >
+
+    </div>
+  </div>
+
 </div>
