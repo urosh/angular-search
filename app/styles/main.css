@@ -76,7 +76,12 @@ body {
   margin: auto;
 
 }
-
+input {
+    outline:none;
+}
+textarea{
+    outline: none;
+}
 .menu-container{
   width: 1018px;
   height: 70px;
