@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'app.commons',
+    'ngDragDrop',
     'app.controlls',
     'app.search',
     'app.map',

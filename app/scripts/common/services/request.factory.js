@@ -17,6 +17,7 @@
     var _ITEM_ADDED_TO_COLLECTION = '_ITEM_ADDED_TO_COLLECTION';
     var _ITEM_ANNOTATE_ = '_ITEM_ANNOTATE_';
     var _SET_HISTORY_ = '_SET_HISTORY_';
+    var _ADD_TO_STORY_ = '_ADD_TO_STORY';
 
     return {
       searchStarted: searchStarted,
@@ -38,7 +39,9 @@
       itemAnnotate: itemAnnotate,
       onItemAnnotate: onItemAnnotate,
       historySet : historySet,
-      onHistorySet: onHistorySet
+      onHistorySet: onHistorySet,
+      itemAddToStory : itemAddToStory,
+      onItemAddedToStory : onItemAddedToStory
     };
 
     function searchStarted() {
@@ -147,6 +150,16 @@
     function onHistorySet($scope, handler){
       $scope.$on(_SET_HISTORY_, function(event, args){
         handler(args.query);
+      });
+    }
+
+    function itemAddToStory(item) {
+      $rootScope.$broadcast(_ADD_TO_STORY_, {item: item});
+    }
+
+    function onItemAddedToStory($scope, handler) {
+      $scope.$on(_ADD_TO_STORY_, function(event, args){
+        handler(args.item);
       });
     }
 

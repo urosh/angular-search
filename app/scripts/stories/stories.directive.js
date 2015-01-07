@@ -7,7 +7,9 @@
   angular.module('app.stories')
     .directive('starcStories', StoriesDirective);
 
-  function StoriesDirective() {
+  StoriesDirective.$inject = ['storiesDataModel'];
+
+  function StoriesDirective(storiesDataModel) {
     var directive = {
       restrict : 'E',
       controller : StoriesController,
@@ -16,25 +18,31 @@
       templateUrl : 'scripts/stories/templates/story.tpl.html'
     };
 
-    function StoriesController() {
+    StoriesController.$inject = ['storiesService'];
+
+    function StoriesController(storiesService) {
       var vm = this;
-      vm.addBlock = addBlock;
-      vm.removeBlock = removeBlock;
 
-      vm.blocks = [
-        {'type' : 'title'},
-        {'type' : 'block'},
-        {'type' : 'block'},
-        {'type' : 'block'},
-      ];
+      vm.createMode = true;
+      vm.changeMode = changeMode;
+      vm.stories = [];
+      vm.blocks = [];
 
-      function addBlock(i) {
-        vm.blocks.splice(i+1, 0, {'type': 'block'});
+      activate();
+
+      function activate() {
+        vm.stories = storiesDataModel.getStories();
+        vm.blocks = storiesDataModel.getBlocks();
       }
 
-      function removeBlock(i) {
-        vm.blocks.splice(i, 1);
+
+
+
+      function changeMode(mode) {
+        vm.createMode = mode;
       }
+
+
       return vm;
     }
     return directive;

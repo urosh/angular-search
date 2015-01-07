@@ -1,10 +1,11 @@
-<div class="a-card">
+<div class="a-card" ui-draggable="true" drag="card">
 	<img src="" ng-click="itemClicked(card.docID)" width="110" data-ng-src="{{card.imageLocation}}">
 
 	<h4>{{card.label}}</h4>
 	<div ng--show="tools.active" class="tools-icons">
-		<span class="icon-add" ng-show="tools.collections" ng-click="itemAddedToCollection(card.docID)"></span>
-		<span class="icon-annotate" ng-show="tools.annotations" ng-click="annotateItem(card.docID)"></span>
-		
+		<span title="Add to collection" class="icon-add" ng-show="tools.collections" ng-click="itemAddedToCollection(card.docID)"></span>
+		<span title="Annotate" class="icon-annotate" ng-show="tools.annotations" ng-click="annotateItem(card.docID)"></span>
+		<span title="Add to story" class="icon-story" ng-show="tools.stories" ng-click="addItemToStory(card.docID)"></span>
+
 	</div>
 </div>
