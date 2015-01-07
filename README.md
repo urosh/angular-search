@@ -9,6 +9,6 @@ The idea is to create a dashboard using angular, which will serve as interactive
 
 Another goal of this tool is to practice my angular skills. Since i just started using angular, it is good chance to improve my skills and to see how much i learned and where i need to improve my skills and work more.
 
-After some level of maturity is reached, the tools developed here will be used as a basis of the new version of the Starc Repository which will be completely based on Javascript(Angular on fron end, Node on backend).
+After some level of maturity is reached, the tools developed here will be used as a basis of the new version of the Starc Repository which will be completely based on Javascript (Angular on front end, Node on backend).
 
  
