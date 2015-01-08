@@ -9,7 +9,7 @@
       restrict : 'E',
       scope : {},
       transclude : true,
-      templateUrl : 'scripts/controlls/templates/tools-select.tpl.html',
+      templateUrl : 'scripts/controlls/templates/toolsSelect.tpl.html',
       controller : ToolsController,
       controllerAs : 'vm'
 

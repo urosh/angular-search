@@ -1,7 +1,12 @@
 <div class="map-container" ng-controller="mapController as mapCtrl">
-  <google-map draggable="true"  center="mapCtrl.map.center" zoom="mapCtrl.map.zoom">
+  
+  <!-- <google-map draggable="true"  center="mapCtrl.map.center" zoom="mapCtrl.map.zoom">
     <markers models="mapCtrl.markers" coords="'self'" icon="'icon'" click="'onClicked'" >
     </markers> 
-  </google-map>
+  </google-map> -->
+
+  <ui-gmap-google-map  center='mapCtrl.map.center' zoom='mapCtrl.map.zoom'>
+  	<ui-gmap-markers models="mapCtrl.markers" coords="'self'" icon="'icon'" click="mapCtrl.onClicked"></ui-gmap-markers>
+	</ui-gmap-google-map>
 
 </div>

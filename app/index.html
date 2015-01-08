@@ -25,13 +25,10 @@
     <link rel="stylesheet" href="styles/visualizations.css" >
     <link rel="stylesheet" href="styles/stories.css" >
 
+
     <!-- endbuild -->
-
-    
-
-
   </head>
-  <body ng-app="app"  >
+  <body ng-app="starcExploreApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -43,12 +40,7 @@
       </starc-selected-tools>
       
     </div>
-      
-      
-    <div starc-modal></div>
- 
-      
- 
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -65,36 +57,30 @@
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
     <![endif]-->
     <!-- endbuild -->
-        <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXuSxAlefxRVSKVAaRX27QmBfrHNkhUug&sensor=true&region=CY">
-    </script>
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-
     <script src="scripts/app.js"></script>
-
-
-
-    <!--
-    Common services
-    -->
+    
+    <!-- Common services -->
     <script src="scripts/common/commons.module.js"></script>
     <script src="scripts/common/services/common.services.js"></script>
     <script src="scripts/common/services/request.factory.js"></script>
@@ -106,21 +92,27 @@
     <script src="scripts/common/directives/dialog.directive.js"></script>
     <script src="scripts/common/directives/scrollbar.directive.js"></script>
 
-
     <!-- d3 module-->
     <script src="scripts/d3/d3.js"></script>
 
-    <!-- Drag and drop module-->
-    <script src="scripts/dragdrop/dragdrop.module.js"></script>
-    <!-- Dashboard controlls, adding and removing widgets from workspace -->
+    <!-- Vis tool -->
+    <script src="scripts/visualizations/visualization.module.js"></script>
+    <script src="scripts/visualizations/visualization.service.js"></script>
+    <script src="scripts/visualizations/visualization.controller.js"></script>
+    <script src="scripts/visualizations/time.bar.directive.js"></script>
 
+    <!-- Statistics tool -->
+    <script src="scripts/statistics/statistics.module.js"></script>
+    <script src="scripts/statistics/statistics.directive.js"></script>
+
+
+
+    <!-- Dashboard controlls, adding and removing widgets from workspace -->
     <script src="scripts/controlls/controlls.module.js"></script>
     <script src="scripts/controlls/controlls.service.js"></script>
     <script src="scripts/controlls/dropdown.directive.js"></script>
     <script src="scripts/controlls/tools.directive.js"></script>
 
-
-    <!--  -->
     <!-- Search tool -->
     <script src="scripts/search/search.module.js"></script>
     <script src="scripts/search/search.directive.js"></script>
@@ -135,36 +127,24 @@
     <script src="scripts/deckgrid/deckgrid.controller.js"></script>
     <script src="scripts/deckgrid/deckgrid.directive.js"></script>
 
-    <!-- Collections tool -->
-    <script src="scripts/collections/collections.module.js"></script>
-    <script src="scripts/collections/collections.service.js"></script>
-    <script src="scripts/collections/collections.directive.js"></script>
+    <!-- Map tool -->
+    <script src="scripts/map/map.module.js"></script>
+    <script src="scripts/map/map.service.js"></script>
+    <script src="scripts/map/map.js"></script>
 
-
-    <!-- Statistics tool -->
-    <script src="scripts/statistics/statistics.module.js"></script>
-    <script src="scripts/statistics/statistics.directive.js"></script>
-
-    <!-- Annotations tool -->
+     <!-- Annotations tool -->
     <script src="scripts/annotations/annotations.module.js"></script>
     <script src="scripts/annotations/crop.directive.js"></script>
     <script src="scripts/annotations/annotations.service.js"></script>
     <script src="scripts/annotations/annotations.directive.js"></script>
     <script src="scripts/annotations/list.annotations.directive.js"></script>
 
+    <!-- Collections tool -->
+    <script src="scripts/collections/collections.module.js"></script>
+    <script src="scripts/collections/collections.service.js"></script>
+    <script src="scripts/collections/collections.directive.js"></script>
 
-    <!-- Vis tool -->
-    <script src="scripts/visualizations/visualization.module.js"></script>
-    <script src="scripts/visualizations/visualization.service.js"></script>
-    <script src="scripts/visualizations/visualization.controller.js"></script>
-    <script src="scripts/visualizations/time.bar.directive.js"></script>
-
-    <!-- Map tool -->
-    <script src="scripts/map/map.module.js"></script>
-    <script src="scripts/map/map.service.js"></script>
-    <script src="scripts/map/map.js"></script>
-
-      <!-- Stories tool -->
+    <!-- Stories tool -->
     <script src="scripts/stories/stories.module.js"></script>
     <script src="scripts/stories/stories.data.model.js"></script>
     <script src="scripts/stories/stories.service.js"></script>
@@ -172,8 +152,7 @@
     <script src="scripts/stories/stories.tabs.directive.js"></script>
     <script src="scripts/stories/stories.directive.js"></script>
     <script src="scripts/stories/stories.preview.block.directive.js"></script>
-    <script src="scripts/stories/stories.preview.directive.js"></script>
-
+    <script src="scripts/stories/stories.preview.directive.js"></script>    
 
 
     <!-- endbuild -->

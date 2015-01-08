@@ -2,31 +2,30 @@
 
 /**
  * @ngdoc overview
- * @name starcSearchApp
+ * @name starcSearch2App
  * @description
- * # starcSearchApp
+ * # starcSearch2App
  *
  * Main module of the application.
  */
 angular
-  .module('app', [
+  .module('starcExploreApp', [
     'ngAnimate',
     'ngCookies',
+    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
     'app.commons',
-    'ngDragDrop',
     'app.controlls',
     'app.search',
     'app.map',
+    'app.annotations',
     'app.collections',
     'app.d3',
-    'app.statistics',
-    'app.annotations',
     'app.visualizations',
+    'app.statistics',
     'app.stories'
-
   ]);
   

@@ -8,6 +8,7 @@
   angular.module('app.annotations')
     .factory('annotationsService', AnnotationsService);
 
+  AnnotationsService.$inject = ['$http'];
   function AnnotationsService($http) {
 
     var service = {
@@ -39,7 +40,7 @@
     }
 
   }
-  AnnotationsService.$inject = ['$http'];
+  
 
 })();
 

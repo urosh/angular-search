@@ -78,15 +78,17 @@
             collectionExists = true;
           }
         });
+
         _.each(resultTypes, function(type){
           if(type === item.type){
             typeExists = true;
           }
         });
-
+        
         if(!collectionExists) { resultCollections.push(item.collection); }
         if(!typeExists) { resultTypes.push(item.type); }
-      });
+      })
+      
 
       requestNotificationChannel.searchResultsReady();
     }

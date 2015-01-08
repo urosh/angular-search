@@ -50,7 +50,7 @@ angular.module('app.deckgrid').factory('DeckgridDescriptor', [
     'DataModel',
     
 
-    function initialize (Deckgrid, $templateCache, display, requestNotificationChannel, DataModel) {
+    function initialize (Deckgrid, $templateCache) {
 
         'use strict';
 
@@ -315,7 +315,7 @@ angular.module('app.deckgrid').factory('Deckgrid', [
             this.$$scope.columns = [];
 
             angular.forEach(this.$$scope.model, function onIteration (card, index) {
-                var column = (index % self.$$scope.layout.columns) | 0;
+                var column = (index % self.$$scope.layout.columns) || 0;
 
                 if (!self.$$scope.columns[column]) {
                     self.$$scope.columns[column] = [];
@@ -354,7 +354,7 @@ angular.module('app.deckgrid').factory('Deckgrid', [
 
                 if (2 === content.length) {
                     layout = {};
-                    layout.columns = (content[0] | 0);
+                    layout.columns = (content[0] || 0);
                     layout.classList = content[1].replace(/\./g, ' ').trim();
                 }
             }
@@ -402,7 +402,7 @@ angular.module('app.deckgrid').factory('Deckgrid', [
                 change = true;
             }else{
                 for(var i = 0, j = oldModel.length; i < j; i++){
-                    if(oldModel[i]['docID'] !== newModel[i]['docID']){
+                    if(oldModel[i].docID !== newModel[i].docID){
                         change = true;
                     }
                 }

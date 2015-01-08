@@ -40,7 +40,7 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
   requestNotificationChannel.onToolAdded($scope, function(item){
     if ($scope.tools.hasOwnProperty(item)) {
       $scope.tools[item] = true;
-      $scope.tools['active'] = true;
+      $scope.tools.active = true;
     }
 
   });
@@ -57,7 +57,7 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
         }
       }
       if (removeTools) {
-        $scope.tools['active'] = false;
+        $scope.tools.active = false;
       }
     }
 
@@ -70,7 +70,7 @@ function DeckgridController($scope, $filter, requestNotificationChannel, DataMod
   });
 
   requestNotificationChannel.onQueryChange($scope, function(query){
-    if(query == ''){
+    if(query === ''){
       display.resetDisplay();
     }else{
 

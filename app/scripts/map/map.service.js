@@ -12,11 +12,11 @@
   function MapService(DataModel, display, $filter) {
     var service = {
       setMarkers : setMarkers,
-      showMarkers : showMarkers,
       resetMarkers : resetMarkers
     };
     var id  = 0;
-    function setMarkers() {
+    
+    function setMarkers(clickedMarker) {
 
       var markers = [];
       var res = DataModel.getResults();
@@ -31,12 +31,25 @@
 
           if(add){
             id++;
+            var icon = null;
+            var clicked = false;
+            if(clickedMarker && clickedMarker.latitude === res[key].lat && clickedMarker.lng === res[key].longitude ) {
+              if(clickedMarker.clicked) {
+                icon = null;
+                clicked = false
+              }else{
+                icon = "images/green.png";
+                clicked = true;  
+              }
+              
+            }
             markers.push(
               {
                 id: id,
                 latitude: res[key].lat,
                 longitude: res[key].lng,
-                clicked: false
+                clicked: clicked,
+                icon: icon
 
               }
             );
@@ -44,41 +57,24 @@
 
         }
       }
+      if(clickedMarker) {
+        if(clickedMarker.clicked) {
+          display.resetDisplay();
+        }else{
+          display.addDisplayData($filter('filter')(DataModel.getResults(), function(item){
+            if(item.lat === clickedMarker.latitude && item.lng === clickedMarker.longitude){
+              return true;
+            }else{
+              return false;
+            }
+          }), 'map');  
+        }
+        
+
+      }
       return markers;
     }
 
-
-    function showMarkers(markers) {
-      _.each(markers, function(marker){
-        marker.onClicked = function(){
-          if(marker.clicked){
-            marker.icon=null;
-            marker.clicked = false;
-            display.resetDisplay();
-
-          }else{
-            _.each(markers, function(thatMarker){
-              if( thatMarker!== marker && thatMarker.icon ){
-                thatMarker.icon = null;
-                thatMarker.clicked = false;
-              }
-            });
-            marker.icon = 'images/green.png';
-            marker.clicked = true;
-            display.addDisplayData($filter('filter')(DataModel.getResults(), function(item){
-
-              if(item.lat === marker.latitude && item.lng === marker.longitude){
-                return true;
-              }else{
-                return false;
-              }
-            }), 'map');
-
-
-          }
-        };
-      });
-    }
 
     function resetMarkers(markers) {
       _.each(markers, function(marker){
@@ -91,4 +87,4 @@
 
 
   }
-})()
+})();

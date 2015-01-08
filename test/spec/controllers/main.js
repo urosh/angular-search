@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('starcSearchApp'));
+  beforeEach(module('starcSearch2App'));
 
   var MainCtrl,
     scope;

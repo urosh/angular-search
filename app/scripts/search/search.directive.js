@@ -85,8 +85,3 @@
 })();
 
 
-function SearchDirective($animate){
-	return {
-
-	}
-};

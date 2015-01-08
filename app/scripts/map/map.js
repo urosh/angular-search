@@ -18,17 +18,20 @@
       zoom: 8
     };
 
+    vm.onClicked = function(marker){
+      console.log(marker.model);
+      vm.markers = mapService.setMarkers(marker.model);
+    }
+
 
     activate();
 
     function activate() {
       vm.markers = mapService.setMarkers();
-      mapService.showMarkers(vm.markers);
-
+      
       requestNotificationChannel.onSearchResultsReady($scope, function(){
         vm.markers = mapService.setMarkers();
-        mapService.showMarkers(vm.markers);
-
+      
       });
 
       requestNotificationChannel.onDisplayReady($scope, function(item){

@@ -15,7 +15,7 @@
 
     };
 
-    return directive;
+    
 
     AnnotationsController.$inject = ['$scope', 'requestNotificationChannel', 'CommonServices', 'annotationsService', '$timeout'];
 
@@ -115,6 +115,8 @@
 
       }
     }
+
+    return directive;
   }
 
 })();

@@ -17,6 +17,7 @@
     var imgElement;
 
     var directive  = {
+     // controller: "my.nameSpace.TestController",
       restrict: 'E',
       require: '^starcAnnotation',
       template: '<div class="image-container"><img width="350" class="img-original" ng-src="{{ imageSource }}"></div>',
